@@ -41,6 +41,20 @@ $(document).ready(function(){
         $('#starttime,#endtime').change(function (e) {
             $(this).val($(this).val().split(' ')[1]);
         });
+        $('#report_startdate').datetimepicker({
+            format:'Y-m-d H:i',
+            onShow:function( ct ){
+                this.setOptions({
+                    maxDate:$('#enddate').val()?$('#enddate').val():false
+                })
+            },
+            timepicker:true,
+            validateOnBlur:true,
+            minDate:'+1970/01/02',
+            onClose:function( ct ){
+                $('#datetimepicker1').focus();
+            },
+        });
     });// end postevent datetimepicker settings
 
     //load branch based on regions

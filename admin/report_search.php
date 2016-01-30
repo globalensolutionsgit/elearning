@@ -10,7 +10,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
     <div class="block-content collapse in">
         <div class="span12">
             <form method="post" id="add_class">
-                <div class="control-group">
+               <!--  <div class="control-group">
                     <label>Regions</label>
                     <div class="controls">
                         <select name="region"  class="regions" required>
@@ -22,12 +22,18 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             ?>
                         </select>
                     </div>
-                </div>
+                </div> -->
                 <div class="control-group">
                     <label>Branch</label>
                     <div class="controls">
                         <select name="branch"  class="branchs" required>
-                            <option></option>
+                            <option>Select Branch</option>
+                             <?php
+                                $query = mysql_query("select * from branch");
+                                while ($row = mysql_fetch_array($query)) {
+                                    ?>
+                                    <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['branch_name']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -64,8 +70,9 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                 <div class="control-group">
                     <label>Start date and Time :</label>
                     <div class="controls">
-
-                        <input id="startdate" class="span6" type="text" class="" name="startdate" value="" >
+                    <!-- Commented By kalai -->
+                        <!-- <input id="startdate" class="span6" type="text" class="" name="startdate" value="" > -->
+                        <input id="report_startdate" class="span6" type="text" class="" name="startdate" value="" >
                     </div>
                 </div>
                 <div class="control-group">
