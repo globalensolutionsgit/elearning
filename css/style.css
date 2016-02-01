@@ -5180,3 +5180,8 @@ section.cp-our-services p, .contant section.cp-our-services h2{
 	margin-right: 2px;
 	cursor: pointer;
 }
+
+.tempstudent_data{
+	display: none;
+}
+

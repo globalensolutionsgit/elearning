@@ -99,16 +99,29 @@ $(document).ready(function() {
 	$('.confirmation_no').click(function(){
 		$('.enroll_now').hide();
 	});
+	$('.tempstudent_field').hide();
+	$('.add_temp').hide();
     var addrow = 1;
     $('.add_student').click(function(){
         var row_count = parseInt($('.student_list_front tr #student_count').last().val())+1;
         var count = row_count;
 
-            $('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td><input type="text" name=temp[] value=""></td><td>Present</td></tr>');
+        	$('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td>'+$('.tempstudent_field').html()+'<input type="hidden" class="temp_student_final" name="temp_student_final" value=""></td><td>Present</td></tr>');
+        	// commented by kalai
+            // $('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td><input type="text" name=temp[] value=""></td><td>Present</td></tr>');
             addrow++;
             count++;
-
     });
+    // newly added by kalai
+    var student_data = [];
+   	$('.tempstudent_data li').each(function(){
+   		student_data.push($(this).text());
+   	});
+    $( document).on('focus',".temp_text", function(){
+		$(this).autocomplete({
+			source: student_data,
+	 	});
+	});
     $('.student_remove').click(function(e){
         e.preventDefault();
         if( addrow > 1 ){
@@ -144,7 +157,37 @@ $(document).ready(function() {
       console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
     }
 	});
-        $('#my-textarea').restrictLength( $('#max-length-element') );
+    $('#my-textarea').restrictLength( $('#max-length-element') );
+        
+    //newly added by kalai
+    $('[name="submit_attendance"]').submit(function(){
+  		// $( document).on('change',".previousbranch", function(){
+		// 	$(this).siblings('.temp_student_final').val($(this).val());
+		// });
+		// $( document).on('blur',".temp_text", function(){
+		// 	alert("blur");
+		// 	$(this).siblings('.temp_student_final').val($(this).siblings('.temp_student_final').val()+ ',' +$(this).val());
+		// });
+    	$(".previousbranch").each(function(){
+			$(this).siblings('.temp_student_final').val($(this).val());
+		});
+		$(".temp_text").each(function(){
+			$(this).siblings('.temp_student_final').val($(this).siblings('.temp_student_final').val()+ ',' +$(this).val());
+		});
+    	var values = [];
+    	$('input[name=student]').each(function () {
+    		if ($(this).is(':checked') == true) 
+               values.push(this.value);   		
+        });
+        formData = $(this).serialize();
+        formData.push(values);
+        alert(formData);
+        $.ajax({
+            type: "POST",
+            url: "submit_attendance.php",
+            data: formData,
+        });
+    });
 });
 
 //var map;
