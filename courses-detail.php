@@ -47,15 +47,15 @@
                             <ul>
                                 <li>
                                     <h4>Start Time</h4>
-                                    <p><?php echo substr($row['start_date'],0,16); ?></p>
+                                    <p><?php echo $row['start_time']; ?></p>
                                 </li>
                                 <li>
                                     <h4>End Time</h4>
-                                    <p><?php echo substr($row['end_date'],0,16); ?></p>
+                                    <p><?php echo $row['end_time']; ?></p>
                                 </li>
                                 <li>
                                     <h4>Day</h4>
-                                    <p><?php echo date('l', strtotime($row['start_date'])); ?></p>
+                                    <p><?php echo $row['start_date']; ?></p>
                                 </li>
                                 <li>
                                     <h4>Subject Code</h4>

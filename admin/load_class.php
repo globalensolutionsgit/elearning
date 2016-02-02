@@ -1,7 +1,7 @@
 <?php
 include('dbcon.php');
 $data = $_POST['code'];
-$query = mysql_query("select * from class where class_id = (select DISTINCT user_classId from user_preference where usersId = '$data')") or die(mysql_error());
+$query = mysql_query("select * from user_preference JOIN class ON class.class_id = user_preference.user_classId  where user_preference.usersId = '$data'  group by class_id ") or die(mysql_error());
 $count = mysql_num_rows($query);
 if ($count > 0) {
 	while($row=mysql_fetch_array($query)){
