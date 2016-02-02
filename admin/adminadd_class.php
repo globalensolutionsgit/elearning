@@ -16,9 +16,9 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <select name="region"  class="regions" required>
                                 <option></option>
                                 <?php
-                                foreach ($regions as $key => $value) {
-                                    echo "<option value=" . $key . ">" . $value . "</option>";
-                                }
+                                //foreach ($regions as $key => $value) {
+                                    //echo "<option value=" . $key . ">" . $value . "</option>";
+                                //}
                                 ?>
                             </select>
                         </div>
@@ -31,7 +31,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             </select>
                         </div>
                     </div> -->
-                    <div class="control-group span4">
+                    <div class="control-group span6">
                         <label>Branch</label>
                         <div class="controls">
                             <select name="branch"  class="branchs" required>
@@ -45,7 +45,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             </select>
                         </div>
                     </div>
-    				<div class="control-group span4">
+    				<div class="control-group span6">
                         <label>Teacher</label>
                         <div class="controls">
                             <select name="user"  class="teacher" required>
@@ -79,10 +79,9 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     </div>
                 </div>
                 <div>
-                    <div class="control-group span5">
+                    <div class="control-group span6">
                         <label>Start date :</label>
                         <div class="controls">
-
                             <input id="startdate" class="span6" type="text" class="" name="startdate" value="" >
                         </div>
                     </div>
@@ -91,9 +90,21 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     <div class="control-group span5">
                         <label>Time :</label>
                         <div class="controls">
-                            <input id="starttime" class="span6" type="text" class="" name="starttime" value="" placeholder="Start Time"> 
+                            <input id="starttime" class="span6" type="text" class="" name="starttime" value="" placeholder="Start Time">
                             <!-- <label> to </label> -->
                             <input id="endtime" class="span6" type="text" class="" name="endtime" value="" placeholder="End Time">
+                        </div>
+                    </div>
+                    <div class="control-group span7" id="days">
+                        <label>Days :</label>
+                        <div class="controls">
+                            <input type="checkbox" name="days[]" id="days" value="sun">Sunday
+                            <input type="checkbox" name="days[]" id="days" value="mon">Monday
+                            <input type="checkbox" name="days[]" id="days" value="tue">Tuesday
+                            <input type="checkbox" name="days[]" id="days" value="wed">Wednesday
+                            <input type="checkbox" name="days[]" id="days" value="thu">Thursday
+                            <input type="checkbox" name="days[]" id="days" value="fri">Friday
+                            <input type="checkbox" name="days[]" id="days" value="sat">Saturday
                         </div>
                     </div>
                     <!-- end -->
@@ -104,19 +115,29 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <input id="enddate" class="span6" type="text" class="" name="enddate" value="" >
                         </div>
                     </div> -->
-                    <div class="control-group span2 margin_top_and_left">
+                    <div class="control-group span4 margin_top_and_left">
                         <div class="controls">
                             <!-- <button class="btn btn-success">Get</button> -->
                             <span class="get_button">Get</span>
 
                         </div>
                     </div>
-                    <div id="student_list">
-                        <table class="schdule_student_list">
+                    <div style="clear:both">
 
+                    </div>
+                    <div id="student_list control-group span12">
+                        <table class="schdule_student_list">
                         </table>
-                        <input type="checkbox" class="selectall dn">
-                        <button class="btn btn-success allocate_button dn">Allocate</button>
+                        <table id="allocate">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="selectall dn">
+                                </td>
+                                <td>
+                                    <button class="btn btn-success allocate_button dn">Allocate</button>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </form>

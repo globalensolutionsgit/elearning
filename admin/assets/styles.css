@@ -226,11 +226,12 @@ div.checker input{
 }
 .schdule_student_list th,.schdule_student_list table,.schdule_student_list td{
 	border: 1px solid #000;
+	padding:0px 59px;
 }
 .dn{
 	display: none;
 }
-.schdule_student_list{
+/*.schdule_student_list{
   position: absolute;
   top: 217px;
-}
+}*/
