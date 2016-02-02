@@ -1,31 +1,42 @@
 <?php include('session.php'); ?>
 <?php require_once 'header_innerpage.php'; ?>
-
-<?php include('dbcon.php'); ?>
 <?php
+// print_r($_POST['student']);
 if(isset($_POST['submit'])){
-
     $branch_id = $_POST['branch'];
     $class_id = $_POST['classs'];
     $subject_id = $_POST['subject'];
-    $region = $_POST['region'];
+    //commented by kalai
+    // $region = $_POST['region'];
     $teacher_id = $_POST['teacher'];
     $start_date = $_POST['class_date'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
 
     if(!empty($_POST['student'])) {
         foreach($_POST['student'] as $stu_id) {
-
-                mysql_query("insert into class_attend_students (region,branch_id,class_id,subject_id,student_id,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date') ")or die(mysql_error());
-                mysql_query("update student_teacher_allocation set status = '1' where student_id='$stu_id' and start_date='$start_date' ")or die(mysql_error());
+                //commented by kalai
+                // mysql_query("insert into class_attend_students (region,branch_id,class_id,subject_id,student_id,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date') ")or die(mysql_error());
+                mysql_query("insert into class_attend_students (branch_id,class_id,subject_id,student_id,teacher_id,class_date,class_starttime,class_endtime) values ('$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
+                // mysql_query("update student_teacher_allocation set status = '1' where student_id='$stu_id' and start_date='$start_date' ")or die(mysql_error());                
 
         }
     }
-    if(!empty($_POST['temp'])) {
-        foreach($_POST['temp'] as $temp_id) {
-                mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
+    // if(!empty($_POST['temp'])) {
+    //     foreach($_POST['temp'] as $temp_id) {
+    //         //commented by kalai
+    //         // mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
+    //         mysql_query("insert into temp_stu_attend_class (branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
+    //     }
+    // }
+    if(!empty($_POST['temp_student_final'])) {
+        foreach($_POST['temp_student_final'] as $temp_id) {
+            $tempdata = explode(",", $temp_id);
+            //commented by kalai
+            // mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
+            mysql_query("insert into temp_stu_attend_class (previous_branch_id,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$tempdata[0]','$branch_id','$class_id','$subject_id','$tempdata[1]','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
         }
     }
-
 }
  ?>
     <!--HEADER END-->
@@ -47,7 +58,10 @@ if(isset($_POST['submit'])){
             <div class="row events">
             <?php
             $user_id=$_SESSION['user_id'];
-            $query = mysql_query("select * from student_teacher_allocation where status = '0' and teacher_id = '$user_id' and start_date <= now() group by teacher_id,region,branch_id,class_id,subject_id
+            //commented by kalai
+            // $query = mysql_query("select * from student_teacher_allocation where status = '0' and teacher_id = '$user_id' and start_date <= now() group by teacher_id,region,branch_id,class_id,subject_id
+            //         ")or die(mysql_error());
+            $query = mysql_query("select * from student_teacher_allocation where teacher_id = '$user_id' and start_date <= now() group by teacher_id,branch_id,class_id,subject_id
                     ")or die(mysql_error());
             $count = mysql_num_rows($query);
 
@@ -63,13 +77,17 @@ if(isset($_POST['submit'])){
                                 <!--EVENT HEADER START-->
                                 <!--EVENT VANUE START-->
                                 <div class="event-vanue">
-                                    <form action="teacher_dashboard.php" method="post">
-                                        <input type="hidden" name="region" value="<?php echo $row['region']; ?>"/>
+                                    <form action="teacher_dashboard.php" method="post" name="submit_attendance">
+                                    <!-- <form method="post" name="submit_attendance" action="submit_attendance.php"> -->
+                                        <!-- <input type="hidden" name="region" value="<?php echo $row['region']; ?>"/> -->
                                         <input type="hidden" name="branch" value="<?php echo $row['branch_id']; ?>"/>
                                         <input type="hidden" name="classs" value="<?php echo $row['class_id']; ?>"/>
                                         <input type="hidden" name="subject" value="<?php echo $row['subject_id']; ?>"/>
                                         <input type="hidden" name="teacher" value="<?php echo $user_id; ?>"/>
                                         <input type="hidden" name="class_date" value="<?php echo $row['start_date']; ?>"/>
+                                        <!-- newly added by kalai -->
+                                        <input type="hidden" name="start_time" value="<?php echo $row['start_time']; ?>"/>
+                                        <input type="hidden" name="end_time" value="<?php echo $row['end_time']; ?>"/>
                                     <table>
                                         <tr>
                                             <td><p class="color">Class</p></td>
@@ -123,7 +141,11 @@ if(isset($_POST['submit'])){
 
                                             ?>
                                         <tr>
-                                            <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td><td><?php echo $row_1 ['firstname'];  ?></td><td><input type="checkbox" name=student[] value="<?php echo $row_1 ['student_id'];  ?>" /></td>
+                                            <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td><td><?php echo $row_1 ['firstname'];  ?></td><td><input type="checkbox" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
+                                        </tr>
+                                        <tr class="add_temp">
+                                        <td>
+                                        </td>
                                         </tr>
 
                                         <?php
@@ -133,6 +155,29 @@ if(isset($_POST['submit'])){
 
                                     </table>
                                     <div class="clearfix"></div>
+                                    <div class="tempstudent_field">
+                                        <select name="previousbranch[]"  class="previousbranch" required>
+                                            <option value="none">Select Branch</option>
+                                            <option value="none">None</option>
+                                             <?php
+                                            $query = mysql_query("select * from branch");
+                                            while ($row = mysql_fetch_array($query)) {
+                                                ?>
+                                                <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['branch_name']; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <input type="text" name="temp[]" value="" class="temp_text">
+                                    </div>
+                                    <div class="tempstudent_data">
+                                        <ul>
+                                            <?php
+                                            $query = mysql_query("select * from users where user_type = 'student'");
+                                            while ($row = mysql_fetch_array($query)) {
+                                                ?>
+                                                <li><?php echo $row['firstname']; ?></li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
                                     <div class="menus" style="display:none">
                                         <span class="add_student green_button">Add student</span><span class="student_remove green_button">remove</span><input type="submit" name="submit" value="submit" class="green_button">
                                     </div>

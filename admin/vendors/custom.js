@@ -41,7 +41,7 @@ $(document).ready(function(){
         $('#starttime,#endtime').change(function (e) {
             $(this).val($(this).val().split(' ')[1]);
         });
-        $('#report_startdate').datetimepicker({
+        $('#startdatetime').datetimepicker({
             format:'Y-m-d H:i',
             onShow:function( ct ){
                 this.setOptions({

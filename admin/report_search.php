@@ -27,7 +27,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     <label>Branch</label>
                     <div class="controls">
                         <select name="branch"  class="branchs" required>
-                            <option>Select Branch</option>
+                            <option></option>
                              <?php
                                 $query = mysql_query("select * from branch");
                                 while ($row = mysql_fetch_array($query)) {
@@ -72,7 +72,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     <div class="controls">
                     <!-- Commented By kalai -->
                         <!-- <input id="startdate" class="span6" type="text" class="" name="startdate" value="" > -->
-                        <input id="report_startdate" class="span6" type="text" class="" name="startdate" value="" >
+                        <input id="startdatetime" class="span6" type="text" class="" name="startdate" value="" >
                     </div>
                 </div>
                 <div class="control-group">
