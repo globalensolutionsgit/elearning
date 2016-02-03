@@ -114,7 +114,6 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         e.preventDefault();
                         var _this = $(e.target);
                         var formData = $(this).serialize();
-                        // alert(formData);
                         $.ajax({
                             type: "POST",
                             url: "report_action.php",
@@ -122,12 +121,14 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             success: function (data) {
                                 if (data)
                                 {
-                                    $('.report').nextAll('tr').remove();
-                                    $(data).insertAfter('.report');
-                                    $('.total_result').text($('.report_heading tr').length-1);
-                                    $('.report_heading tr:last').after('');
+                                   $('.report').nextAll('tr').remove();
+                                   $(data).insertAfter('.report');
+                                   $('.total_result').text($('.report_heading tr').length-1);
                                 } else {
+                                    $('.total_result').text('0');
+                                    $('.report').nextAll('tr').remove();
                                     alert('No result found');
+
                                 }
                             }
                         });

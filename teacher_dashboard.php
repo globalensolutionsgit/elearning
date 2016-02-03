@@ -22,6 +22,7 @@ if(isset($_POST['submit'])){
 
         }
     }
+    //commented by kalai
     // if(!empty($_POST['temp'])) {
     //     foreach($_POST['temp'] as $temp_id) {
     //         //commented by kalai
@@ -34,7 +35,6 @@ if(isset($_POST['submit'])){
             $tempdata = explode(",", $temp_id);
             $temp_branch=$tempdata[0];
             $temp_student=$tempdata[1];
-
             //commented by kalai
             // mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
             mysql_query("insert into temp_stu_attend_class (previous_branch_id,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$temp_branch','$branch_id','$class_id','$subject_id','$temp_student','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
@@ -73,8 +73,7 @@ if(isset($_POST['submit'])){
                     $id = $row['student_teacher_allocation_id'];
 
                 ?>
-
-                        <!--EVENT CONTANT START-->
+                     <!--EVENT CONTANT START-->
                         <div class="span12">
                             <div class="text">
                                 <!--EVENT HEADER START-->
