@@ -3,55 +3,28 @@ require_once 'header_innerpage.php';
 require_once 'dbcon.php';    //include of db config file
     include ('paginate.php'); //include of paginat page
     $per_page = 12;
-    $user_id = $_SESSION['user_id'];
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }
+
     if (isset($_GET['class']) and isset($_GET['subject'])){
         $class=$_GET['class'];
         $subject=$_GET['subject'];
         $result = mysql_query("select * from student_teacher_allocation
-                                                LEFT JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
-                                                LEFT JOIN class ON class.class_id = student_teacher_allocation.class_id
-                                                LEFT JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
-                                                LEFT JOIN users ON users.user_id = student_teacher_allocation.teacher_id
-                                                where class.class_name = '$class' and subject.subject_title = '$subject' where student_teacher_allocation.student_id = '$user_id' and student_teacher_allocation.start_date <=now()   ORDER BY teacher_class_subject_branch.start_date DESC ");
+                                                JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
+                                                JOIN class ON class.class_id = student_teacher_allocation.class_id
+                                                JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
+                                                JOIN users ON users.user_id = student_teacher_allocation.teacher_id
+                                                where class.class_name = '$class' and subject.subject_title = '$subject' where student_teacher_allocation.student_id = '$user_id' and student_teacher_allocation.status = '1'  ORDER BY teacher_class_subject_branch.start_date DESC ");
     }
     else{
         $result = mysql_query("select * from student_teacher_allocation
-                                                LEFT JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
-                                                LEFT JOIN class ON class.class_id = student_teacher_allocation.class_id
-                                                LEFT JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
-                                                LEFT JOIN users ON users.user_id = student_teacher_allocation.teacher_id where student_teacher_allocation.student_id = '$user_id' and student_teacher_allocation.start_date <=now() ");
+                                                JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
+                                                JOIN class ON class.class_id = student_teacher_allocation.class_id
+                                                JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
+                                                JOIN users ON users.user_id = student_teacher_allocation.teacher_id GROUP BY student_teacher_allocation.teacher_id ");
     }
-
-    $total_results = mysql_num_rows($result);
-    $total_pages = ceil($total_results / $per_page);//total pages we going to have
-    //-------------if page is setcheck------------------//
-    if (isset($_GET['page'])) {
-        if (isset($_GET['page'])) {
-        $show_page = $_GET['page'];
-        }else{$show_page = 1;}
-        if ($show_page > 0 && $show_page <= $total_pages) {
-            $start = ($show_page - 1) * $per_page;
-            $end = $start + $per_page;
-        } else {
-            // error - show first set of results
-            $start = 0;
-            $end = $per_page;
-        }
-        $page = intval($_GET['page']);
-        if ($page <= 0)
-            $page = 1;
-    } else {
-        // if page isn't set, show first set of results
-        $start = 0;
-        $end = $per_page;
-        $show_page = 1;
-    }
-    // display pagination
-
-    $tpages=$total_pages;
-    //current page
-
-    ?>
+?>
 <!--BANNER START-->
 <div class="page-heading">
     <div class="container">
@@ -65,59 +38,51 @@ require_once 'dbcon.php';    //include of db config file
 <!--CONTANT START-->
 <div class="contant">
     <div class="container">
+
         <div class="row">
+            <?php if(isset($_SESSION['user_id'])){ ?>
             <div class="span9">
                 <div class="featured-courses">
-                    <h2>Class schedules</h2>
+                    <h2>Your Class</h2>
                     <div class="row" >
-                            <?php
-                            if (isset($_GET['class']) and isset($_GET['subject'])){
-                                $class=$_GET['class'];
-                                $subject=$_GET['subject'];
-                                $reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages."&class=".$class."&subject=".$subject;
-                            }else{
-                                $reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
-                            }
+                    <?php
+                    if ($result) {
+                        while($row = mysql_fetch_array($result)) {
+                            ?>
+                            <div class ="span3">
+                                <div class="course">
+                                    <div class="thumb">
+                                        <a href="courses-detail.php?id="></a>
+                                    </div>
+                                    <div class="text">
+                                        <div class="header">
+                                            <h4><?php echo $row['class_name']; ?></h4>
+                                            <div class="rating">
+                                                <?php echo $row['subject_title']; ?>
+                                            </div>
+                                        </div>
+                                        <div class="course-name">
+                                            <p><?php echo $row['start_date'].date('l', strtotime($row['start_date'])); ?></p>
+                                        </div>
+                                        <span><?php echo $row['branch_name']; ?></span>
+                                        <div class="course-detail-btn">
+                                            <a href="courses-detail.php?id=<?php echo $row['student_teacher_allocation_id']; ?>">Detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
 
-        for ($i = $start; $i < $end; $i++) {
-            if ($i == $total_results) {
-                break;
-            }
-            echo'<div class ="span3">';
-            echo'<div class="course">';
-            //echo'<div class="thumb">';
-            //echo'<a href="courses-detail.php?id='.mysql_result($result, $i, 'teacher_class_subject_branch_id').'"></a>';
-            //echo'</div>';
-            echo'<div class="text">';
-            echo'<div class="header">';
-            echo'<h4>'.mysql_result($result, $i, 'class_name').'</h4>';
-            echo'<div class="rating">'.mysql_result($result, $i, 'subject_title');
-            echo'</div>';
-            echo'</div>';
-            echo'<div class="course-name">';
-            echo'<p>'.mysql_result($result, $i, substr('start_date',0,13)).' '.date('l', strtotime(mysql_result($result, $i,'start_date'))).'</p>';
-            echo'</div>';
-            echo'<span>'.mysql_result($result, $i, 'branch_name').'</span>';
-            echo'<div class="course-detail-btn">';
-            echo'<a href="courses-detail.php?id='. mysql_result($result, $i, 'student_teacher_allocation_id'). '">Detail</a>';
-            echo'</div></div></div></div>';
-        }
+                    }
+                    else {
+                        echo mysql_error();
+                    }
 
-     echo '<div class="pagination"><ul>';
-        if ($total_pages > 1) {
-            echo paginate($reload, $show_page, $total_pages);
-        }
-    echo "</ul></div>";
-    ?>
-
-
+                     ?>
                     </div>
-
-
-
-
                 </div>
             </div>
+
             <div class="span3">
                 <!--SIDEBAR START-->
                 <div class="sidebar">
@@ -137,9 +102,73 @@ require_once 'dbcon.php';    //include of db config file
                         </ul>
                     </div>
                     <!--COURSE CATEGORIES WIDGET END-->
-
                 </div>
                 <!--SIDEBAR END-->
+            </div>
+            <?php } ?>
+        </div>
+        <?php
+            if (isset($_GET['class']) and isset($_GET['subject'])){
+                $class=$_GET['class'];
+                $subject=$_GET['subject'];
+                $result = mysql_query("select * from student_teacher_allocation
+                                                        JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
+                                                        JOIN class ON class.class_id = student_teacher_allocation.class_id
+                                                        JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
+                                                        JOIN users ON users.user_id = student_teacher_allocation.teacher_id
+                                                        where class.class_name = '$class' and subject.subject_title = '$subject' where NOT student_teacher_allocation.student_id = '$user_id' ");
+            }
+            else{
+                $result = mysql_query("select * from student_teacher_allocation
+                                        JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
+                                        JOIN class ON class.class_id = student_teacher_allocation.class_id
+                                        JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
+                                        JOIN users ON users.user_id = student_teacher_allocation.teacher_id GROUP BY student_teacher_allocation.teacher_id");
+            }
+        ?>
+        <div class="row">
+            <div class="span9">
+                <div class="featured-courses">
+                    <h2>Today Classes</h2>
+                    <div class="row" >
+                    <?php
+                    if ($result) {
+                        while($row = mysql_fetch_array($result)) {
+                            ?>
+                            <div class ="span3">
+                                <div class="course">
+                                    <div class="thumb">
+                                        <a href="courses-detail.php?id="></a>
+                                    </div>
+                                    <div class="text">
+                                        <div class="header">
+                                            <h4><?php echo $row['class_name']; ?></h4>
+                                            <div class="rating">
+                                                <?php echo $row['subject_title']; ?>
+                                            </div>
+                                        </div>
+                                        <div class="course-name">
+                                            <p><?php echo $row['start_date'].date('l', strtotime($row['start_date'])); ?></p>
+                                        </div>
+                                        <span><?php echo $row['branch_name']; ?></span>
+                                        <div class="course-detail-btn">
+                                            <a href="courses-detail.php?id=<?php echo $row['student_teacher_allocation_id']; ?>">Detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
+
+                    }
+                    else {
+                        echo mysql_error();
+                    }
+
+                     ?>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
             </div>
         </div>
     </div>

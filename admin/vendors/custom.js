@@ -32,7 +32,7 @@ $(document).ready(function(){
         //     timepicker:true,
         //     validateOnBlur:true,
         // });
-        
+
         //newly added by kalai
         $('#starttime,#endtime').datetimepicker({
             datepicker:false,
@@ -137,24 +137,37 @@ $(document).ready(function(){
 
 
     $(".get_button").click(function () {
-        var region_id = $('.regions').val();
-        var branch_id = $('.branchs').val();
-        var class_id = $('.classs').val();
-        var clss_id = class_id.split('-');
-        var subject_id = $('.subjects').val();
-        var teacher_id = $('.teacher').val();
-        var s_date = $('#startdate').val();
-        var e_date = $('#enddate').val();
-        //alert(clss_id+'-'+subject_id+'-'+teacher_id+'-'+s_date+'-'+e_date);
+        // var region_id = $('.regions').val();
+        var form_data = $('#add_class').serialize();
+        // var branch_id = $('.branchs').val();
+        // var class_id = $('.classs').val();
+        // var clss_id = class_id.split('-');
+        // var subject_id = $('.subjects').val();
+        // var teacher_id = $('.teacher').val();
+        // var s_date = $('#startdate').val();
+        // var stime = $('#starttime').val();
+        // var etime = $('#endtime').val();
+        // var days =  [];
+        // $("input[name='days[]']:checked").each(function(i) {
+	    //        days['days[]'].push($(this).val());
+        //  });
+        //alert(form_data);
         $.ajax({
                 type: "POST",
                 url: "student_list.php",
-                data: {'region':region_id,'branch':branch_id,'clas_id':clss_id[0],'subject_id':subject_id,'teacher_id':teacher_id,'s_date':s_date,'e_date':e_date},
+                data: form_data,
+
                 success: function (data) {
+                    
                     if(data=='nil'){
                         $('.schdule_student_list').empty();
                         alert('Student not available');
-                    }else{
+
+                    }else if(data=='already'){
+                        alert('already your selected subject was allocated to this teacher');
+                    }
+                    else{
+
                         $('.schdule_student_list').html("<tr><th></th><th>Student Name</th><th>Branchname</th><th>Class</th><th>subject</td></tr>"+ data);
                         $('.selectall,.allocate_button').show();
                     }
@@ -162,6 +175,31 @@ $(document).ready(function(){
             });
 
 
+    });
+    $('.allocate_button').click(function() {
+        if($('#startdate').val() == ''){
+            alert('Choose start date');
+            return false;
+        }
+        if($('#starttime').val() == ''){
+            alert('Choose start time');
+            return false;
+        }
+        if($('#endtime').val() == ''){
+            alert('Choose end time');
+            return false;
+        }
+        if(jQuery('#days input[type=checkbox]:checked').length<=0) {
+            alert('Select atleast one day');
+            return false;
+        }
+        else if(jQuery('.schdule_student_list input[type=checkbox]:checked').length<=0) {
+            alert('Select atleast one student');
+            return false;
+        }
+        else{
+            return true;
+        }
     });
 
     $('.selectall').click(function() {
@@ -176,7 +214,5 @@ $(document).ready(function(){
             });
         }
     });
-    $('.get_button').click(function(){
-        $().show();
-    });
+
 });
