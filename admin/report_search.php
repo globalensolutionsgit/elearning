@@ -124,6 +124,9 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                                 {
                                    $('.report').nextAll('tr').remove();
                                    $(data).insertAfter('.report');
+                                  
+                                   // alert( $('.report_heading tr').length-1);
+                                   $('.total_result').text($('.report_heading tr').length-1);
                                 } else {
                                   alert('No result found');
 
