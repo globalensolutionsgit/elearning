@@ -51,7 +51,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <?php } ?>
                         </select>
                     </div>
-                </div> 
+                </div>
                 <!-- <div class="control-group">
                     <label>Class :</label>
                     <div class="controls">
@@ -72,10 +72,10 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                                 ?>
                                 <option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
                             <?php } ?>
-                            
+
                         </select>
                     </div>
-                </div> 
+                </div>
 
                 <div class="control-group">
                     <label>Subject :</label>
@@ -122,11 +122,12 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             success: function (data) {
                                 if (data)
                                 {
-                                   $('.report').nextAll('tr').remove();
-                                   $(data).insertAfter('.report');
+                                    $('.report').nextAll('tr').remove();
+                                    $(data).insertAfter('.report');
+                                    $('.total_result').text($('.report_heading tr').length-1);
+                                    $('.report_heading tr:last').after('');
                                 } else {
-                                  alert('No result found');
-
+                                    alert('No result found');
                                 }
                             }
                         });

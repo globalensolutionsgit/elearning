@@ -25,15 +25,27 @@
                                             <tr>
                                                 <th></th>
                                                 <th>Name</th>
-                                                <th>Username</th>
-                                                <th>Branch</th>
+
+                                                <?php
+                                                if($user_type == 'teacher'){
+                                                    echo '<th>Username</th><th>Branch</th>';
+                                                }
+
+                                                ?>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $user_type = $_GET['user_type'];
-                                            $user_query = mysql_query("select * from users join branch on branch.branch_id = users.city  where user_type ='$user_type' ")or die(mysql_error());
+                                            //echo $user_type;
+                                            if($user_type == 'teacher'){
+                                                $user_query = mysql_query("select * from users join branch on branch.branch_id = users.city  where user_type ='$user_type' ")or die(mysql_error());
+
+                                            }else{
+                                                $user_query = mysql_query("select * from users where user_type ='$user_type' ")or die(mysql_error());
+
+                                            }
                                             while ($row = mysql_fetch_array($user_query)) {
                                                 $id = $row['user_id'];
                                                 ?>
@@ -43,9 +55,7 @@
                                                         <input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
                                                     </td>
                                                     <td><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></td>
-
-                                                    <td><?php echo $row['username']; ?></td>
-                                                    <td><?php echo $row['branch_name']; ?></td>
+                                                    <?php if($user_type == 'teacher'){  echo '<td>'.$row['username'].'</td></td><td>'.$row['branch_name'].'</td>';  }?>
                                                     <td width="40">
                                                         <a href="edit_user.php<?php echo '?id=' . $id.'&user_type='.$user_type; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
                                                     </td>
