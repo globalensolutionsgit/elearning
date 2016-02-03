@@ -106,7 +106,7 @@ $(document).ready(function() {
         var row_count = parseInt($('.student_list_front tr #student_count').last().val())+1;
         var count = row_count;
 
-        	$('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td>'+$('.tempstudent_field').html()+'<input type="hidden" class="temp_student_final" name="temp_student_final" value=""></td><td>Present</td></tr>');
+        	$('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td>'+$('.tempstudent_field').html()+'<input type="hidden" class="temp_student_final" name="temp_student_final[]" value=""></td><td>Present</td></tr>');
         	// commented by kalai
             // $('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td><input type="text" name=temp[] value=""></td><td>Present</td></tr>');
             addrow++;

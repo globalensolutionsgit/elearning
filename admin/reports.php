@@ -22,8 +22,6 @@
                                         <tr class='report'>
                                             <th>Students</th><th>Class</th><th>Subject</th><th>Start date</th><th>Start Time</th><th>End Time</th><th>Student type</th>
                                         </tr>
-
-
                                     </table>
                                 </div>
                             </div>
