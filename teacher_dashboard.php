@@ -32,9 +32,12 @@ if(isset($_POST['submit'])){
     if(!empty($_POST['temp_student_final'])) {
         foreach($_POST['temp_student_final'] as $temp_id) {
             $tempdata = explode(",", $temp_id);
+            $temp_branch=$tempdata[0];
+            $temp_student=$tempdata[1];
+
             //commented by kalai
             // mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
-            mysql_query("insert into temp_stu_attend_class (previous_branch_id,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$tempdata[0]','$branch_id','$class_id','$subject_id','$tempdata[1]','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
+            mysql_query("insert into temp_stu_attend_class (previous_branch_id,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$temp_branch','$branch_id','$class_id','$subject_id','$temp_student','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
         }
     }
 }
@@ -110,7 +113,8 @@ if(isset($_POST['submit'])){
                                         </tr>
                                         <tr>
                                             <td><p class="color">Date:</p></td>
-                                            <td><a href="#"><i class="fa fa-calendar-o"></i><?php echo substr($row['start_date'],0,16); ?>  -  <?php echo substr($row['end_date'],0,16); ?> (<?php echo date('l', strtotime($row['start_date'])); ?>)</a></td>
+                                            <!-- <td><a href="#"><i class="fa fa-calendar-o"></i><?php echo substr($row['start_date'],0,16); ?>  -  <?php echo substr($row['end_date'],0,16); ?> (<?php echo date('l', strtotime($row['start_date'])); ?>)</a></td> -->
+                                            <td><a href="#"><i class="fa fa-calendar-o"></i><?php echo substr($row['start_date'],0,16); ?>  -  <?php echo substr($row['start_time'],0,16); ?> - <?php echo substr($row['end_time'],0,16); ?> (<?php echo date('l', strtotime($row['start_date'])); ?>)</a></td>
                                         </tr>
                                         <tr>
                                             <td><p class="color">Venue:</p></td>
@@ -157,8 +161,8 @@ if(isset($_POST['submit'])){
                                     <div class="clearfix"></div>
                                     <div class="tempstudent_field">
                                         <select name="previousbranch[]"  class="previousbranch" required>
-                                            <option value="none">Select Branch</option>
-                                            <option value="none">None</option>
+                                            <option value="0">Select Branch</option>
+                                            <option value="0">None</option>
                                              <?php
                                             $query = mysql_query("select * from branch");
                                             while ($row = mysql_fetch_array($query)) {

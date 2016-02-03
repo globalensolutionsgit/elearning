@@ -1,9 +1,10 @@
 $(document).ready(function(){
  //postevent datetimepicker settings
     $(function(){
-        $('#startdate').datepicker({
+        $('#startdate,#enddate').datepicker({
             // format:'Y-m-d H:i',
-            format: 'dd-mm-yyyy',
+            // format: 'dd-mm-yyyy',
+            format: 'yyyy-mm-dd',
             onShow:function( ct ){
                 this.setOptions({
                     maxDate:$('#enddate').val()?$('#enddate').val():false
@@ -96,7 +97,7 @@ $(document).ready(function(){
 			}
 		});
 	});
-
+    // commented by kalai
     $(".teacher").change(function (e) {
 		e.preventDefault();
 		var code = $(this).val();

@@ -1,6 +1,6 @@
 <?php
 // $connection = mysql_select_db('testlms',mysql_connect('localhost','root',''))or die(mysql_error());
-$connection = mysql_select_db('A978313_lms',mysql_connect('localhost','root','root'))or die(mysql_error());
+$connection = mysql_select_db('A978313_lms',mysql_connect('localhost','root',''))or die(mysql_error());
 
 // $connection = mysql_select_db('A978313_lms',mysql_connect('mysql509.ixwebhosting.com','A978313_lms','A978313_lms'))or die(mysql_error());
 
@@ -10,7 +10,7 @@ $connection = mysql_select_db('A978313_lms',mysql_connect('localhost','root','ro
 // $dbpass = 'A978313_lms'; 
 $dbhost = 'localhost';  
 $dbuser = 'root';  
-$dbpass = 'root'; 
+$dbpass = ''; 
 
 
 try

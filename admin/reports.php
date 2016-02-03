@@ -17,9 +17,10 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
+                                    <span>Total Results:</span>
                                     <table class="report_heading">
                                         <tr class='report'>
-                                            <th>Students</th><th>Class</th><th>Subject</th><th>Start date</th><th>Student type</th>
+                                            <th>Students</th><th>Class</th><th>Subject</th><th>Start date</th><th>Start Time</th><th>End Time</th><th>Student type</th>
                                         </tr>
 
 

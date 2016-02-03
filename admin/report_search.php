@@ -37,6 +37,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div>
+                <!-- commented by kalai -->
                 <div class="control-group">
                     <label>Teacher</label>
                     <div class="controls">
@@ -50,15 +51,32 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <?php } ?>
                         </select>
                     </div>
-                </div>
-                <div class="control-group">
+                </div> 
+                <!-- <div class="control-group">
                     <label>Class :</label>
                     <div class="controls">
                         <select name = "classs" class="classs" required>
                             <option></option>
                         </select>
                     </div>
-                </div>
+                </div> -->
+                <!-- newly added by kalai -->
+                <div class="control-group">
+                    <label>Class :</label>
+                    <div class="controls">
+                        <select name = "classs" class="classs" required>
+                            <option></option>
+                            <?php
+                            $query = mysql_query("select * from class");
+                            while ($row = mysql_fetch_array($query)) {
+                                ?>
+                                <option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
+                            <?php } ?>
+                            
+                        </select>
+                    </div>
+                </div> 
+
                 <div class="control-group">
                     <label>Subject :</label>
                     <div class="controls">
@@ -67,12 +85,20 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div>
-                <div class="control-group">
+                <!-- <div class="control-group">
                     <label>Start date and Time :</label>
                     <div class="controls">
-                    <!-- Commented By kalai -->
-                        <!-- <input id="startdate" class="span6" type="text" class="" name="startdate" value="" > -->
+                    <!- Commented By kalai ->
+                        <!- <input id="startdate" class="span6" type="text" class="" name="startdate" value="" > ->
                         <input id="startdatetime" class="span6" type="text" class="" name="startdate" value="" >
+                    </div>
+                </div> -->
+                <div class="control-group">
+                    <label>Date Range :</label>
+                    <div class="controls">
+                        <input id="startdate" class="span6" type="text" class="" name="startdate" value="" placeholder="From Date">
+                        <span>to</span>
+                        <input id="enddate" class="span6" type="text" class="" name="enddate" value="" placeholder="To Date">
                     </div>
                 </div>
                 <div class="control-group">
@@ -88,12 +114,12 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         e.preventDefault();
                         var _this = $(e.target);
                         var formData = $(this).serialize();
+                        // alert(formData);
                         $.ajax({
                             type: "POST",
                             url: "report_action.php",
                             data: formData,
                             success: function (data) {
-
                                 if (data)
                                 {
                                    $('.report').nextAll('tr').remove();
