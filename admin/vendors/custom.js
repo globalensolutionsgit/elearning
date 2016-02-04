@@ -58,6 +58,14 @@ $(document).ready(function(){
         });
     });// end postevent datetimepicker settings
 
+    $('.deactivate').click(function(e){
+        var selected = [];
+        $.each($("input[name='selector[]']:checked"),function(){ 
+            selected.push($(this).val());
+        });
+        window.location.href="view_schedules.php?deactivate_id="+ selected;       
+    });
+
     //load branch based on regions
 	$(".regions").change(function (e) {
 		e.preventDefault();

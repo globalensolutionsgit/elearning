@@ -1,5 +1,13 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
+<?php if(isset($_GET['deactivate_id']))
+{
+   $deactivate_id = explode(",", $_GET['deactivate_id']);
+   foreach($deactivate_id as $deact_id) {
+   mysql_query("update student_teacher_allocation set status = '0' where student_teacher_allocation_id='$deact_id' ")or die(mysql_error());                
+  }
+}   
+?>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -17,6 +25,7 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
                                     <form>
+                                        <a class="btn btn-info deactivate"> Deactivate schedule</a>
                                     <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 
 

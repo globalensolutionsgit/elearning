@@ -5,7 +5,6 @@
         <div class="container-fluid">
             <div class="row-fluid">
 				<?php include('sidebar_dashboard.php'); ?>
-
                 <div class="span9" id="content">
                      <div class="row-fluid">
 					 <a href="add_subject.php" class="btn btn-info"><i class="icon-plus-sign icon-large"></i> Add Subject</a>
