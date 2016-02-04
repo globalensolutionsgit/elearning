@@ -112,11 +112,11 @@ require_once 'dbcon.php';    //include of db config file
                 $class=$_GET['class'];
                 $subject=$_GET['subject'];
                 $result = mysql_query("select * from student_teacher_allocation
-                                                        JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
-                                                        JOIN class ON class.class_id = student_teacher_allocation.class_id
-                                                        JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
-                                                        JOIN users ON users.user_id = student_teacher_allocation.teacher_id
-                                                        where class.class_name = '$class' and subject.subject_title = '$subject' where NOT student_teacher_allocation.student_id = '$user_id' ");
+                                        JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
+                                        JOIN class ON class.class_id = student_teacher_allocation.class_id
+                                        JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
+                                        JOIN users ON users.user_id = student_teacher_allocation.teacher_id
+                                        where class.class_name = '$class' and subject.subject_title = '$subject' where NOT student_teacher_allocation.student_id = '$user_id' ");
             }
             else{
                 $result = mysql_query("select * from student_teacher_allocation

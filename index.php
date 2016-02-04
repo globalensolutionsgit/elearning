@@ -15,7 +15,7 @@
             </div>
             <!--SECTION HEADER END-->
             <div class="row">
-                
+
                 <!--SERVICE ITEM START-->
                 <div class="span4">
                     <div class="services">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <!--SERVICE ITEM END-->
-                
+
                 <!--SERVICE ITEM START-->
                 <div class="span4">
                     <div class="services">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <!--SERVICE ITEM END-->
-                
+
                 <!--SERVICE ITEM START-->
                 <div class="span4">
                     <div class="services">
@@ -60,68 +60,15 @@
                     </div>
                 </div>
                 <!--SERVICE ITEM END-->
-                
+
             </div>
         </div>
     </section>
     <!--SERVICES SECTION END-->
-        <!--LATEST COURSES SECTION START-->
-        <section class="gray-bg">
-        	<div class="container">
-            	<!--SECTION HEADER START-->
-            	<div class="sec-header">
-                	<h2>Latest Courses</h2>
-                    <p>Check Our Featured Courses</p>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <!--SECTION HEADER END-->
-                <div class="customNavigation">
-                    <a class="btn prev"><i class="fa fa-angle-left"></i></a>
-                    <a class="btn next"><i class="fa fa-angle-right"></i></a>
-                </div>
-                <div id="owl-carousel" class="owl-carousel owl-theme">
-                    <?php
-                      $sql1 = mysql_query("select * from teacher_class_subject_branch LEFT JOIN branch ON branch.branch_id = teacher_class_subject_branch.branch_id LEFT JOIN class ON class.class_id = teacher_class_subject_branch.class_id LEFT JOIN subject ON subject.subject_id = teacher_class_subject_branch.subject_id LEFT JOIN users ON users.user_id = teacher_class_subject_branch.user_id ")or die(mysql_error());
-                       // echo $sql1;
-                        while ($row1 = mysql_fetch_assoc($sql1)) {  
-$id = $row1['teacher_class_subject_branch_id'];
-?>
-                    
-                	<!--COURSE ITEM START-->
-                    <div class="course">
-                    	<div class="thumb">
-                
-                            
-                        </div>
-                    	<div class="text">
-                        	<div class="header">
-                            	<h4><?php echo $row1['class_name']; ?></h4>
-                                <div class="rating">
-                                   
-                                </div>
-                            </div>
-                            <div class="course-name">
-                            	<p><?php echo $row1['subject_code']; ?>-<?php echo $row1['subject_title']; ?></p>
-                               
-                            </div>
-                            <div class="course-detail-btn">
-                            	
-                                <a href="courses-detail.php<?php echo '?id=' . $id; ?>">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--COURSE ITEM END-->
-                        <?php } ?>
-                </div>
-            </div>
-        </section>
-        <!--LATEST COURSES SECTION END-->
         <!--STUDENT FORM SECTION START-->
         <section class="form">
         	<div class="form-contant relative">
-            	<div class="container form-fields"> 
+            	<div class="container form-fields">
                 	<div class="row">
                     	<div class="span6">
                         	<img src="images/student.png" alt="">
@@ -130,21 +77,21 @@ $id = $row1['teacher_class_subject_branch_id'];
                         	<div class="student-form">
                             	<div class="header">
                                 	<h2>About Tution Centres</h2>
-                                   
+
                                 </div>
                                 <div class="form-data">
                                 	<ul>
                                     <li>At Kip McGrath we offer a wide range of tutoring programs suited to Singaporean students. We offer Primary English,Primary Maths, Secondary English and  Secondary E Maths and A Maths. </li>
                                     <li> If your child is about to start school, or of primary or secondary school age and could use a little extra help, contact your local Kip McGrath Centre in Singapore today to organise a free assessment.</li>
-                                    <li>At Kip McGrath we employ qualified teachers to ensure our tutors have the right experience to assist your child.</li> 
-                                    <li> Our tutors are passionate about helping students improve their results through tuition and are committed to this goal. 
+                                    <li>At Kip McGrath we employ qualified teachers to ensure our tutors have the right experience to assist your child.</li>
+                                    <li> Our tutors are passionate about helping students improve their results through tuition and are committed to this goal.
                                         The tutors enthusiastic approach helps to make sure your child enjoys their tutoring sessions at Kip McGrath.</li>
                                 </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
                 <div id="bg1" data-0="background-position:0px 0px;" data-end="background-position:0px -1000px;"></div>
                 <div id="bg2" data-0="background-position:0px 0px;" data-end="background-position:0px -1500px;"></div>
                 <div id="bg3" data-0="background-position:0px 0px;" data-end="background-position:0px -900px;"></div>
@@ -193,6 +140,6 @@ $id = $row1['teacher_class_subject_branch_id'];
         <!--FOLLOW US SECTION END-->
     </div>
     <!--CONTANT END-->
-    <!--FOOTER START--> 
-        
+    <!--FOOTER START-->
+
 <?php require_once 'footer.php'; ?>

@@ -51,7 +51,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <?php } ?>
                         </select>
                     </div>
-                </div> 
+                </div>
                 <!-- <div class="control-group">
                     <label>Class :</label>
                     <div class="controls">
@@ -72,10 +72,10 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                                 ?>
                                 <option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
                             <?php } ?>
-                            
+
                         </select>
                     </div>
-                </div> 
+                </div>
 
                 <div class="control-group">
                     <label>Subject :</label>

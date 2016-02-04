@@ -203,7 +203,7 @@ body {
 }
 .report_heading ,.report_heading td,.report_heading th{
     border: 1px solid black;
-    padding:10px 15px;
+    padding:10px 10px;
 }
 #startdate,#enddate{
     width : 80% !important;

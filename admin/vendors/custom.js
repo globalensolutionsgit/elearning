@@ -166,7 +166,7 @@ $(document).ready(function(){
                 data: form_data,
 
                 success: function (data) {
-                    
+
                     if(data=='nil'){
                         $('.schdule_student_list').empty();
                         alert('Student not available');
@@ -221,6 +221,28 @@ $(document).ready(function(){
                 $(this).prop("checked", false);
             });
         }
+    });
+
+    $('.print').click(function() {
+        var print_content = $('.print_area').html();
+        var branch=$('.branchs option:selected').text();
+        var teacher=$('.teacher option:selected').text();
+        var classs=$('.classs option:selected').text();
+        var subject=$('.subjects option:selected').text();
+        var from_date=$('#startdate').val();
+        var to_date=$('#enddate').val();
+        var mywindow = window.open('', 'my div', 'height=400,width=600');
+        mywindow.document.write('<html><head><style>table,th,tr,td{border:1px solid #000;}</style><title></title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<table style="border: 1px solid black;padding: 10px"><tr><th>Branch</th><th>Teacher</th><th>Class</th><th>Subject</th><th>Start Time</th><th>End Time</th></td><tr>');
+        mywindow.document.write('<tr><td>'+branch+'</td><td>'+teacher+'</td><td>'+classs+'</td><td>'+subject+'</td><td>'+from_date+'</td><td>'+to_date+'</td><tr></table>');
+        mywindow.document.write(print_content);
+        mywindow.document.write('</body></html>');
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10
+        mywindow.print();
+        mywindow.close();
+        return true;
     });
 
 });

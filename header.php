@@ -137,11 +137,11 @@
                 <div class="newsletters">
                     <h1></h1>
                     <h4></h4>
-                    <div class="subscribe web">
+                    <!-- <div class="subscribe web">
                         <input type="text" class="input-block-level search_keyword" id="search_keyword_id" placeholder="Search your course">
                         <div id="result"></div>
                         <button>Search</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
