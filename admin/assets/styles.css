@@ -235,3 +235,6 @@ div.checker input{
   position: absolute;
   top: 217px;
 }*/
+.error {
+    border: 2px solid red;
+}

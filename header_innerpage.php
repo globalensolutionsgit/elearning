@@ -54,7 +54,13 @@
                                             </a>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="account">
                                                 <!--li><a href="#">Profile</a></li-->
-                                                <?php if (($_SESSION['user_type']) == 'student') { ?> <li><a href="my_request_class.php">My Request</a></li><li><a href="courses.php">My Schedule</a></li><?php } else if(($_SESSION['user_type']) == 'teacher'){?><li><a href="teacher_scheduled_class.php">My Schedules</a></li><li><a href="teacher_dashboard.php">Today class</a></li> <?php } ?>
+                                                <?php if (($_SESSION['user_type']) == 'student') { ?> 
+												<!-- no need to request as student <li><a href="my_request_class.php">My Request</a></li> -->
+												<li><a href="courses.php">My Schedule</a></li> 
+												<?php } else if(($_SESSION['user_type']) == 'teacher'){?>
+					<!--commented by siva	<li><a href="teacher_scheduled_class.php">My Schedules</a></li> -->
+												<li><a href="teacher_dashboard.php">Today class</a></li> 
+												<?php } ?>
                                                 <!--li><a href="#">Account Setting</a></li>
                                                 <li><a href="#">Privacy Setting</a></li-->
                                                 <li><a href="logout.php">Logout</a></li>
@@ -64,10 +70,10 @@
                                     <?php
                                 }else{
                                 ?>
-                                    <li>
+                                  <!--  <li>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" id="account" role="button" data-toggle="dropdown" data-target="#"  >
-                                            Register Here
+                                            Register
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="account">
@@ -75,7 +81,7 @@
                                             <li> <a href="teacher-login.php">Teacher Register</a></li>
                                         </ul>
                                     </div>
-                                </li>
+                                </li> -->
                                 <li><a href="signin.php">Sign In</a></li>
                                 <?php } ?>
                             </ul>

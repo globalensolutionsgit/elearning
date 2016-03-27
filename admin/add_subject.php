@@ -5,9 +5,8 @@
         <div class="container-fluid">
             <div class="row-fluid">
 				<?php include('sidebar_dashboard.php'); ?>
-
-						<div class="span9" id="content">
-		                    <div class="row-fluid">
+					<div class="span9" id="content">
+		                   <div class="row-fluid">
 
 		                        <!-- block -->
 		                        <div class="block">
@@ -55,18 +54,7 @@
 											<input type="text" class="span8" name="s_code" id="inputPassword" placeholder="Subject Code" required>
 											</div>
 										</div>
-										<div class="control-group">
-											<label class="control-label" for="inputPassword">Academic Year</label>
-											<div class="controls">
-											<input type="text" class="span8" name="a_year" id="inputPassword" placeholder="Academic year" required>
-											</div>
-										</div>
-                                        <div class="control-group">
-											<label class="control-label" for="inputPassword">Allowed Student</label>
-											<div class="controls">
-											<input type="text" class="span8" name="a_students" id="inputPassword" placeholder="Allowed student" required>
-											</div>
-										</div>
+										
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Status</label>
 											<div class="controls">
@@ -85,42 +73,31 @@
 										</form>
 
 										<?php
-										if (isset($_POST['save'])){
-
-										$title = $_POST['title'];
-										$s_description = $_POST['s_description'];
-										$class_id = $_POST['class'];
-										$l_description = $_POST['l_description'];
-										$s_code = $_POST['s_code'];
-										$a_year = $_POST['a_year'];
-										$status = $_POST['status'];
-                                        $a_student =$_POST['a_students'];
-
-
-										$query = mysql_query("select * from subject where subject_title = '$title' and class_id = '$class_id' ")or die(mysql_error());
-										$count = mysql_num_rows($query);
-
-										if ($count > 0){ ?>
-										<script>
-										alert('Data Already Exist');
-										</script>
-										<?php
-										}else{
-										mysql_query("insert into subject (subject_title,short_description,class_id,long_description,subject_code,acedemic_year,allowed_student,status) values('$title','$description','$class_id','$l_description','$s_code','$a_year','$a_student
-                                        ','$status')")or die(mysql_error());
-
-
-										//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Subject $subject_code')")or die(mysql_error());
-
-
+											if (isset($_POST['save'])){
+												$title = $_POST['title'];
+												$s_description = $_POST['s_description'];
+												$class_id = $_POST['class'];
+												$l_description = $_POST['l_description'];
+												$s_code = $_POST['s_code'];
+												$status = $_POST['status'];
+												$query = mysql_query("select * from subject where subject_title = '$title' and class_id = '$class_id' ")or die(mysql_error());
+												$count = mysql_num_rows($query);
+												if ($count > 0){ 
 										?>
-										<script>
-										window.location = "subjects.php";
-										</script>
+													<script>
+														alert('Data Already Exist');
+													</script>
 										<?php
-										}
-										}
-
+												}else{
+													mysql_query("insert into subject (subject_title,short_description,class_id,long_description,subject_code,status) values('$title','$s_description','$class_id','$l_description','$s_code','$status')")or die(mysql_error());
+													//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Subject $subject_code')")or die(mysql_error());
+										?>
+												<script>
+												window.location = "subjects.php";
+												</script>
+										<?php
+												}
+											}
 										?>
 
 

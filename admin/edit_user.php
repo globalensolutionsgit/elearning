@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php
-if(isset($_GET['id'],$_GET['user_type'])){
+if(isset($_GET['id'])&&isset($_GET['user_type'])){
     $get_id = $_GET['id'];
     $user_type = $_GET['user_type'];
 }else{

@@ -246,3 +246,6 @@ footer{
 .classmate_cursor{
 	pointer-events: none;
 }
+.class_schedule_border {
+	border: 1px solid #000;
+}

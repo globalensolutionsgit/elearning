@@ -9,7 +9,9 @@ if(isset($_POST['submit'])){
     //commented by kalai
     // $region = $_POST['region'];
     $teacher_id = $_POST['teacher'];
-    $start_date = $_POST['class_date'];
+    $start_date = date("Y-m-d");
+    // $start_date=date('Y-m-d',  strtotime($_POST['start_d']));
+    // $start_date = $_POST['class_date'];
     $start_time = $_POST['start_time'];
     $end_time = $_POST['end_time'];
 
@@ -41,55 +43,52 @@ if(isset($_POST['submit'])){
         }
     }
 }
+
  ?>
     <!--HEADER END-->
     <!--BANNER START-->
-    <div class="page-heading">
-    	<div class="container">
-            <h2> Today Class </h2>
-            <p></p>
-        </div>
+<div class="page-heading">
+   	<div class="container">
+        <h2> Today Class </h2>
+        <p></p>
     </div>
-    <!--BANNER END-->
-    <!--CONTANT START-->
-    <div class="contant">
-
-    	<div class="container">
-            <div class="event-page">
-
-            <!--EVENT START-->
-            <div class="row events">
-            <?php
-            $user_id=$_SESSION['user_id'];
-            //commented by kalai
-            // $query = mysql_query("select * from student_teacher_allocation where status = '0' and teacher_id = '$user_id' and start_date <= now() group by teacher_id,region,branch_id,class_id,subject_id
-            //         ")or die(mysql_error());
-            $query = mysql_query("select * from student_teacher_allocation where teacher_id = '$user_id' and start_date <= now() group by teacher_id,branch_id,class_id,subject_id
-                    ")or die(mysql_error());
-            $count = mysql_num_rows($query);
-
-            if ($count > 0) {
-            while ($row = mysql_fetch_array($query)) {
-                    $id = $row['student_teacher_allocation_id'];
-
+</div>
+<!--BANNER END-->
+<!--CONTANT START-->
+<div class="contant">
+    <div class="container">
+        <div class="event-page">
+        <!--EVENT START-->
+           <div class="row events">
+                <?php
+                    $user_id=$_SESSION['user_id'];
+                    $today = substr(strtolower(date('l')),0,3);
+                    $query = mysql_query("select * from class_schedules 
+                                           INNER JOIN student_teacher_allocation ON  student_teacher_allocation.schedule_id = class_schedules.class_schedules_id
+                                           where class_schedules.teacher_id = '$user_id' and class_schedules.day = '$today'
+                                           group by student_teacher_allocation.schedule_id")or die(mysql_error());
+                    $count = mysql_num_rows($query);
+                    if ($count > 0) {
+                    while ($row = mysql_fetch_array($query)) {
+                            $id = $row['student_teacher_allocation_id'];
                 ?>
-                     <!--EVENT CONTANT START-->
-                        <div class="span12">
-                            <div class="text">
-                                <!--EVENT HEADER START-->
-                                <!--EVENT VANUE START-->
-                                <div class="event-vanue">
-                                    <form action="teacher_dashboard.php" method="post" name="submit_attendance">
-                                    <!-- <form method="post" name="submit_attendance" action="submit_attendance.php"> -->
-                                        <!-- <input type="hidden" name="region" value="<?php echo $row['region']; ?>"/> -->
-                                        <input type="hidden" name="branch" value="<?php echo $row['branch_id']; ?>"/>
-                                        <input type="hidden" name="classs" value="<?php echo $row['class_id']; ?>"/>
-                                        <input type="hidden" name="subject" value="<?php echo $row['subject_id']; ?>"/>
-                                        <input type="hidden" name="teacher" value="<?php echo $user_id; ?>"/>
-                                        <input type="hidden" name="class_date" value="<?php echo $row['start_date']; ?>"/>
-                                        <!-- newly added by kalai -->
-                                        <input type="hidden" name="start_time" value="<?php echo $row['start_time']; ?>"/>
-                                        <input type="hidden" name="end_time" value="<?php echo $row['end_time']; ?>"/>
+                <div class="class_details">  
+                    <div class="span12">
+                        <div class="text">
+                        <!--EVENT HEADER START-->
+                        <!--EVENT VANUE START-->
+                            <div class="event-vanue">
+                                <form  method="post" name="submit_attendance">
+                                <!-- <form method="post" name="submit_attendance" action="submit_attendance.php"> -->
+                                <!-- <input type="hidden" name="region" value="<?php echo $row['region']; ?>"/> -->
+                                    <input type="hidden" name="branch" value="<?php echo $row['branch_id']; ?>"/>
+                                    <input type="hidden" name="classs" value="<?php echo $row['class_id']; ?>"/>
+                                    <input type="hidden" name="subject" value="<?php echo $row['subject_id']; ?>"/>
+                                    <input type="hidden" name="teacher" value="<?php echo $user_id; ?>"/>
+                                    <!-- <input type="hidden" name="class_date" value="<?php //echo $row['start_date']; ?>"/> -->
+                                    <!-- newly added by kalai -->
+                                    <input type="hidden" name="start_time" value="<?php echo $row['start_time']; ?>"/>
+                                    <input type="hidden" name="end_time" value="<?php echo $row['end_time']; ?>"/>
                                     <table>
                                         <tr>
                                             <td><p class="color">Class</p></td>
@@ -111,17 +110,12 @@ if(isset($_POST['submit'])){
                                             ?></a></td>
                                         </tr>
                                         <tr>
-                                            <td><p class="color">Date:</p></td>
-                                            <!-- <td><a href="#"><i class="fa fa-calendar-o"></i><?php echo substr($row['start_date'],0,16); ?>  -  <?php echo substr($row['end_date'],0,16); ?> (<?php echo date('l', strtotime($row['start_date'])); ?>)</a></td> -->
-                                            <td><a href="#"><i class="fa fa-calendar-o"></i><?php echo substr($row['start_date'],0,16); ?>  -  <?php echo substr($row['start_time'],0,16); ?> - <?php echo substr($row['end_time'],0,16); ?> (<?php echo date('l', strtotime($row['start_date'])); ?>)</a></td>
-                                        </tr>
-                                        <tr>
                                             <td><p class="color">Venue:</p></td>
                                             <td><a><?php
                                             $branch_idd = $row['branch_id'];
                                             $branch_query = mysql_query("select * from branch where branch_id ='$branch_idd'")or die(mysql_error());
                                             $branch_row = mysql_fetch_assoc($branch_query);
-                                            echo $branch_row['branch_name'].'  -  '.$branch_row['branch_address'].'  - Phone number :'.$branch_row['phone_number'];
+                                            echo $branch_row['branch_name'].'  -  '.$branch_row['branch_address'].'  - Phone number :'.$branch_row['branch_phone_number'];
                                             ?></a></td>
                                         </tr>
                                         <tr>
@@ -133,78 +127,85 @@ if(isset($_POST['submit'])){
                                             <td>S.No</td><td>Name</td><td>Attendance</td>
                                         </tr>
                                         <?php
-                                        $start_date = $row['start_date'];
-                                        $query_list = mysql_query("select * from student_teacher_allocation LEFT JOIN users ON users.user_id = student_teacher_allocation.student_id where branch_id = '$branch_idd' and class_id = '$class_idd' and subject_id = '$subject_idd' and start_date = '$start_date'
-                                                ")or die(mysql_error());
+                                        $sche_id = $row['class_schedules_id'];
+                                        $query_list = mysql_query("select * from student_teacher_allocation JOIN users ON users.user_id = student_teacher_allocation.student_id where schedule_id = '$sche_id'")or die(mysql_error());
                                         $count1 = mysql_num_rows($query_list);
                                         $counter = 0;
                                         if ($count1 > 0) {
                                         while ($row_1 = mysql_fetch_array($query_list)) {
                                                 $id = $row_1 ['student_teacher_allocation_id'];
-
-                                            ?>
+                                        ?>
                                         <tr>
-                                            <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td><td><?php echo $row_1 ['firstname'];  ?></td><td><input type="checkbox" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
+                                            <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td>
+                                            <td><?php echo $row_1 ['firstname'];  ?></td>
+                                            <td><input type="checkbox" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
                                         </tr>
                                         <tr class="add_temp">
                                         <td>
                                         </td>
                                         </tr>
-
                                         <?php
-                                        }
-                                    }
-                                    ?>
-
+                                            }
+                                            }
+                                        ?>
                                     </table>
-                                    <div class="clearfix"></div>
-                                    <div class="tempstudent_field">
-                                        <select name="previousbranch[]"  class="previousbranch" required>
-                                            <option value="0">Select Branch</option>
-                                            <option value="0">None</option>
-                                             <?php
-                                            $query = mysql_query("select * from branch");
-                                            while ($row = mysql_fetch_array($query)) {
-                                                ?>
-                                                <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['branch_name']; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <input type="text" name="temp[]" value="" class="temp_text">
-                                    </div>
-                                    <div class="tempstudent_data">
-                                        <ul>
-                                            <?php
-                                            $query = mysql_query("select * from users where user_type = 'student'");
-                                            while ($row = mysql_fetch_array($query)) {
-                                                ?>
-                                                <li><?php echo $row['firstname']; ?></li>
-                                            <?php } ?>
-                                        </ul>
-                                    </div>
                                     <div class="menus" style="display:none">
-                                        <span class="add_student green_button">Add student</span><span class="student_remove green_button">remove</span><input type="submit" name="submit" value="submit" class="green_button">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <form>
-
-                                </div>
+                        <span class="add_student green_button">Add student</span><span class="student_remove green_button">remove</span>
+                        <input type="submit" name="submit" value="submit" class="green_button" >
+                    </div>
+                    
+                                </form>
                             </div>
-                        </div>
-                        <!--EVENT CONTANT END-->
+                        </div> 
+                    </div>   
+                    <div class="clearfix"></div>
+                     <div class="tempstudent_field">
+                        <select name="previousbranch[]"  class="previousbranch" required>
+                            <option value="0">Select Branch</option>
+                            <option value="0">None</option>
+                             <?php
+                            $query_branch = mysql_query("select * from branch");
+                            while ($row_branch = mysql_fetch_array($query_branch)) {
+                                ?>
+                                <option value="<?php echo $row['branch_id']; ?>"><?php echo $row_branch['branch_name']; ?></option>
+                            <?php } ?>
 
+                        </select>
+                        <input type="text" name="temp[]" value="" class="temp_text" placeholder="enter name">
+                    </div>
+                        
+                    <div class="tempstudent_data">
+                        <ul>
+
+                            <?php
+                                $query_temp = mysql_query("select * from users where user_type = 'student'");
+                                while ($row_temp = mysql_fetch_array($query_temp)) {
+                            ?>
+                            <li><?php echo $row_temp['firstname']; ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    
+      
+                    <div class="clearfix"></div>
+                </div>
                 <?php
-                }
-            }else {
-                echo "<div><h2 class='text-center'>You dont have class for today<h2></div>";
-            }
-            ?>
-                         </div>
-            <!--EVENT END-->
+                    }
+                    } 
+                    else {
+                        echo "<div><h2 class='text-center'>You dont have class for today<h2></div>";
+                    }
+                ?>
             </div>
-
-            <div class="clearfix"></div>
-
+        <!--EVENT END-->
         </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+
+
                 <!--FOLLOW US SECTION START-->
         <section class="follow-us">
         	<div class="container">

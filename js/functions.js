@@ -88,11 +88,27 @@ $(document).ready(function() {
 		});
 	});
 
+
+
+
+
     $('.view_student_list').click(function(){
         // alert('asdfasdfasdf');
-        $('.student_list_front').show();
-        $('.menus').show();
+                // $('.menus').show();
+if($(this).parents('.class_details').find('.student_list_front,.menus').is(":visible")) {
+        $(this).parents('.class_details').find('.student_list_front,.menus').hide();
+   }
+        // alert('asdfasdfasdf');
+      else {          // $('.menus').show();
+        $(this).parents('.class_details').find('.student_list_front,.menus').show();
+    }
     });
+
+
+
+
+
+
 	$('.booking').click(function(){
 		$('.enroll_now').show();
 	});
@@ -102,16 +118,22 @@ $(document).ready(function() {
 	$('.tempstudent_field').hide();
 	$('.add_temp').hide();
     var addrow = 1;
+
+
+
     $('.add_student').click(function(){
         var row_count = parseInt($('.student_list_front tr #student_count').last().val())+1;
         var count = row_count;
 
-        	$('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td>'+$('.tempstudent_field').html()+'<input type="hidden" class="temp_student_final" name="temp_student_final[]" value=""></td><td>Present</td></tr>');
+        	$(this).parents('.class_details').find('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td>'+$('.tempstudent_field').html()+'<input type="hidden" class="temp_student_final" name="temp_student_final[]" value=""></td><td>Present</td></tr>');
         	// commented by kalai
             // $('.student_list_front').last().append('<tr><td>'+count+'<input type="hidden" id="student_count" value="'+count+'"></td><td><input type="text" name=temp[] value=""></td><td>Present</td></tr>');
             addrow++;
             count++;
     });
+
+
+
     // newly added by kalai
     var student_data = [];
    	$('.tempstudent_data li').each(function(){
@@ -125,10 +147,13 @@ $(document).ready(function() {
     $('.student_remove').click(function(e){
         e.preventDefault();
         if( addrow > 1 ){
-        $('.student_list_front tr').last().remove();
+        $(this).parents('.class_details').find('.student_list_front tr').last().remove();
         addrow--;
     }
     });
+
+
+
 	$('.confirmation_yes').click(function(e){
 		e.preventDefault();
 		var course_id = $('.course_id').val();
@@ -179,6 +204,9 @@ $(document).ready(function() {
     		if ($(this).is(':checked') == true) 
                values.push(this.value);   		
         });
+
+
+        
         formData = $(this).serialize();
         formData.push(values);
         alert(formData);

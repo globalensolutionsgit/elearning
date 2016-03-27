@@ -19,12 +19,12 @@
         <li>
             <a href="admin_user.php?user_type=teacher"><i class="icon-chevron-right"></i><i class="icon-group"></i> Teachers</a>
         </li>
-        <li>
+        <!-- <li>
             <a href="student_request.php"><i class="icon-chevron-right"></i><i class="icon-user"></i>Students Preferences</a>
         </li>
 		<li>
             <a href="teacher_request.php"><i class="icon-chevron-right"></i><i class="icon-user"></i>Teachers Preferences</a>
-        </li>
+        </li> -->
 
         <li>
             <a href="class_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Class Schedules</a>

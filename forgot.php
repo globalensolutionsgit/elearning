@@ -40,11 +40,11 @@
                         <div class="footer">
                             <div class="span5">
                             <h2>Sign up Today for Free !</h2>
-                            <ul>
+                       <!--     <ul>
                                 <li><a href="student-login.php">Student Register Here </a></li>
                                 <li><a href="teacher-login.php">Teacher Register Here </a></li>
 
-                            </ul>
+                            </ul> -->
                             </div>
                             <div class="span6">
                             <h2>Find More !</h2>

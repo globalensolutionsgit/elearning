@@ -24,8 +24,8 @@
 											    <th></th>
 												<th>Subject Title</th>
 												<th>Class</th>
-                                                <th>Allowed student</th>
-												<th>Academic Year</th>
+                                                
+												
 										   </tr>
 										</thead>
 										<tbody>
@@ -42,8 +42,8 @@
 													</td>
 													<td><?php echo $row['subject_title'];  ?></td>
 													<td><?php echo $row['class_name'];  ?></td>
-                                                    <td><?php echo $row['allowed_student'];  ?></td>
-													<td><?php echo $row['acedemic_year'];  ?></td>
+                                                  
+												
 													<td width="30"><a href="edit_subject.php<?php echo '?id='.$id; ?>" class="btn btn-success"><i class="icon-pencil"></i> </a></td>
 										</tr>
 

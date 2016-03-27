@@ -97,14 +97,14 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										$branch_region = $_POST['region'];
 										$branch_name = $_POST['branch_name'];
 										$branch_owner = $_POST['branch_owner'];
-										$branch_address = $_POST['branch_address'];
+										$branch_address = preg_replace('/\s+/', '', $_POST['branch_address']);
 										$phone = $_POST['phone_number'];
 										$latitude = $_POST['latitude'];
 										$email = $_POST['email'];
 										$langitude = $_POST['langitude'];
 										$branch_description = $_POST['branch_description'];
 										$status = $_POST['status'];
-										
+										echo $branch_address;
 										
 										$query = mysql_query("select * from branch where branch_name = '$branch_name' ")or die(mysql_error());
 										$count = mysql_num_rows($query);

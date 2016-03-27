@@ -8,7 +8,7 @@ mysql_select_db('A978313_lms', mysql_connect('localhost', 'root', ''))or die(mys
 define('_HOST_NAME', 'localhost');
 define('_DATABASE_USER_NAME', 'root');
 define('_DATABASE_PASSWORD', '');
-define('_DATABASE_NAME', 'A978313_lms');
+define('_DATABASE_NAME', 'testlms');
 
 $dbConnection = new mysqli(_HOST_NAME, _DATABASE_USER_NAME, _DATABASE_PASSWORD, _DATABASE_NAME);
 if ($dbConnection->connect_error) {

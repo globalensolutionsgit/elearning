@@ -1,6 +1,6 @@
 <?php
-// $connection = mysql_select_db('testlms',mysql_connect('localhost','root',''))or die(mysql_error());
-$connection = mysql_select_db('A978313_lms',mysql_connect('localhost','root',''))or die(mysql_error());
+$connection = mysql_select_db('testlms',mysql_connect('localhost','root',''))or die(mysql_error());
+//$connection = mysql_select_db('A978313_lms',mysql_connect('localhost','root',''))or die(mysql_error());
 
 // $connection = mysql_select_db('A978313_lms',mysql_connect('mysql509.ixwebhosting.com','A978313_lms','A978313_lms'))or die(mysql_error());
 
@@ -15,8 +15,8 @@ try
 {
     if ($conn = mysql_connect($dbhost, $dbuser, $dbpass) )
     {
-        $dbname = 'A978313_lms';
-        // $dbname = 'testlms';
+        //$dbname = 'A978313_lms';
+        $dbname = 'testlms';
 		$connection = mysql_select_db($dbname);
     }
     else

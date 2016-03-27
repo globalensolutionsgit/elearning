@@ -48,8 +48,8 @@
 													<td><?php echo $row['branch_name']; ?></td>
 													<td><?php echo $row['branch_owner']; ?></td>
 													<td><?php echo $row['branch_address']; ?></td>
-													<td><?php echo $row['email']; ?></td>
-													<td><?php echo $row['phone_number']; ?></td>
+													<td><?php echo $row['branch_email']; ?></td>
+													<td><?php echo $row['branch_phone_number']; ?></td>
 												
 													<td width="30"><a href="edit_branch.php<?php echo '?id='.$id; ?>" class="btn btn-success"><i class="icon-pencil"></i> </a></td>
 										</tr>

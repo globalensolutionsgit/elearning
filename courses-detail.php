@@ -16,10 +16,11 @@
                 <!--TUTOR PROFILE START-->
                 <?php
                 $query = mysql_query("select * from student_teacher_allocation
-                                                LEFT JOIN branch ON branch.branch_id = student_teacher_allocation.branch_id
-                                                LEFT JOIN class ON class.class_id = student_teacher_allocation.class_id
-                                                LEFT JOIN subject ON subject.subject_id = student_teacher_allocation.subject_id
-                                                LEFT JOIN users ON users.user_id = student_teacher_allocation.teacher_id where student_teacher_allocation_id = '$get_id'")or die(mysql_error());
+                						JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
+                                        JOIN branch ON branch.branch_id = class_schedules.branch_id
+                                        JOIN class ON class.class_id = class_schedules.class_id
+                                        JOIN subject ON subject.subject_id = class_schedules.subject_id
+                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_teacher_allocation_id = '$get_id'")or die(mysql_error());
                 $row = mysql_fetch_array($query);
                 $id = $row['student_teacher_allocation_id'];
                 ?>
@@ -55,7 +56,7 @@
                                 </li>
                                 <li>
                                     <h4>Day</h4>
-                                    <p><?php echo $row['start_date']; ?></p>
+                                    <p><?php echo $row['day']; ?></p>
                                 </li>
                                 <li>
                                     <h4>Subject Code</h4>

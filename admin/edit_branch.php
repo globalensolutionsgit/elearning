@@ -1,5 +1,7 @@
 <?php include('header.php'); ?>
-<?php include('session.php'); ?>
+<?php include('session.php'); 
+$regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'East Singapore', 'CS'=>'Central Singapore', 'WS'=>'West Singapore');
+?>
 <?php $get_id = $_GET['id']; ?>
     <body>
 		<?php include('navbar.php'); ?>
@@ -28,11 +30,16 @@
 											<label class="control-label" for="inputEmail">Branch Region</label>
 											<div class="controls">
 												<select name="region">
-													<option value="<?php echo $row['region']; ?>"><?php echo $row['region']; ?></option>
-													<option value="North">North</option>
-													<option value="East">East</option>
-													<option value="West">West</option>
-													<option value="South">South</option>
+													<?php 
+														foreach ($regions as $key => $value){
+															if($key == $row['region']){
+																echo "<option value=".$key." selected>".$value."</option>";
+															}else{
+																echo "<option value=".$key.">".$value."</option>";
+															}
+															
+														}
+													?>  
 												</select>
 											</div>
 										</div>
@@ -52,21 +59,19 @@
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Branch Address</label>
 											<div class="controls">
-													<textarea name="branch_address">
-													<?php echo $row['branch_address']; ?>
-													</textarea>
+													<textarea name="branch_address"><?php echo preg_replace('/\s+/', '', $row['branch_address']); ?></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Email</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['email']; ?>" name="email" id="inputEmail" placeholder="Branch Email">
+												<input type="text" value="<?php echo $row['branch_email']; ?>" name="email" id="inputEmail" placeholder="Branch Email">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Phone No.</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['phone_number']; ?>" name="phone_number" id="inputEmail" placeholder="Branch Phone">
+												<input type="text" value="<?php echo $row['branch_phone_number']; ?>" name="phone_number" id="inputEmail" placeholder="Branch Phone">
 											</div>
 										</div>
 										<div class="control-group">

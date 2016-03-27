@@ -97,7 +97,7 @@ $(document).ready(function(){
 			success: function (html) {
                 if(html == 'nil'){
                     $('.teacher,.classs,.subjects').empty();
-                    alert('No teacher available');
+                  // alert('No teacher available');
                 }else{
                     $(".teacher").html('<option>Select teacher</option>'+html);
                 }
@@ -105,29 +105,60 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	
+	
+	
+	// $(".branches_time").change(function (e) {
+		// e.preventDefault();
+		// var code = $(this).val();
+		// $.ajax({
+			// type: "POST",
+			// url: "load_teacher_time.php",
+			// data: {'code': code },
+			// success: function (html) {
+                // if(html == 'nil'){
+                    // $('.teacher,.classs,.subjects').empty();
+                  // // alert('No teacher available');
+                // }else{
+                    // $(".teacher").html('<option>Select teacher</option>'+html);
+                // }
+// 
+			// }
+		// });
+	// });
+	
+	
+	
+	
+	
+	
+	
+	
     // commented by kalai
-    $(".teacher").change(function (e) {
+    // $(".teacher").change(function (e) {
+		// e.preventDefault();
+		// var code = $(this).val();
+// 
+		// $.ajax({
+			// type: "POST",
+			// url: "load_class.php",
+			// data: {'code': code },
+			// success: function (html) {
+                // if(html == 'nil'){
+                    // $('.classs,.subjects').empty();
+                    // alert('No classes available');
+                // }else{
+				    // $(".classs").html('<option>Select Class</option>'+html);
+                // }
+			// }
+		// });
+	// });
+
+    $(document).on('change','.classs',function (e) {
 		e.preventDefault();
 		var code = $(this).val();
-
-		$.ajax({
-			type: "POST",
-			url: "load_class.php",
-			data: {'code': code },
-			success: function (html) {
-                if(html == 'nil'){
-                    $('.classs,.subjects').empty();
-                    alert('No classes available');
-                }else{
-				    $(".classs").html('<option>Select Class</option>'+html);
-                }
-			}
-		});
-	});
-
-    $(".classs").change(function (e) {
-		e.preventDefault();
-		var code = $(this).val();
+		var current = $(this).parents('.clone_content');
 		$.ajax({
 			type: "POST",
 			url: "load_subject.php",
@@ -135,13 +166,125 @@ $(document).ready(function(){
 			success: function (html) {
                 if(html == 'nil'){
                     $('.subjects').empty();
-                    alert('No teacher available');
+                   // alert('No teacher available');
                 }else{
-				    $(".subjects").html('<option>Select subject</option>'+html);
+				    current.find(".subjects").html('<option>Select subject</option>'+html);
                 }
 			}
 		});
 	});
+	// add button for class schedule 
+	$(document).on('click','.add_button',function (e) {
+		e.preventDefault();
+		var clone_id = parseInt($(this).parents('.one_day').find('.clone_content:first').find('.clone_content_count').val())+1;
+		$(this).parents('.one_day').find('.clone_content:first').find('.clone_content_count').val(clone_id);
+		var element = $(this).parents('.one_day').find('.clone_content:last');
+		var new_element = element.clone();
+		// add dynamic id for each fiels
+		// new_element.find('.branches_time').attr('name',new_element.find('.branches_time').attr('name').slice(0, -1)+clone_id);
+		// new_element.find('.classs').attr('name',new_element.find('.classs').attr('name').slice(0, -1)+clone_id);
+		// new_element.find('.subjects').attr('name',new_element.find('.subjects').attr('name').slice(0, -1)+clone_id);
+		// new_element.find('.starttime').attr('name',new_element.find('.starttime').attr('name').slice(0, -1)+clone_id);
+		// new_element.find('.endtime').attr('name',new_element.find('.endtime').attr('name').slice(0, -1)+clone_id);
+		// When clone content set default values
+		new_element.find('.branches_time').prop('selectedIndex',0);
+		new_element.find('.classs').prop('selectedIndex',0);
+		new_element.find('.subjects').empty();
+		new_element.find('.starttime').prop('selectedIndex',0);
+		new_element.find('.endtime').prop('selectedIndex',0);
+		//remove day from grid
+		new_element.find('.input_schedule').remove();
+		new_element.find('.remove_button').show();
+		$(new_element).insertAfter($(this).parents('.one_day').find('.clone_content:last'));
+	});
+	
+	// remove button for class schedule
+	$(document).on('click','.remove_button',function () {
+		$(this).parents('.clone_content').remove();
+	});
+	$(document).on('change','.days',function(){
+		// var current = $(this).parents('.clone_content');
+        var current = $(this).parents('.input_schedule').siblings('.clone_content');
+		if(this.checked){
+			current.find('.branches_time').removeAttr('disabled');
+			//var tst = $(this).parents('.clone_content .branches_time');
+			// $.each(tst,function(){
+				// alert($(this).html());
+				// $(this).removeAttr('disabled');
+			// });
+			current.find('.classs').removeAttr('disabled');
+			current.find('.subjects').removeAttr('disabled');
+			current.find('.starttime').removeAttr('disabled');
+			current.find('.endtime').removeAttr('disabled');
+			current.siblings('.sch_add_btn').find('.add_button').removeAttr('disabled');
+		}else{
+			current.find('.branches_time').attr('disabled','disabled');
+			// $('.branches_time',current).each(function(){
+				// $(this).attr('disabled','disabled');
+			// });
+			current.find('.classs').attr('disabled','disabled');
+			current.find('.subjects').attr('disabled','disabled');
+			current.find('.starttime').attr('disabled','disabled');
+			current.find('.endtime').attr('disabled','disabled');
+			current.siblings('.sch_add_btn').find('.add_button').attr('disabled','disabled');
+            
+		}
+	});
+
+
+ 
+
+    $('.btn_submit').click(function(){
+  
+        var box = $('.days:checked').length;
+       
+        if(box>=1 ){
+                 
+                  $('.days').each(function () {
+                    if($(this).is(':checked')){
+                  
+                    element = $(this).parents('.input_schedule').siblings('.clone_content');
+                    element.find('select').each(function(){
+                            if($(this).val() == ""){
+                                    
+                            $(this).addClass('error'); 
+
+                        }
+                        else{
+                            $(this).removeClass('error');  
+                        
+                        }
+                    });
+                    
+                    }
+                   
+
+              });   
+              if(element.find('select').hasClass('error')){
+                       return false;
+                      
+                    }
+                    else{
+                        $('#add_class').submit();
+                        
+                    }   
+        }else{
+           
+            element = $(this).parents('.form_submit').siblings('.clone_content');
+            // return false;
+            // if((box==0) && (element.find('select').hasClass('error')){
+            //     alert("yes");
+            //        element.removeClass('error');  
+            //         return false;
+            // }
+            //  else{
+            //     alert("Please select atleast one day");
+            //     return false;
+            //  }
+        }   
+ });
+
+ 
 
 
     $(".get_button").click(function () {
@@ -184,31 +327,7 @@ $(document).ready(function(){
 
 
     });
-    $('.allocate_button').click(function() {
-        if($('#startdate').val() == ''){
-            alert('Choose start date');
-            return false;
-        }
-        if($('#starttime').val() == ''){
-            alert('Choose start time');
-            return false;
-        }
-        if($('#endtime').val() == ''){
-            alert('Choose end time');
-            return false;
-        }
-        if(jQuery('#days input[type=checkbox]:checked').length<=0) {
-            alert('Select atleast one day');
-            return false;
-        }
-        else if(jQuery('.schdule_student_list input[type=checkbox]:checked').length<=0) {
-            alert('Select atleast one student');
-            return false;
-        }
-        else{
-            return true;
-        }
-    });
+
 
     $('.selectall').click(function() {
     if ($(this).is(':checked')) {
@@ -244,5 +363,8 @@ $(document).ready(function(){
         mywindow.close();
         return true;
     });
+    
+
+
 
 });

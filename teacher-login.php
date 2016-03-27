@@ -26,7 +26,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         $email = $_POST['email'];
                         $phone = $_POST['phone'];
                         $region = $_POST['region'];
-                        $branch = $_POST['branch'];
+                        $city = $_POST['branch'];
                         $gender = $_POST['gender'];
                         $activation = md5($email . time());
                         $target_dir = "uploads/";
@@ -51,7 +51,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         if (mysql_num_rows($check) > 0) {
                             $message = 'Email has been already used';
                         } else {
-                            mysql_query("insert into users (user_type, username, password, firstname, lastname, phone_number, email, photo, gender, region, city, activation) values('$utype', '$uname', '$pword', '$fname', '$lname', '$phone', '$email', '$target_file', '$gender', '$region', '$branch', '$activation')")or die(mysql_error());
+                            mysql_query("insert into users (user_type, username, password, firstname, lastname, phone_number, email, photo, gender, region, city, activation) values('$utype', '$uname', '$pword', '$fname', '$lname', '$phone', '$email', '$target_file', '$gender', '$region', '$city', '$activation')")or die(mysql_error());
                             $lastuserId = mysql_insert_id();
                             foreach ($_POST['preference_classsubject'] as $key => $value) {
                                 $userIds = explode("-", $value);

@@ -17,8 +17,8 @@
                                 
                                 <legend>Login Below:</legend>
                                 <div>
-                                <label>Email Address</label>
-                                <input type="text" placeholder="Enter your E-mail ID" class="input-block-level" name="email" data-validation="required email"/>
+                                <label>Name</label>
+                                <input type="text" placeholder="Enter your Name" class="input-block-level" name="user_name" data-validation="required name"/>
                                 </div>
                                 <div>
                                 <label>Password</label>
@@ -31,11 +31,11 @@
                             
                             <div class="span5">
                                <h2>Sign up Today for Free !</h2>
-                            <ul>
+                       <!-- no need to register     <ul>
                                 <li><a href="student-login.php">Student Register Here </a></li>
                                 <li><a href="teacher-login.php">Teacher Register Here </a></li>
 
-                            </ul>
+                            </ul> -->
                             </div>
                             <div class="span6">
                             <h2>Find More !</h2>

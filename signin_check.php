@@ -2,7 +2,7 @@
         include('dbcon.php');
         $message = "";
         if (count($_POST) > 0) {
-            $result = mysql_query("SELECT * FROM users WHERE email='" . $_POST["email"] . "' and password = '" . $_POST["password"] . "'");
+            $result = mysql_query("SELECT * FROM users WHERE username='" . $_POST["user_name"] . "' and password = '" . $_POST["password"] . "'");
             $row = mysql_fetch_array($result);
             if (is_array($row)) {
                 session_start();
