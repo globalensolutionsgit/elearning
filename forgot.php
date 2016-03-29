@@ -32,14 +32,14 @@
                             <fieldset>
                                 
                                 <legend>Reset your password:</legend>
-                                <label>Email Address</label>
+                                <label>Email Address<sup style="color:#FF0000;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
                                 <input type="text" placeholder="Enter your E-mail ID" class="input-block-level" name="email">
                                 <button type="submit" class="btn-style" name="submit">Submit</button>
                             </fieldset>
                         </div>
                         <div class="footer">
                             <div class="span5">
-                            <h2>Sign up Today for Free !</h2>
+                           <!--  <h2>Sign up Today for Free !</h2> -->
                        <!--     <ul>
                                 <li><a href="student-login.php">Student Register Here </a></li>
                                 <li><a href="teacher-login.php">Teacher Register Here </a></li>

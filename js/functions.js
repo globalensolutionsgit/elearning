@@ -151,6 +151,9 @@ if($(this).parents('.class_details').find('.student_list_front,.menus').is(":vis
         addrow--;
     }
     });
+    $('.click_submit').click(function() {
+$(this).parents('.class_details').find('.view_student_list').hide();
+});
 
 
 
@@ -216,6 +219,7 @@ if($(this).parents('.class_details').find('.student_list_front,.menus').is(":vis
             data: formData,
         });
     });
+
 });
 
 //var map;

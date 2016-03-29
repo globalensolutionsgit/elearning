@@ -172,6 +172,8 @@ require_once 'dbcon.php';    //include of db config file
         <?php
             $result_class=mysql_query("select classes from users 
                                         where user_id='$user_id'");
+            
+
             $rows_array=mysql_fetch_assoc($result_class);
             // echo $rows_array['classes'];
             $rows_string=implode(" ",$rows_array);

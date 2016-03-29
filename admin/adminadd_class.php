@@ -56,13 +56,15 @@ if(isset($_GET['insert'])){
         <div id="" class="muted pull-left"><h4><i class="icon-plus-sign"></i> Add class</h4></div>
     </div>
     <div class="block-content collapse in">
+
+
         <div class="span12">
             <form method="post" id="add_class" class="form_submit" action="schdule_allocation.php">
                 <div>
     				<div class="control-group span12">
                         <label>Teacher</label>
                         <div class="controls">
-                            <select name="user"  class="teacher" >
+                            <select name="user"  class="teacher" required>
                                 <option></option>
                                 <?php
                                 	$query = mysql_query("select * from users where user_type = 'teacher'");
@@ -74,6 +76,8 @@ if(isset($_GET['insert'])){
                         </div>
                     </div>
                 </div>
+
+
                 <div>
 					<div class="control-group span12 class_schedule_border one_day">
 						<div class="input_schedule">
@@ -83,8 +87,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 							
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="sunday_branch[]"  class="branches_time"   disabled>
@@ -98,11 +103,11 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "sunday_classs[]" class="classs"  disabled>
-			                                 <option value="">Select Branch</option>
+			                                 <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -112,9 +117,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="sunday_subject[]" class="subjects"  disabled>
@@ -122,7 +129,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "sunday_starttime[]" class="starttime" disabled>
@@ -178,7 +185,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "sunday_endtime[]" class="endtime"  disabled>
@@ -243,6 +250,9 @@ if(isset($_GET['insert'])){
 						<div class="control-group span2 sch_add_btn">
 							<button class="btn btn-success add_button" type="button" disabled>Add</button>    
 						</div>
+					
+
+
 					</div>
                 </div>
                 <div style="clear: both;"> </div>
@@ -254,8 +264,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 							
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="monday_branch[]"  class="branches_time" disabled  >
@@ -269,7 +280,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "monday_classs[]" class="classs"  disabled >
@@ -283,9 +294,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="monday_subject[]" class="subjects"  disabled  >
@@ -293,7 +306,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "monday_starttime[]" class="starttime"  disabled>
@@ -349,7 +362,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "monday_endtime[]" class="endtime"  disabled >
@@ -408,7 +421,7 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
-							</div>
+							</div>							
 						</div>
 						<div style="clear: both;"> </div>
 						<div class="control-group span2 sch_add_btn">
@@ -426,8 +439,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 							
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="tuesday_branch[]"  class="branches_time" disabled >
@@ -441,7 +455,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "tuesday_classs[]" class="classs" disabled >
@@ -455,9 +469,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="tuesday_subject[]" class="subjects" disabled >
@@ -465,7 +481,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "tuesday_starttime[]" class="starttime" disabled>
@@ -521,7 +537,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "tuesday_endtime[]" class="endtime" disabled >
@@ -598,8 +614,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 							
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="wednesday_branch[]"  class="branches_time" disabled >
@@ -613,7 +630,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "wednesday_classs[]" class="classs" disabled >
@@ -627,9 +644,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="wednesday_subject[]" class="subjects" disabled >
@@ -637,7 +656,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "wednesday_starttime[]" class="starttime" disabled >
@@ -693,7 +712,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "wednesday_endtime[]" class="endtime" disabled >
@@ -752,6 +771,7 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
+
 							</div>
 						</div>
 						<div style="clear: both;"> </div>
@@ -770,8 +790,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="thursday_branch[]"  class="branches_time" disabled >
@@ -785,7 +806,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "thursday_classs[]" class="classs" disabled >
@@ -799,9 +820,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="thursday_subject[]" class="subjects" disabled >
@@ -809,7 +832,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "thurday_starttime[]" class="starttime" disabled >
@@ -865,7 +888,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "thursday_endtime[]" class="endtime" disabled >
@@ -940,8 +963,9 @@ if(isset($_GET['insert'])){
 						</div>
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="friday_branch[]"  class="branches_time" disabled >
@@ -955,7 +979,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "friday_classs[]" class="classs" disabled >
@@ -969,9 +993,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="friday_subject[]" class="subjects" disabled >
@@ -979,7 +1005,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "friday_starttime[]" class="starttime" disabled >
@@ -1035,7 +1061,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "friday_endtime[]" class="endtime" disabled >
@@ -1112,8 +1138,9 @@ if(isset($_GET['insert'])){
 						<div class="controls clone_content">
 							<input type="hidden" class="clone_content_count" value="1" />
 							
-							<div class="control-group">
-								<div class="control-group span6">
+							<div class="control-group span12">
+								<div class="control-group span1"> </div>
+								<div class="control-group span5">
 	                        		<label>Branch</label>
 	                    			<div class="controls">
 	                        			<select name="saturday_branch[]"  class="branches_time" disabled >
@@ -1127,7 +1154,7 @@ if(isset($_GET['insert'])){
 	                        			</select>
 	                    			</div>
 	                    		</div>
-	                    		<div class="control-group span6">
+	                    		<div class="control-group span5">
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "saturday_classs[]" class="classs" disabled >
@@ -1141,9 +1168,11 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
+			                    <div class="control-group span1"> </div>
                     		</div>
-                			<div class="control-group">
-                				<div class="control-group span4">
+                			<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span5">
 			                        <label>Subject :</label>
 			                        <div class="controls">
 			                            <select name ="saturday_subject[]" class="subjects" disabled >
@@ -1151,7 +1180,7 @@ if(isset($_GET['insert'])){
 			                            </select>
 			                        </div>
 			                    </div>
-                				<div class="control-group span3">
+                				<div class="control-group span2">
                 					<label>Start time : </label>
 									<!-- <input  class="" type="time" class="" name="starttime[]" value="" placeholder="18:55"> -->
 									<select name = "saturday_starttime[]" class="starttime" disabled >
@@ -1207,7 +1236,7 @@ if(isset($_GET['insert'])){
 		                                <option value="24:00">24:00</option>
 			                        </select>
 								</div>
-								<div class="control-group span3">
+								<div class="control-group span2">
 									<label>End time : </label>
 									<!-- <input id="endtime" class="" type="text" class="" name="endtime[]" value="" placeholder="21:30"> -->
 									<select name = "saturday_endtime[]" class="endtime" disabled >
@@ -1276,7 +1305,7 @@ if(isset($_GET['insert'])){
                 </div>
                 <div style="clear: both;"> </div>
 			<!-- </div> -->
-			<div id="student_list control-group span12">
+			<div id="student_list control-group span12" style="text-align:center;">
 				<button type="submit" class="btn btn-success allocate_button btn_submit" value="submit">Allocate</button>
 			</div> 
 			</form>

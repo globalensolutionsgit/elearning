@@ -219,6 +219,7 @@ footer{
 }
 .btn{
     border-radius: 0 0 0 0 !important;
+     margin-top: 23px;
 }
 .btn-info{
 	background-color: #3B5998 !important;
@@ -249,3 +250,11 @@ footer{
 .class_schedule_border {
 	border: 1px solid #000;
 }
+.input_schedule input {
+	 margin: 0 4px 0 10px;
+}
+
+
+.remove_button{
+	margin-left: 14px;
+	} 

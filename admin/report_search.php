@@ -1,5 +1,8 @@
 <!-- block -->
-
+<head>
+    <link href="assets/datepicker.css">
+    <script src="assets/bootstrap-datepicker.js"></script>
+</head>
 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 ?>
@@ -24,9 +27,23 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     </div>
                 </div> -->
                 <div class="control-group">
+                    <label>Teacher</label>
+                    <div class="controls">
+                        <select name="user"  class="teachers_report" required>
+                            <option></option>
+                            <?php
+                            $query = mysql_query("select * from users where user_type = 'teacher'");
+                            while ($row = mysql_fetch_array($query)) {
+                                ?>
+                                <option value="<?php echo $row['user_id']; ?>"><?php echo $row['username']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label>Branch</label>
                     <div class="controls">
-                        <select name="branch"  class="branchs" required>
+                        <select name="branch"  class="branchs_report" required>
                             <option></option>
                              <?php
                                 $query = mysql_query("select * from branch");
@@ -38,20 +55,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     </div>
                 </div>
                 <!-- commented by kalai -->
-                <div class="control-group">
-                    <label>Teacher</label>
-                    <div class="controls">
-                        <select name="user"  class="teacher" required>
-                            <option></option>
-                            <?php
-                            $query = mysql_query("select * from users where user_type = 'teacher'");
-                            while ($row = mysql_fetch_array($query)) {
-                                ?>
-                                <option value="<?php echo $row['user_id']; ?>"><?php echo $row['username']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
+                
                 <!-- <div class="control-group">
                     <label>Class :</label>
                     <div class="controls">
@@ -61,28 +65,72 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     </div>
                 </div> -->
                 <!-- newly added by kalai -->
-                <div class="control-group">
+                <!-- <div class="control-group">
                     <label>Class :</label>
                     <div class="controls">
                         <select name = "classs" class="classs" required>
                             <option></option>
                             <?php
-                            $query = mysql_query("select * from class");
-                            while ($row = mysql_fetch_array($query)) {
+                            // $query = mysql_query("select * from class");
+                            // while ($row = mysql_fetch_array($query)) {
                                 ?>
-                                <option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
-                            <?php } ?>
+                                <option value="<?php 
+                                // echo $row['class_id']; ?>"><?php 
+                                // echo $row['class_name']; ?></option>
+                            <?php 
+                            // } ?>
 
                         </select>
                     </div>
-                </div>
-
-                <div class="control-group">
+                </div> -->
+               
+<?php 
+// $dayofweek=date("w", mktime(0, 0, 0, 7, 1, 2000));
+// echo $dayofweek;
+?>
+               <!--  <div class="control-group">
                     <label>Subject :</label>
                     <div class="controls">
-                        <select name ="subject" class="subjects" required>
+                        <select name ="subject" class="subjects_report" required>
                             <option></option>
+                            <?php
+                                // $query = mysql_query("select * from class");
+                                // while ($row = mysql_fetch_array($query)) {
+                                    ?>
+                                    <option value="<?php 
+                                    // echo $row['class_id']; ?>"><?php 
+                                    // echo $row['class_name']; ?></option>
+                            <?php 
+                            // } ?>
                         </select>
+                    </div>
+                </div> -->
+                 <div class="control-group">
+                    <label>Month:</label>
+                    <div class="controls">
+                        <select name="report_month[]" required>
+                            <option value="0"></option>
+                            <option value="01">January </option>
+                            <option value="02">February</option>
+                            <option value="03">March </option>
+                            <option value="04">April </option>
+                            <option value="05">May </option>
+                            <option value="06">June </option>
+                            <option value="07">July </option>
+                            <option value="08">August </option>
+                            <option value="09">September </option>
+                            <option value="10"> October</option>
+                            <option value="11">November </option>
+                            <option value="12">December </option>
+                       
+                        </select>
+
+                    </div>
+                </div>
+                 <div class="control-group">
+                    <label>Year:</label>
+                    <div class="controls">
+                        <input type="text" id="datepicker_year" name="report_year" required>
                     </div>
                 </div>
                 <!-- <div class="control-group">
@@ -93,14 +141,14 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         <input id="startdatetime" class="span6" type="text" class="" name="startdate" value="" >
                     </div>
                 </div> -->
-                <div class="control-group">
+               <!--  <div class="control-group">
                     <label>Date Range :</label>
                     <div class="controls">
                         <input id="startdate" class="span6" type="text" class="" name="startdate" value="" placeholder="From Date">
                         <span>to</span>
                         <input id="enddate" class="span6" type="text" class="" name="enddate" value="" placeholder="To Date">
                     </div>
-                </div>
+                </div> -->
                 <div class="control-group">
                     <div class="controls">
                         <button name="save" class="btn btn-success">Search</button>
@@ -135,7 +183,15 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     });
                 });
             </script>
+           
+             <script>
+$("#datepicker_year").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
 
+            </script>
         </div>
     </div>
 </div>

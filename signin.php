@@ -17,11 +17,11 @@
                                 
                                 <legend>Login Below:</legend>
                                 <div>
-                                <label>Name</label>
+                                <label>Name<sup style="color:#FF0000;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
                                 <input type="text" placeholder="Enter your Name" class="input-block-level" name="user_name" data-validation="required name"/>
                                 </div>
                                 <div>
-                                <label>Password</label>
+                                <label>Password<sup style="color:#FF0000;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
                                 <input type="password" placeholder="Enter your Password" class="input-block-level" name="password" data-validation="required"/>                        
                                 </div>
                                 <button type="submit" class="btn-style">Submit</button>
@@ -30,7 +30,7 @@
                         <div class="footer">
                             
                             <div class="span5">
-                               <h2>Sign up Today for Free !</h2>
+                              <!--  <h2>Sign up Today for Free !</h2> -->
                        <!-- no need to register     <ul>
                                 <li><a href="student-login.php">Student Register Here </a></li>
                                 <li><a href="teacher-login.php">Teacher Register Here </a></li>

@@ -1,5 +1,6 @@
 $(document).ready(function(){
  //postevent datetimepicker settings
+ $( ".dropdown-menu" ).addClass( "new_align" );
     $(function(){
         $('#startdate,#enddate').datepicker({
             // format:'Y-m-d H:i',
@@ -105,6 +106,26 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+    // $(".teachers_report").change(function (e) {
+    //     e.preventDefault();
+    //     var code = $(this).val();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "load_branch_report.php",
+    //         data: {'code': code },
+    //         success: function (html) {
+    //             if(html == 'nil'){
+    //                 $('.teacher,.classs,.subjects').empty();
+    //               // alert('No teacher available');
+    //             }else{
+    //                 $(".branchs_report").html('<option>Select branch</option>'+html);
+    //             }
+
+    //         }
+    //     });
+    // });
+    
 	
 	
 	
@@ -327,7 +348,20 @@ $(document).ready(function(){
 
 
     });
+ // $('.checkall').click(function() {
+ //    if ($(this).is(':checked')) {
+ //        $(".student_list_checkbox input[type=checkbox]").each(function () {
+ //                $(this).prop("checked", true);
+ //            });
 
+ //        } else {
+ //            $(".student_list_checkbox input[type=checkbox]").each(function () {
+ //                $(this).prop("checked", false);
+ //            });
+ //        }
+ //    });
+
+ 
 
     $('.selectall').click(function() {
     if ($(this).is(':checked')) {

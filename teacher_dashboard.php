@@ -15,6 +15,8 @@ if(isset($_POST['submit'])){
     $start_time = $_POST['start_time'];
     $end_time = $_POST['end_time'];
 
+
+
     if(!empty($_POST['student'])) {
         foreach($_POST['student'] as $stu_id) {
                 //commented by kalai
@@ -37,7 +39,11 @@ if(isset($_POST['submit'])){
             $tempdata = explode(",", $temp_id);
             $temp_branch=$tempdata[0];
             $temp_student=$tempdata[1];
-            //commented by kalai
+
+            // $id3=$_POST['previousbranch']; 
+            //  $id4=implode("",$id3);
+
+            // print_r ($id3);          //commented by kalai
             // mysql_query("insert into temp_stu_attend_class (region,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$temp_id','$teacher_id','$start_date') ")or die(mysql_error());
             mysql_query("insert into temp_stu_attend_class (previous_branch_id,branch_id,class_id,subject_id,temp_stu_name,teacher_id,class_date,class_starttime,class_endtime) values ('$temp_branch','$branch_id','$class_id','$subject_id','$temp_student','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
         }
@@ -56,7 +62,7 @@ if(isset($_POST['submit'])){
 <!--BANNER END-->
 <!--CONTANT START-->
 <div class="contant">
-    <div class="container">
+    <div class="container" style="height: 39%;">
         <div class="event-page">
         <!--EVENT START-->
            <div class="row events">
@@ -151,7 +157,7 @@ if(isset($_POST['submit'])){
                                     </table>
                                     <div class="menus" style="display:none">
                         <span class="add_student green_button">Add student</span><span class="student_remove green_button">remove</span>
-                        <input type="submit" name="submit" value="submit" class="green_button" >
+                        <input type="submit" name="submit" value="submit" class="green_button click_submit" >
                     </div>
                     
                                 </form>
@@ -167,7 +173,7 @@ if(isset($_POST['submit'])){
                             $query_branch = mysql_query("select * from branch");
                             while ($row_branch = mysql_fetch_array($query_branch)) {
                                 ?>
-                                <option value="<?php echo $row['branch_id']; ?>"><?php echo $row_branch['branch_name']; ?></option>
+                                <option value="<?php echo $row_branch['branch_id']; ?>"><?php echo $row_branch['branch_name']; ?></option>
                             <?php } ?>
 
                         </select>

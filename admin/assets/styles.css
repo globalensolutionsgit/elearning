@@ -10,6 +10,11 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
 }
+/*Added by siva*/
+.new_align {
+    height: 150px;
+    overflow: auto;
+}
 
 #login .form-signin {
     max-width: 300px;
@@ -237,4 +242,7 @@ div.checker input{
 }*/
 .error {
     border: 2px solid red;
+}
+.datepicker-days{
+  display: none !important;
 }

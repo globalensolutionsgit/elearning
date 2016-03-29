@@ -20,8 +20,7 @@
                                     Total Results:<span class="total_result"></span>
                                     <table class="report_heading">
                                         <tr class='report'>
-                                            <th>Students</th><th>Class</th><th>Subject</th><th>Start date</th><th>Start Time</th><th>End Time</th><th>Student type</th>
-
+                                            <th>Branch</th><th>Studentname</th><th>day</th><th>date</th><th>start_time</th><th>end_time</th><th>Type</th>
                                         </tr>
                                     </table>
                                     <table>

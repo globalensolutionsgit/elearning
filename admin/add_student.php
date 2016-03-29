@@ -23,7 +23,7 @@ if(isset($_GET['classid']) && isset($_GET['branch_id'])){
 			   	   <input type="hidden" name="class_schedule_id" value="<?php echo $_GET['sche_id']; ?>" />
 				   <div id="student_list control-group span12">
                         <table class="schdule_student_list">
-						    <tr><th></th><th>Student Name</th><th>Phone number</th><th>Email</th></tr>
+						    <tr><th><!-- <input type='checkbox' value='checkall' class="checkall" name='check_all'>all --></th><th>Student Name</th><th>Phone number</th><th>Email</th></tr>
     						<?php
     	                        $query2 = mysql_query("select * from users inner join branch on branch.branch_id = users.city inner join class on class.class_id = users.classes  where users.user_type='student' and users.city='$branch_id' and users.classes='$class_id'");
     	                        $count = mysql_num_rows($query2);

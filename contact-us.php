@@ -15,7 +15,9 @@
             <!--EVENT START-->
             	<!--EVENT LOCATION MAP START-->
                 <div class="event-location-map">
-                	<div id="map-canvas"></div>
+                	<div id="map-canvas">
+                        <div id="map_area" style="height:100%;width:100%;"></div>
+        </div>
                 </div>
                 <!--EVENT LOCATION MAP END-->                
                 <div class="row">
@@ -26,7 +28,7 @@
                                     $msg .= "Email".$_POST['email']."\n";
                                     $msg .= "Comments".$_POST['comments'];
                                     mail("sastha@globalensolutions.com","Contactus From",$msg);
-                                    echo "Thanks for your valuable commentssss";
+                                    echo "Thanks for your valuable comments";
                                 }
                                 else{
                             ?>
@@ -34,10 +36,10 @@
                         	<h2>Leave Us a Reply</h2>
                                 <form method="post" action="" id="contact_form" role="form">
                                 <div class="row-fluid">
-                                    <div class="span6">
+                                    <div class="span6 required-symbol">
                                         <input type="text" placeholder="Name" class="input-block-level" name="name" data-validation="required">
                                     </div>
-                                    <div class="span6">
+                                    <div class="span6 required-symbol">
                                         <input type="text" placeholder="E-mail" class="input-block-level" name="email" data-validation="email">
                                     </div>
                                     <div class="text-area">
@@ -97,5 +99,44 @@
         </section>
         <!--FOLLOW US SECTION END-->
     </div>
+   <!-- Google Maps API -->
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+              var mapOptions = {
+                zoom: 13,
+                scrollwheel: false,
+                center: new google.maps.LatLng(11.954299,79.832727)
+              };
+
+              var map = new google.maps.Map(document.getElementById('map_area'),
+                  mapOptions);
+   var contentString = '<div id="content">'+
+         '<div id="siteNotice">'+
+        '</div>'+
+        '<div id="bodyContent">'+
+         '<p><b>e-Vinity</b></p>'+
+         '<p>10, 2nd Floor, Maria Tower,Vellavari Street, Muthialpet,Puducherry - 605003.</p>'+
+         '<p>info@evinity.com</p>'+
+         '<p>+91 - 413 - 2235600</p>'+
+         '</div>'+
+         '</div>';
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
+              var marker = new google.maps.Marker({
+                position: map.getCenter(),
+                animation:google.maps.Animation.BOUNCE,
+                icon: 'img/map-marker.png',
+                map: map,
+                title: 'e-Vinity'
+              });
+
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+            
+        </script>
     <!--CONTANT END-->
     <?php require_once 'footer.php'; ?>

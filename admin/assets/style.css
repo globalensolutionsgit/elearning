@@ -22,6 +22,7 @@
 .da-thumbs li a {
 	overflow: hidden;
 }
+
 .da-thumbs li a div {
 	position: absolute;
 	background: rgba(75,75,75,0.7);
