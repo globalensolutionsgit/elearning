@@ -1,12 +1,15 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php
-if(isset($_GET['id'],$_GET['branch_id'])){
-    $get_id = $_GET['id'];
-    $user_type = $_GET['branch_id'];
+if(isset($_GET['classid']) && isset($_GET['branch_id'])){
+    $class_id = $_GET['classid'];
+    $branch_id = $_GET['branch_id'];
 }else{
     header('Location:404.php');
 }
+// echo "<pre>";
+// print_r(mysql_fetch_array($query2));
+// echo "</pre>";
 ?>
     <body>
 		<?php include('navbar.php'); ?>

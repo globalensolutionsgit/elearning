@@ -21,7 +21,7 @@
         <link href="css/parallax.css" rel="stylesheet" type="text/css" />
         <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
         <link href="css/jquery.multiselect.css" rel="stylesheet" type="text/css" />
-
+        <script src="js/bootstrap.min.js"></script>
 
     </head>
     <body>

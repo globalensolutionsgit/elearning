@@ -1,13 +1,17 @@
 <?php require_once 'header_innerpage.php'; ?>
 <?php include('dbcon.php'); ?>
-<?php $get_id = $_GET['id']; ?>
+<?php 
+
+$get_id = $_GET['id1']; 
+$date_id= $_GET['id2']; 
+
+?>
 <!--BANNER START-->
 <div class="page-heading">
     <div class="container">
         <h2>Course Details</h2>
     </div>
 </div>
-
 <!--BANNER END-->
 <!--CONTANT START-->
 <div class="contant">
@@ -16,16 +20,14 @@
             <div class="span3 sidebar">
                 <!--TUTOR PROFILE START-->
                 <?php
-                $course_day =  date("l");
-                $array = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
-                $key_day = array_search($course_day, $array); 
-                $query = mysql_query("select * from class_schedules
-                					    JOIN branch ON branch.branch_id = class_schedules.branch_id
+                $query = mysql_query("select * from student_teacher_allocation
+                                        JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
+                                        JOIN branch ON branch.branch_id = class_schedules.branch_id
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
-                                        JOIN users ON users.user_id = class_schedules.teacher_id where class_schedules.day='$key_day' and class_schedules.class_schedules_id='$get_id'")or die(mysql_error());
+                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_teacher_allocation_id = '$get_id'")or die(mysql_error());
                 $row = mysql_fetch_array($query);
-                // $id = $row['student_teacher_allocation_id'];
+                $id = $row['student_teacher_allocation_id'];
                 ?>
                 <div class="widget course-tutor">
                     <div class="thumb">INSTRUCTOR</div>
@@ -59,11 +61,24 @@
                                 </li>
                                 <li>
                                     <h4>Day</h4>
-                                    <p><?php echo $row['day']; ?></p>
+                                    <p><?php if ($row['day']=='sun') echo 'Sunday'; ?>
+                                       <?php if ($row['day']=='mon') echo 'Monday'; ?>
+                                       <?php if ($row['day']=='tue') echo 'Tuesday'; ?>
+                                       <?php if ($row['day']=='wed') echo 'Wednesday'; ?>
+                                       <?php if ($row['day']=='thu') echo 'Thursday'; ?>
+                                       <?php if ($row['day']=='fri') echo 'Friday'; ?>
+                                       <?php if ($row['day']=='sat') echo 'Saturday'; ?> </p>
+                                       
                                 </li>
                                 <li>
                                     <h4>Subject Code</h4>
                                     <p><?php echo $row['subject_code']; ?></p>
+                                </li>
+                                <li>
+                                    <h4>Date</h4>
+                                    <p><?php echo $date_id;
+                                    // echo $row['subject_code']; ?>
+                                </p>
                                 </li>
                             </ul>
                         </div>

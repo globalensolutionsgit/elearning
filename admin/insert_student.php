@@ -3,6 +3,9 @@ require_once 'dbcon.php';
 // echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
+
+
+
 if(isset($_POST['class_schedule_id'])){
 	$sche = $_POST['class_schedule_id'];
 	mysql_query("delete from student_teacher_allocation where schedule_id='$sche'");
@@ -13,8 +16,9 @@ if(isset($_POST['class_schedule_id'])){
 	}
 	header("Location:view_schedules.php");
 }
+
+
+
  ?>
  
  
- 
-

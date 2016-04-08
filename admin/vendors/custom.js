@@ -150,8 +150,111 @@ $(document).ready(function(){
 	// });
 	
 	
-	
-	
+
+
+
+
+
+
+$('#edit_class_allocate').submit(function() {
+        var error = 0;
+        var check_count_edit=$('.student_list_checkbox:checked').size();
+        var num_seats_edit=$("#edit_num_of_seats").val();            
+        if (!($('.student_list_checkbox').is(':checked'))) {
+            error = 1
+            
+            alert("Please select atleast one student");
+            // alert(num_seats_edit);
+            //  alert(check_count_edit);
+        }
+
+        if (error) {
+            return false;
+        } 
+
+                
+              else if (check_count_edit <= num_seats_edit) {
+                     alert("Added successfully");
+            
+             //     alert(num_seats_edit);
+             // alert(check_count_edit);
+                    return true;
+                }
+                else {
+                   
+                     alert("No seats are available");
+                    // alert(num_seats_edit);
+                    // alert(check_count_edit);
+                    return false;
+        }
+
+    });
+
+
+
+
+
+$('#add_class_allocate').submit(function() {
+        var error = 0;
+        var check_count=$('.student_list_checkbox:checked').size();
+        var num_seats=$("#num_seats").val();
+            // $.urlParam('branch_id'); 
+            // $.urlParam('classid');      
+            // $.urlParam('sche_id');
+           
+//               <?php 
+//               $sche_id=$_GET['sche_id'];
+//  $num_of_seats_row=mysql_query("select num_of_seats from class_schedules where class_schedules_id='$sche_id'");
+//  $num_of_seats_array=mysql_fetch_assoc($num_of_seats_row);
+//  $num_of_seats=implode("", $num_of_seats_array);
+
+// ?>
+            
+        if (!($('.student_list_checkbox').is(':checked'))) {
+            error = 1
+            
+            alert("Please select atleast one student");
+            // alert(num_seats);
+            //  alert(check_count);
+        }
+
+        if (error) {
+            return false;
+        } 
+
+                
+              else if (check_count <= num_seats) {
+                     alert("Added successfully");
+            
+             //     alert(num_seats);
+             // alert(check_count);
+                    return true;
+                }
+                else {
+                   
+                     alert("No seats are available");
+                    // alert(num_seats);
+                    // alert(check_count);
+                    return false;
+                
+
+
+
+            // alert(check_count);
+
+
+
+
+
+            // return true;
+        }
+
+    });
+
+
+
+
+
 	
 	
 	
@@ -194,6 +297,8 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+
 	// add button for class schedule 
 	$(document).on('click','.add_button',function (e) {
 		e.preventDefault();
@@ -213,11 +318,15 @@ $(document).ready(function(){
 		new_element.find('.subjects').empty();
 		new_element.find('.starttime').prop('selectedIndex',0);
 		new_element.find('.endtime').prop('selectedIndex',0);
+        new_element.find('.num_of_seats').prop('value','');
 		//remove day from grid
 		new_element.find('.input_schedule').remove();
 		new_element.find('.remove_button').show();
 		$(new_element).insertAfter($(this).parents('.one_day').find('.clone_content:last'));
 	});
+
+
+
 	
 	// remove button for class schedule
 	$(document).on('click','.remove_button',function () {
@@ -237,6 +346,8 @@ $(document).ready(function(){
 			current.find('.subjects').removeAttr('disabled');
 			current.find('.starttime').removeAttr('disabled');
 			current.find('.endtime').removeAttr('disabled');
+            current.find('.num_of_seats').removeAttr('disabled');
+            // current.find('.remove_button').removeAttr('disabled');
 			current.siblings('.sch_add_btn').find('.add_button').removeAttr('disabled');
 		}else{
 			current.find('.branches_time').attr('disabled','disabled');
@@ -247,8 +358,9 @@ $(document).ready(function(){
 			current.find('.subjects').attr('disabled','disabled');
 			current.find('.starttime').attr('disabled','disabled');
 			current.find('.endtime').attr('disabled','disabled');
-			current.siblings('.sch_add_btn').find('.add_button').attr('disabled','disabled');
-            
+            current.find('.num_of_seats').attr('disabled','disabled');
+            current.find('.remove_button').attr('disabled','disabled');
+			current.siblings('.sch_add_btn').find('.add_button').attr('disabled','disabled');   
 		}
 	});
 
@@ -267,8 +379,10 @@ $(document).ready(function(){
                     element = $(this).parents('.input_schedule').siblings('.clone_content');
                     element.find('select').each(function(){
                             if($(this).val() == ""){
+                                 // if($(this).val() == "" || $(this).parents('val() == ""){
                                     
-                            $(this).addClass('error'); 
+                            $(this).addClass('error');
+                             
 
                         }
                         else{
@@ -324,6 +438,8 @@ $(document).ready(function(){
 	    //        days['days[]'].push($(this).val());
         //  });
         //alert(form_data);
+
+        
         $.ajax({
                 type: "POST",
                 url: "student_list.php",
@@ -348,20 +464,41 @@ $(document).ready(function(){
 
 
     });
- // $('.checkall').click(function() {
- //    if ($(this).is(':checked')) {
- //        $(".student_list_checkbox input[type=checkbox]").each(function () {
- //                $(this).prop("checked", true);
- //            });
 
- //        } else {
- //            $(".student_list_checkbox input[type=checkbox]").each(function () {
- //                $(this).prop("checked", false);
- //            });
- //        }
- //    });
+
+
+
+
+
+
+ $('.checkall').click(function() {
+    if ($(this).is(':checked')) {
+        $(".student_list_checkbox").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $(".student_list_checkbox").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+
+
+
+
+
+
+
+
+
 
  
+// $(".checkall").change(function () {
+//     $("input:checkbox").prop('checked', $(this).prop("checked"));
+// });
+
+
 
     $('.selectall').click(function() {
     if ($(this).is(':checked')) {
@@ -376,6 +513,8 @@ $(document).ready(function(){
         }
     });
 
+
+
     $('.print').click(function() {
         var print_content = $('.print_area').html();
         var branch=$('.branchs option:selected').text();
@@ -387,8 +526,8 @@ $(document).ready(function(){
         var mywindow = window.open('', 'my div', 'height=400,width=600');
         mywindow.document.write('<html><head><style>table,th,tr,td{border:1px solid #000;}</style><title></title>');
         mywindow.document.write('</head><body >');
-        mywindow.document.write('<table style="border: 1px solid black;padding: 10px"><tr><th>Branch</th><th>Teacher</th><th>Class</th><th>Subject</th><th>Start Time</th><th>End Time</th></td><tr>');
-        mywindow.document.write('<tr><td>'+branch+'</td><td>'+teacher+'</td><td>'+classs+'</td><td>'+subject+'</td><td>'+from_date+'</td><td>'+to_date+'</td><tr></table>');
+        // // mywindow.document.write('<table style="border: 1px solid black;padding: 10px"><tr><th>Branch</th><th>StudentName</th><th>Day</th><th>Date</th><th>Start_time</th><th>End_time</th><th>Type</th></td><tr>');
+        // // mywindow.document.write('<tr><td>'+branch+'</td><td>'+teacher+'</td><td>'+classs+'</td><td>'+subject+'</td><td>'+from_date+'</td><td>'+to_date+'</td><tr></table>');
         mywindow.document.write(print_content);
         mywindow.document.write('</body></html>');
         mywindow.document.close(); // necessary for IE >= 10
@@ -398,7 +537,11 @@ $(document).ready(function(){
         return true;
     });
     
-
+$('.year').click(function() {
+$('.dropdown-menu').hide();
+ 
+ 
+});
 
 
 });

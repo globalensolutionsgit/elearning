@@ -17,11 +17,11 @@
                                 
                                 <legend>Login Below:</legend>
                                 <div>
-                                <label>Name<sup style="color:#FF0000;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
+                                <label>Username<sup style="color:#FF0000; left:2px;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
                                 <input type="text" placeholder="Enter your Name" class="input-block-level" name="user_name" data-validation="required name"/>
                                 </div>
                                 <div>
-                                <label>Password<sup style="color:#FF0000;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
+                                <label>Password<sup style="color:#FF0000; left:2px;"><i class="fa fa-asterisk text-danger" style="font-size: 7px;"></i></sup></label>
                                 <input type="password" placeholder="Enter your Password" class="input-block-level" name="password" data-validation="required"/>                        
                                 </div>
                                 <button type="submit" class="btn-style">Submit</button>

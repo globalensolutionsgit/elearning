@@ -56,11 +56,24 @@
                                 </li>
                                 <li>
                                     <h4>Day</h4>
-                                    <p><?php echo $row['day']; ?></p>
+                                    <p><?php if ($row['day']=='sun') echo 'Sunday'; ?>
+                                       <?php if ($row['day']=='mon') echo 'Monday'; ?>
+                                       <?php if ($row['day']=='tue') echo 'Tuesday'; ?>
+                                       <?php if ($row['day']=='wed') echo 'Wednesday'; ?>
+                                       <?php if ($row['day']=='thu') echo 'Thursday'; ?>
+                                       <?php if ($row['day']=='fri') echo 'Friday'; ?>
+                                       <?php if ($row['day']=='sat') echo 'Saturday'; ?> </p>
+                                       
                                 </li>
                                 <li>
                                     <h4>Subject Code</h4>
                                     <p><?php echo $row['subject_code']; ?></p>
+                                </li>
+                                <li>
+                                    <h4>Date</h4>
+                                    <p><?php echo date("Y-m-d");
+                                    // echo $row['subject_code']; ?>
+                                </p>
                                 </li>
                             </ul>
                         </div>

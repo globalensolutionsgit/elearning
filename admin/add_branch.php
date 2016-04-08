@@ -2,6 +2,13 @@
 $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'East Singapore', 'CS'=>'Central Singapore', 'WS'=>'West Singapore');
 ?>
 <?php include('session.php'); ?>
+<html>
+<head>
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -18,11 +25,11 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 		                            </div>
 		                            <div class="block-content collapse in">
 									<a href="branch.php"><i class="icon-arrow-left"></i> Back</a>
-									    <form class="form-horizontal" method="post">
+									    <form class="form-horizontal" method="post" id="add_branch_form">
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Region</label>
 											<div class="controls">
-												<select  name="region" class="" required>
+												<select  name="region" class="" >
 													<?php 
 														foreach ($regions as $key => $value){
 															echo "<option value=".$key.">".$value."</option>";
@@ -34,55 +41,56 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Name</label>
 											<div class="controls">
-												<input type="text" name="branch_name" id="inputEmail" placeholder="Branch Name" required>
+												<input type="text" name="branch_name" id="firstname" placeholder="Branch Name" >
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Owner</label>
 											<div class="controls">
-												<input type="text" name="branch_owner" id="inputEmail" placeholder="Branch Owner" required>
+												<input type="text" name="branch_owner" id="lastname" placeholder="Branch Owner" >
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Branch Address</label>
 											<div class="controls">
-												<textarea name="branch_address" required></textarea>
+												<textarea name="branch_address" id="username"></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Email</label>
 											<div class="controls">
-												<input type="text" name="email" id="inputEmail" placeholder="Branch Email" required>
+												<input type="text" name="email" id="email" placeholder="Branch Email" >
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Phone No.</label>
 											<div class="controls">
-												<input type="text" name="phone_number" id="inputEmail" placeholder="Branch Phone" required>
+												<input type="text" name="phone_number" id="phone" placeholder="Branch Phone" >
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Latitude</label>
 											<div class="controls">
-												<input type="text" name="latitude" id="inputEmail" placeholder="Latitude">
+												<input type="text" name="latitude" id="latitude" placeholder="Latitude" >
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Longitude</label>
 											<div class="controls">
-												<input type="text" name="langitude" id="inputEmail" placeholder="Longitude">
+												<input type="text" name="langitude" id="longitude" placeholder="Longitude">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Description</label>
 											<div class="controls">
-												<textarea name="branch_description" id="ckeditor_full" required></textarea>
+												<textarea name="branch_description" class="ckeditor_full" ></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail" >Status</label>
 											<div class="controls">
-												<input type="checkbox" name="status" value="1">
+												<!-- <input type="hidden" name="status" value="0" > -->
+												<input type="checkbox" name="status" value="1" required>
 											</div>
 										</div>
 										<div class="control-group">
@@ -104,7 +112,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										$langitude = $_POST['langitude'];
 										$branch_description = $_POST['branch_description'];
 										$status = $_POST['status'];
-										echo $branch_address;
+										// echo $branch_address;
 										
 										$query = mysql_query("select * from branch where branch_name = '$branch_name' ")or die(mysql_error());
 										$count = mysql_num_rows($query);
@@ -115,7 +123,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										</script>
 										<?php
 										}else{
-										mysql_query("insert into branch (region,branch_name,branch_address,phone_number,email,longitude,latitude,branch_owner,branch_description,status) values('$branch_region','$branch_name','$branch_address','$phone','$email','$langitude','$latitude','$branch_owner','$branch_description','$status')")or die(mysql_error());
+										mysql_query("insert into branch (region,branch_name,branch_address,branch_phone_number,branch_email,longitude,latitude,branch_owner,branch_description,status) values('$branch_region','$branch_name','$branch_address','$phone','$email','$langitude','$latitude','$branch_owner','$branch_description','$status')")or die(mysql_error());
 										
 										
 										//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Branch $branch_name')")or die(mysql_error());

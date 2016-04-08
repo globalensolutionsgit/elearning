@@ -1,5 +1,12 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
+<html>
+<head>
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -15,11 +22,11 @@
 		                            </div>
 		                            <div class="block-content collapse in">
 									<a href="subjects.php"><i class="icon-arrow-left"></i> Back</a>
-									    <form class="form-horizontal" method="post">
+									    <form class="form-horizontal" method="post" id="add_subject_form">
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Subject Title</label>
 											<div class="controls">
-											<input type="text" class="span8" name="title" id="inputPassword" placeholder="Subject Title" required>
+											<input type="text" class="span8" name="title" id="firstname" placeholder="Subject Title">
 											</div>
 										</div>
 										<div class="control-group">
@@ -39,26 +46,26 @@
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Short Description</label>
 											<div class="controls">
-													<textarea name="s_description" id="ckeditor_full" required></textarea>
+													<textarea name="s_description" class="ckeditor_full" ></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Long Description</label>
 											<div class="controls">
-													<textarea name="l_description" id="ckeditor_full" required></textarea>
+													<textarea name="l_description" class="ckeditor_full" ></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Subject Code</label>
 											<div class="controls">
-											<input type="text" class="span8" name="s_code" id="inputPassword" placeholder="Subject Code" required>
+											<input type="text" class="span8" name="s_code" id="password" placeholder="Subject Code">
 											</div>
 										</div>
 										
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Status</label>
 											<div class="controls">
-											<input type="checkbox" value="1" name="status">
+											<input type="checkbox" value="1" name="status" required>
 											</div>
 										</div>
 

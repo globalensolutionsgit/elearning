@@ -1,8 +1,20 @@
-   <?php
+<html>
+<head>
+  
+
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+	 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 //$classes = array('PR' => 'Primary', 'SEC' => 'Secondary', 'PSEC' => 'Post Secondary');
 $user_type = $_GET['user_type'];
 ?>
+
 <div class="row-fluid">
     <!-- block -->
     <div class="block">
@@ -11,7 +23,7 @@ $user_type = $_GET['user_type'];
 		</div>
 		<div class="block-content collapse in">
 			<div class="span12">
-				<form method="post" enctype="multipart/form-data">
+				<form method="post" enctype="multipart/form-data" name="consult_form" class="consult_form" id="consult_form">
 					<div class="control-group">
 					    <div class="controls">
 							<?php if($_GET['user_type']=='student'){ ?>
@@ -31,43 +43,53 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" name="firstname" id="focusedInput" type="text" placeholder = "Firstname" required>
+							<input class="input_field" name="firstname" id="firstname" type="text" value="First Name"  placeholder="enter firstname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-                            <input class="input focused" name="lastname" id="focusedInput" type="text" placeholder = "Lastname" required>
+							                	
+                            	
+                            <input class="input focused input_field" name="lastname" id="lastname" type="text" value="Last Name"  placeholder="enter lastname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" name="username" id="focusedInput" type="text" placeholder = "Username" required>
+							<input class="input focused input_field" name="username" id="username" type="text" value="User Name"  placeholder="enter username">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" name="password" id="focusedInput" type="password" placeholder = "Password" required>
+							<input class="input focused input_field password" name="password" id="password" type="password" value=""  placeholder="password" maxlength="10" >
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" name="phone_number" id="focusedInput" type="text" placeholder = "Phone number" required>
+					    	
+							<input class="input focused input_field" name="phone" id="phone" type="text" value="Phone Number" maxlength="10"  placeholder="enter phonenumber">
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" name="email" id="focusedInput" type="email" placeholder = "Email" required>
+							
+							<input class="input focused input_field" name="email" id="email" type="text" value="Email Address"  placeholder="enter email">
 						</div>
 					</div>
 					<!-- newly added by kalai -->
 					<div class="control-group">
-						<div class="controls">
-							<select name='region' class="regions" >
+						<div class="controls" id="select1">
+							<select name='region' class="regions" id="sel1" value="Select Region" >
 								<option>Select Region</option>
+								<option value="NS">North Singapore</option>
+								<option value="NES">North East Singapore</option>
+								<option value="ES">East Singapore</option>
+								<option value="CS">Central Singapore</option>
+								<option value="WS">West Singapore</option>
+
 								<?php
-									foreach ($regions as $key => $value) {
-										echo "<option value=" . $key . ">" . $value . "</option>";
-										} ?>
+									// foreach ($regions as $key => $value) {
+									// 	echo "<option value=" . $key . ">" . $value . "</option>";
+									// 	} ?>
 							</select>
 						</div>
 					</div>
@@ -75,20 +97,20 @@ $user_type = $_GET['user_type'];
 					<?php
 						if ($user_type=="student") {?>
 						    <div class="control-group">
-								<div class="controls">
-									<select class="branchs" name="branch">
+								<div class="controls" id="select2">
+									<select class="branchs" name="branch" id="sel2" value="Select Branch">
 										<option>Select branch</option>
 									</select>
                                 </div>
                             </div>
 							<div class="control-group">
-								<div class="controls">
+								<div class="controls" id="select3">
 									 <?php
 		                                    $query1 = mysql_query("SELECT * from class")or die(mysql_error());
 	                                    	$count1 = mysql_num_rows($query1);
 	                                    	if ($count1 != '0') {
 	                                    	?>
-									<select name="classes">
+									<select name="classes" value="select" id="sel3">
 									    <option>Select Class</option>
 									     <?php while ($row1 = mysql_fetch_array($query1)) { ?>
 									     	<option value="<?php echo $row1['class_id']; ?>"><?php echo $row1['class_name']; ?></option>
@@ -101,14 +123,14 @@ $user_type = $_GET['user_type'];
 							<?php
                                 if ($user_type=="teacher") {?>
 									<div class="control-group">
-										<div class="controls">
-											<select class="branchs" name="branch">
+										<div class="controls" id="select4">
+											<select class="branchs" name="branch" value="select" id="sel4">
 												<option>Select branch</option>
 											</select>
 										</div>
 									</div>
                               		<div class="control-group">
-                                		<div class="controls">                                   
+                                		<div class="controls" id="select5">                                   
 		                                    <?php
 		                                    $query = mysql_query("SELECT
 		                                                            cl.class_id,
@@ -124,8 +146,8 @@ $user_type = $_GET['user_type'];
 	                                    	$count = mysql_num_rows($query);
 	                                    	if ($count != '0') {
 	                                    	?>
-		                                    <select class="" name="preference_classsubject[]" id="teacher_class" multiple data-validation="required">
-			                                    <option>Select class</option>
+		                                    <select class="sel5" name="preference_classsubject[]" value="select" id="teacher_class" multiple data-validation="required">
+			                                    <option selected>Select class</option>
 			                                    <?php while ($row = mysql_fetch_array($query)) { ?>
 			                                	<option value="<?php echo $row['class_id'] . '-' . $row['subject_id']; ?>">
 			        								<?php echo $row['class_name'] . '-' . $row['subject_title']; ?>
@@ -151,8 +173,8 @@ $user_type = $_GET['user_type'];
                             </div>
 							<div class="control-group">
                           		<div class="controls">
-                                	<input type="radio" value='1' name="gender" required>Male
-									<input type="radio" value='2'  name="gender" required>Female
+                                	<input type="radio" value='1' name="gender" class="gender" required>Male
+									<input type="radio" value='2'  name="gender" class="gender" required>Female
                               	</div>
                             </div>
                             <!-- commented by kalai -->
@@ -174,6 +196,7 @@ $user_type = $_GET['user_type'];
                         <!-- /block -->
                     </div>
 					<?php
+
 						if (isset($_POST['save'])){
 							$user_type = $_POST['user_type'];
 							$firstname = $_POST['firstname'];
@@ -181,7 +204,7 @@ $user_type = $_GET['user_type'];
 							$gender = $_POST['gender'];
 							$username = $_POST['username'];
 							$password = $_POST['password'];
-							$phone_number = $_POST['phone_number'];
+							$phone_number = $_POST['phone'];
 							$email = $_POST['email'];
 							$description = $_POST['description'];
 							$region = $_POST['region'];
@@ -261,3 +284,5 @@ alert('Data Inserted Successfully!');
 }
 }
 ?>
+</body>
+</html>

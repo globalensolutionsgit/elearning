@@ -14,8 +14,10 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
+                                    <form action="delete_schedule.php" method="post">
+
                                     <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
-                                        <a data-toggle="modal" href="#class_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i></a>
+                                        <a data-toggle="modal" href="#view_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i></a>
 										<?php include('modal_delete.php'); ?>
                                         <thead>
                                             <tr>
@@ -49,12 +51,14 @@
 													<td><?php echo $row['day'];  ?></td>
                                                     <td width="40"><a href="add_student.php<?php echo '?classid='.$classid.'&branch_id='.$branch_id.'&sche_id='.$row['class_schedules_id']; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-user"></i></a></td>
                                                     <td width="40">
-                                                        <a href="edit_class_schedules.php<?php echo '?classid='. $classid.'&branch_id='.$branch_id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
+                                                        <a href="edit_class_schedules.php<?php echo '?classid='.$classid.'&branch_id='.$branch_id.'&sche_id='.$row['class_schedules_id']; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
+                                    <form action="delete_subject.php" method="post">
+                                    
                                 </div>
                             </div>
                         </div>

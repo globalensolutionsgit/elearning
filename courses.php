@@ -36,7 +36,7 @@ require_once 'dbcon.php';    //include of db config file
 <!--CONTANT START-->
 <div class="contant">
     <div class="container">
-		<?php
+        <?php
             // if (isset($_GET['class']) and isset($_GET['subject'])){
                 // $class=$_GET['class'];
                 // $subject=$_GET['subject'];
@@ -49,9 +49,10 @@ require_once 'dbcon.php';    //include of db config file
             // }
             // else{
 
-            $course_day =  date("l");
-            $array = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
-            $key_day = array_search($course_day, $array); 
+            $course_day1 =  date("l");
+            $array1 = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
+            $key_day1 = array_search($course_day1, $array1);
+            // echo $key_day1;
         // echo $course_day;
 
 // if ($course_day=="Friday") {
@@ -84,13 +85,13 @@ require_once 'dbcon.php';    //include of db config file
 
 
 
-            	$user_id = $_SESSION['user_id'];
+                $user_id = $_SESSION['user_id'];
                 $result = mysql_query("select * from student_teacher_allocation
-                						JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
+                                        JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
                                         JOIN branch ON branch.branch_id = class_schedules.branch_id
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
-                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day'");
+                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day1'");
         ?>
         <div class="row">
             <div class="span9">
@@ -109,14 +110,46 @@ require_once 'dbcon.php';    //include of db config file
                                     <div class="text">
                                         <div class="header">
                                             <h4><?php echo $row['class_name']; ?></h4>
-                                            <div class="rating">
-                                                <?php echo $row['subject_title']; ?>
+                                            <span class="close_class_button">
+                            <a href="delete_schedule_student.php<?php echo '?id='.$row['student_id'].'&id2='.$row['schedule_id']; ?>"><i class="fa fa-times-circle" title="delete schedule permanently"></i></a>
+                                            </span>
                                             </div>
-                                        </div>
+
+<!-- popup for delete -->
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:50%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+            </div>
+            <div class="modal-body">Are you really want to delete this schedule</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <a href="delete_schedule_student.php<?php 
+            // echo '?id='.$row['student_id'].'&id2='.$row['schedule_id']; ?>"> 
+                <button type="button" class="btn btn-primary">Yes</button> 
+            </a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+                                            
+                                        
                                         <div class="course-name">
                                             <p><?php echo $row['start_time']; ?></p>
                                         </div>
-                                        <span><?php echo $row['branch_name']; ?></span>
+                                        
+                                        
+                                            <span><?php echo $row['branch_name']; ?></span>
+                                               <div class="rating"> <?php echo $row['subject_title']; ?>
+                                            </div>
                                         <div class="course-detail-btn">
                                             <a href="courses-detail.php?id=<?php echo $row['student_teacher_allocation_id']; ?>">Detail</a>
                                         </div>
@@ -134,9 +167,9 @@ require_once 'dbcon.php';    //include of db config file
                     </div>
                 </div>
             </div>
-	
-	
-	
+    
+    
+    
         <div class="row">
             <?php if(isset($_SESSION['user_id'])){ ?>
             <div class="span3">
@@ -167,70 +200,114 @@ require_once 'dbcon.php';    //include of db config file
         </div>
     </div>
     <div class="contant">
+    
+
+
+
     <div class="container">
         <!-- added by siva -->
         <?php
-            $result_class=mysql_query("select classes from users 
+        $date=date('Y-m-d');
+        $result_class=mysql_query("select classes from users 
                                         where user_id='$user_id'");
             
 
-            $rows_array=mysql_fetch_assoc($result_class);
-            // echo $rows_array['classes'];
-            $rows_string=implode(" ",$rows_array);
-
-
-            $course_day =  date("l");
-            $array = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
-            $key_day = array_search($course_day, $array); 
-             $result1 = mysql_query("select * from class_schedules 
-                                    INNER JOIN branch ON branch.branch_id = class_schedules.branch_id
-                                    INNER JOIN class ON class.class_id = class_schedules.class_id
-                                    INNER JOIN subject ON subject.subject_id = class_schedules.subject_id
-                                    where class_schedules.day='$key_day' AND class_schedules.class_id='$rows_string'
-                                ");
-            // INNER JOIN student_teacher_allocation ON student_teacher_allocation.schedule_id=class_schedules.class_schedules_id
-
-           ?>
-        <div class="row">
+        $rows_array=mysql_fetch_assoc($result_class);
+        // echo $rows_array['classes'];
+        $rows_string=implode(" ",$rows_array);
+        ?>
+ <div class="row">
             <div class="span12">
                 <div class="featured-courses">
-                    <h2>Today Classes</h2>
-                    <div class="row" >
-                    <?php
-                    if ($result1) {
-                        while($row2 = mysql_fetch_array($result1)) {
-                            ?>
-                            <div class ="span3">
-                                <div class="course">
-                                    <div class="thumb">
-                                        <a href="courses-detail.php?id="></a>
-                                    </div>
-                                    <div class="text">
-                                        <div class="header">
-                                            <h4><?php echo $row2['class_name']; ?></h4>
-                                            <div class="rating">
-                                                <?php echo $row2['subject_title']; ?>
-                                            </div>
-                                        </div>
-                                        <div class="course-name">
-                                            <p><?php echo $row2['start_time']; ?></p>
-                                        </div>
-                                        <span ><?php echo $row2['branch_name']; ?></span>
-                                        <div class="course-detail-btn">
-                                            <a href="alternate_course_detail.php?id=<?php echo $row2['class_schedules_id']; ?>">Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php }
+                    <h2>Upcoming Classes</h2>
+      
+            <?php  
+            for($i=1;$i<=14;$i++) {
 
-                    }
-                    else {
-                        echo mysql_error();
-                    }
+            // $course_day =  date("l");
+    
+            $date=date('Y-m-d', strtotime('+1 day', strtotime($date)));
+            // echo $date;
+            $day_of_date=strtotime($date);
+            // echo date('l',$day_of_date);
+            $course_day = date('l',$day_of_date);  
+            // echo   $course_day; 
+            $array = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
+            $key_day = array_search($course_day, $array); 
+            
 
-                     ?>
+           $result1 = mysql_query("select * from student_teacher_allocation
+                                        JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
+                                        JOIN branch ON branch.branch_id = class_schedules.branch_id
+                                        JOIN class ON class.class_id = class_schedules.class_id
+                                        JOIN subject ON subject.subject_id = class_schedules.subject_id
+                                        JOIN users ON users.user_id = class_schedules.teacher_id 
+                                        where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day'");
+            // INNER JOIN student_teacher_allocation ON student_teacher_allocation.schedule_id=class_schedules.class_schedules_id
+
+            
+
+
+              ?>
+
+
+       
+
+<?php 
+// $date=date('Y-m-d');
+
+// for($i=1;$i<=14;$i++) {
+    
+//    $date=date('Y-m-d', strtotime('+1 day', strtotime($date)));
+// echo $date;
+// $day_of_date=strtotime($date);
+// echo date('l',$day_of_date);        
+// }
+ ?>
+
+<!-- <div class="row" > -->
+    <?php
+        if ($result1) {
+            while($row2 = mysql_fetch_array($result1)) {
+    ?>
+    <div class ="span3">
+        <div class="course">
+            <div class="thumb">
+                <a href="courses-detail.php?id="></a>
+            </div>
+            <div class="text">
+                <div class="header">
+                    <h4><?php echo $row2['class_name']; ?></h4> 
+                    <div class="rating">
+                        <?php echo $row2['subject_title']; ?>
                     </div>
+                </div>
+                <div class="course-name">
+                    <?php echo $course_day; ?>
+                    <p class="float_right"><?php echo $date; ?></p>
+                </div>
+                <div class="time_branch">
+                    <?php echo $row2['start_time']; ?>
+                    <p class="float_right"> <?php echo $row2['branch_name']; ?> </p>
+                </div>
+                <div class="course-detail-btn">
+                    <a href="alternate_course_detail.php<?php echo '?id1='.$row2['student_teacher_allocation_id'].'&id2='.$date; ?>">Detail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php }
+        }
+        else {
+            echo mysql_error();
+        } }
+    ?>
+<!-- </div> -->
+
+
+
+
+
                 </div>
             </div>
     
@@ -245,11 +322,44 @@ require_once 'dbcon.php';    //include of db config file
             <div class="span3">
             </div>
         </div>
+       
     </div>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<script>
+$(document).ready(function () {
+      
+    $("#close_schedule").click(function(){
+         $('#myModal').modal('show');
+    });
+});
+</script>
+ -->
 
 
 

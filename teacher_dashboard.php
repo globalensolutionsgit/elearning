@@ -84,7 +84,7 @@ if(isset($_POST['submit'])){
                         <!--EVENT HEADER START-->
                         <!--EVENT VANUE START-->
                             <div class="event-vanue">
-                                <form  method="post" name="submit_attendance">
+                                <form  method="post" name="submit_attendance" id="attened_student">
                                 <!-- <form method="post" name="submit_attendance" action="submit_attendance.php"> -->
                                 <!-- <input type="hidden" name="region" value="<?php echo $row['region']; ?>"/> -->
                                     <input type="hidden" name="branch" value="<?php echo $row['branch_id']; ?>"/>
@@ -144,7 +144,7 @@ if(isset($_POST['submit'])){
                                         <tr>
                                             <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td>
                                             <td><?php echo $row_1 ['firstname'];  ?></td>
-                                            <td><input type="checkbox" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
+                                            <td><input type="checkbox" class="attend_student" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
                                         </tr>
                                         <tr class="add_temp">
                                         <td>
@@ -177,7 +177,7 @@ if(isset($_POST['submit'])){
                             <?php } ?>
 
                         </select>
-                        <input type="text" name="temp[]" value="" class="temp_text" placeholder="enter name">
+                        <input type="text" name="temp[]" value="" class="temp_text" placeholder="enter name" required>
                     </div>
                         
                     <div class="tempstudent_data">

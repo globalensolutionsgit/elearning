@@ -5196,3 +5196,18 @@ section.cp-our-services p, .contant section.cp-our-services h2{
 .view_disabled {
 
 }
+/*added by siva*/
+.rating {
+	/*margin: 0px !important;*/
+}
+.close_class_button {
+	float: right;
+    font-size: 30px;
+    padding: 0 !important;
+}
+.float_right {
+	float:right;
+}
+.time_branch {
+	padding : 0px 10px;
+}

@@ -27,10 +27,10 @@
         </li> -->
 
         <li>
-            <a href="class_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Class Schedules</a>
+            <a href="class_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Makeup slots</a>
         </li>
         <li>
-            <a href="view_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i>View Schedules</a>
+            <a href="view_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i>View schedules</a>
         </li>
         <li>
             <a href="reports.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Reports</a>

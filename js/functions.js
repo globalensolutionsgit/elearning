@@ -6,6 +6,39 @@ $(document).ready(function() {
            selectedList: 4
        });
 
+// added by siva
+
+$('#attened_student').submit(function() {
+        var error = 0;
+        if (!($('.attend_student').is(':checked'))) {
+            error = 1
+            alert("Please select atleast one student");
+        }
+
+        if (error) {
+            return false;
+        } else {
+            return true;
+        }
+
+    });
+	
+// $('#close_schecule').on('click',function()) {
+// 	alert("do u want to delete");
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	$(".search-bar").on('click',function () {
 		$(".search-box").toggle("fade" )

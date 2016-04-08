@@ -1,3 +1,16 @@
+<html>
+<head>
+  
+
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+
+
 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 $classes = array('PR' => 'Primary', 'SEC' => 'Secondary', 'PSEC' => 'Post Secondary');
@@ -23,7 +36,7 @@ $user_type = $_GET['user_type'];
 					$query = mysql_query("select * from users where user_id = '$get_id' and user_type = '$user_type'")or die(mysql_error());
 					$row = mysql_fetch_array($query);
 				?>
-				<form method="post">
+				<form method="post" id="edit_user_form">
 					<div class="control-group">
 						<div class="controls">
 							<?php if($_GET['user_type']=='student'){ ?>
@@ -43,32 +56,32 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="focusedInput" type="text" placeholder = "Firstname" required>
+							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="firstname" type="text" placeholder = "Firstname">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="focusedInput" type="text" placeholder = "Lastname" required>
+							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" type="text" placeholder = "Lastname" >
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="focusedInput" type="text" placeholder = "Username" required>
+							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="username" type="text" placeholder = "Username" >
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="focusedInput" type="password" placeholder = "password" required>
+							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="password" type="password" placeholder = "password" maxlength="10">
 					    </div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone_number" id="focusedInput" type="text" placeholder = "Phone number" required>
+							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone" id="phone" type="text" placeholder = "Phone number">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="focusedInput" type="text" placeholder = "Email" required>
+							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="email" type="text" placeholder = "Email" >
 					    </div>
 					</div>
 					<!-- newly added by siva -->
@@ -93,7 +106,7 @@ $user_type = $_GET['user_type'];
 						<!-- branch -->   
 							<div class="control-group">
 								<div class="controls">
-									<select class="branchs" name="branch">
+									<select class="branchs" name="branch" id="sel2">
 										<?php
 											$branch_selected=$row['city'];
 											$res=mysql_query("SELECT b.branch_name,b.branch_id,u.city FROM branch AS b INNER JOIN users AS u ON b.branch_id=$branch_selected");
@@ -120,7 +133,7 @@ $user_type = $_GET['user_type'];
                                 if ($user_type=="teacher") {?>
 									<div class="control-group">
 										<div class="controls">
-											<select class="branchs" name="branch">
+											<select class="branchs" name="branch" id="sel4">
 												<option>Select branch</option>
 											</select>
 										</div>
@@ -163,8 +176,8 @@ $user_type = $_GET['user_type'];
 					</div>
 							<div class="control-group">
 								<div class="controls">
-									<input type="radio" value="1" name="gender" <?php if($row['gender']==1) echo 'checked'; ?>>Male
-									<input type="radio" value="2"  name="gender" <?php if($row['gender']==2) echo 'checked'; ?>>Female
+									<input type="radio" value="1" name="gender" <?php if($row['gender']==1) echo 'checked'; ?> required>Male
+									<input type="radio" value="2"  name="gender" <?php if($row['gender']==2) echo 'checked'; ?> required>Female
 								</div>
 							</div>
 									
@@ -189,7 +202,7 @@ $user_type = $_GET['user_type'];
 		$lastname = $_POST['lastname'];
 		$username = $_POST['username'];
 		$password=$_POST['password'];
-		$phone_number = $_POST['phone_number'];
+		$phone_number = $_POST['phone'];
 		$email = $_POST['email'];
 		$gender = $_POST['gender'];
 		$description = $_POST['description'];
@@ -211,3 +224,7 @@ $user_type = $_GET['user_type'];
 	
 	}
 ?>
+
+
+</body>
+</html>

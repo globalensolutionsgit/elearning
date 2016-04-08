@@ -245,6 +245,13 @@ if(isset($_GET['insert'])){
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
 							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="control-group span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
+							</div>
 						</div>
 						<div style="clear: both;"> </div>
 						<div class="control-group span2 sch_add_btn">
@@ -421,7 +428,20 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
-							</div>							
+							</div>	
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
+							</div>
+
+
+
+
+
+
 						</div>
 						<div style="clear: both;"> </div>
 						<div class="control-group span2 sch_add_btn">
@@ -596,6 +616,13 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
+							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
 							</div>
 						</div>
 						<div style="clear: both;"> </div>
@@ -773,6 +800,13 @@ if(isset($_GET['insert'])){
 								</div>
 
 							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
+							</div>
 						</div>
 						<div style="clear: both;"> </div>
 						<div class="control-group span2 sch_add_btn">
@@ -948,6 +982,13 @@ if(isset($_GET['insert'])){
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
 							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
+							</div>
 						</div>
 						<div style="clear: both;"> </div>
 						<div class="control-group span2 sch_add_btn">
@@ -1120,6 +1161,13 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
+							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
 							</div>
 						</div>
 						<div style="clear: both;"> </div>
@@ -1295,6 +1343,13 @@ if(isset($_GET['insert'])){
 								<div class="control-group span2">
 									<button class="btn btn-success remove_button dn" type="button">Remove</button>
 								</div>
+							</div>
+							<div class="control-group span12">
+                				<div class="control-group span1"> </div>
+                				<div class="span11"> 
+								    <label name="seats">number of seats:</label>
+								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+  								</div>
 							</div>
 						</div>
 						<div style="clear: both;"> </div>

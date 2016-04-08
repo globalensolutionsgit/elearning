@@ -3,6 +3,13 @@
 $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'East Singapore', 'CS'=>'Central Singapore', 'WS'=>'West Singapore');
 ?>
 <?php $get_id = $_GET['id']; ?>
+<html>
+<head>
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -25,7 +32,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 									$row = mysql_fetch_array($query);
 									?>
 									
-                                                                        <form class="form-horizontal" method="post" action="">
+                                                                        <form class="form-horizontal" method="post" action="" id="edit_branch_form">
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Region</label>
 											<div class="controls">
@@ -46,60 +53,68 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch name</label>
 											<div class="controls">
-											<input type="text" value="<?php echo $row['branch_name']; ?>" name="branch_name" id="inputEmail" placeholder="Branch Name">
+											<input type="text" value="<?php echo $row['branch_name']; ?>" name="branch_name" id="firstname" placeholder="Branch Name">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Owner</label>
 											<div class="controls">
-												<input type="text" name="branch_owner" value="<?php echo $row['branch_owner']; ?>" id="inputEmail" placeholder="Branch Owner">
+												<input type="text" name="branch_owner" value="<?php echo $row['branch_owner']; ?>" id="lastname" placeholder="Branch Owner">
 											</div>
 										</div>
 				
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Branch Address</label>
 											<div class="controls">
-													<textarea name="branch_address"><?php echo preg_replace('/\s+/', '', $row['branch_address']); ?></textarea>
+													<textarea id="username" name="branch_address"><?php echo preg_replace('/\s+/', '', $row['branch_address']); ?></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Email</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['branch_email']; ?>" name="email" id="inputEmail" placeholder="Branch Email">
+												<input type="text" value="<?php echo $row['branch_email']; ?>" name="email" id="email" placeholder="Branch Email">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Phone No.</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['branch_phone_number']; ?>" name="phone_number" id="inputEmail" placeholder="Branch Phone">
+												<input type="text" value="<?php echo $row['branch_phone_number']; ?>" name="phone_number" id="phone" placeholder="Branch Phone">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Latitude</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['latitude']; ?>" name="latitude" id="inputEmail" placeholder="Latitude">
+												<input type="text" value="<?php echo $row['latitude']; ?>" name="latitude" id="latitude" placeholder="Latitude">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Longitude</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['longitude']; ?>" name="langitude" id="inputEmail" placeholder="Longitude">
+												<input type="text" value="<?php echo $row['longitude']; ?>" name="langitude" id="langitude" placeholder="Longitude">
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Description</label>
 											<div class="controls">
-												<textarea name="branch_description" id="ckeditor_full"><?php echo $row['branch_description']; ?></textarea>
+												<textarea name="branch_description" class="ckeditor_full"><?php echo $row['branch_description']; ?></textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Status</label>
 											<div class="controls">
                                                                                             <?php if($row['status']=='1'){ ?>
-                                                                                            <input type="checkbox" name="status" value="1" checked>
+                                                                                            <input type="checkbox" name="status" value="1" checked required>
+                                                                                            <input type="hidden" name="status" value="0" checked >
                                                                                             <?php } else{ ?>
                                                                                             <input type="checkbox" name="status" value="0" >
+                                                                                            <input type="hidden" name="status" value="1" checked>
                                                                                             <?php } ?>
+										
+                                                   <!-- <input type="checkbox" name="status"  <?php 
+                                                   // if($row['status']=='1') { echo 'checked'; echo "value='1'";} else echo "value='0'";?>>   -->
+
+
+
 											</div>
 										</div>		
 																		
@@ -120,15 +135,17 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										$branch_name = $_POST['branch_name'];
 										$branch_address = $_POST['branch_address'];
 										$owner = $_POST['branch_owner'];
-                                                                                $email =$_POST['email'];
-                                                                                $phone_number = $_POST['phone_number'];
-                                                                                $latitude = $_POST['latitude'];
-                                                                                $langitude = $_POST['langitude'];
-                                                                                $branch_description = $_POST['branch_description'];
+                                        $email =$_POST['email'];
+                                    	$phone_number = $_POST['phone_number'];
+                                        $latitude = $_POST['latitude'];
+                                        $langitude = $_POST['langitude'];
+                                        $branch_description = $_POST['branch_description'];
 										$status = $_POST['status'];
+
+										// echo $status;
 										
 									
-										mysql_query("UPDATE branch SET region='$region',branch_name='$branch_name',branch_address='$branch_address',phone_number='$phone_number',email='$email',longitude='$langitude',latitude='$latitude',branch_owner='$owner',branch_description='$branch_description',status='$status' where branch_id = '$get_id' ")or die(mysql_error());
+										mysql_query("UPDATE branch SET region='$region',branch_name='$branch_name',branch_address='$branch_address',branch_phone_number='$phone_number',branch_email='$email',longitude='$langitude',latitude='$latitude',branch_owner='$owner',branch_description='$branch_description',status='$status' where branch_id = '$get_id' ")or die(mysql_error());
 																		
 										//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Edit Branch $branch_name')")or die(mysql_error());
 										

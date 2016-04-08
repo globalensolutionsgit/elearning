@@ -89,3 +89,9 @@ text-align:center;
 .error {
     border: 2px solid red;
 }
+.inputError, .error_input_field, .form_text_areaError {
+  border: solid 1px #c82f2f !important;
+}
+/*.dropdown-menu{
+	display: none !important;
+}*/

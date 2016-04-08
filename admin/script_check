@@ -1,0 +1,21 @@
+
+<?php
+if(isset($_GET['sche_id'])){
+    
+    $check_schedule = $_GET['sche_id'];
+}else{
+    header('Location:404.php');
+}
+// echo "<pre>";
+// print_r(mysql_fetch_array($query2));
+// echo "</pre>";
+
+?>
+
+<div>
+
+echo "test";
+
+
+pl;/.;,/
+	</div>

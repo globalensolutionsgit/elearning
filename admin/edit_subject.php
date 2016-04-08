@@ -1,6 +1,13 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php $get_id = $_GET['id']; ?>
+<html>
+<head>
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -22,11 +29,11 @@
 										$query = mysql_query("select * from subject JOIN class ON class.class_id = subject.class_id where subject_id = '$get_id'")or die(mysql_error());
 										$row = mysql_fetch_array($query);
 									?>
-									    <form class="form-horizontal" method="post">
+									    <form class="form-horizontal" method="post" id="edit_subject_form">
 											<div class="control-group">
 												<label class="control-label" for="inputPassword">Subject Title</label>
 												<div class="controls">
-												<input type="text" value="<?php echo $row['subject_title']; ?>" class="span8" name="title" id="inputPassword" placeholder="Subject Title" required>
+												<input type="text" value="<?php echo $row['subject_title']; ?>" class="span8" name="title" id="firstname" placeholder="Subject Title">
 												</div>
 											</div>
 											<div class="control-group">
@@ -46,7 +53,7 @@
 											<div class="control-group">
 												<label class="control-label" for="inputPassword">Short Description</label>
 												<div class="controls">
-														<textarea name="s_description" id="ckeditor_full">
+														<textarea name="s_description" class="ckeditor_full">
 														<?php echo $row['short_description']; ?>
 														</textarea>
 												</div>
@@ -54,7 +61,7 @@
 											<div class="control-group">
 												<label class="control-label" for="inputPassword">Long Description</label>
 												<div class="controls">
-														<textarea name="l_description" id="ckeditor_full">
+														<textarea name="l_description" class="ckeditor_full">
 														<?php echo $row['long_description']; ?>
 														</textarea>
 												</div>
@@ -62,13 +69,13 @@
 											<div class="control-group">
 												<label class="control-label" for="inputEmail">Subject Code</label>
 												<div class="controls">
-												<input type="text" value="<?php echo $row['subject_code']; ?>" name="s_code" id="inputEmail" placeholder="Subject Code">
+												<input type="text" value="<?php echo $row['subject_code']; ?>" name="s_code" id="lastname" placeholder="Subject Code">
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="inputEmail">Status</label>
 												<div class="controls">
-												<input type="checkbox" id="inputEmail" <?php if($row['status']){ echo 'checked value="1"';} else { echo 'value="0"'; } ?> >
+												<input type="checkbox" id="inputEmail" <?php if($row['status']){ echo 'checked value="1"';} else { echo 'value="0"'; } ?> required>
 												</div>
 											</div>
 

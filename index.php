@@ -76,7 +76,7 @@
                         <div class="span6">
                         	<div class="student-form">
                             	<div class="header">
-                                	<h2>About Tution Centres</h2>
+                                	<h2>About Tuition Centres</h2>
 
                                 </div>
                                 <div class="form-data">

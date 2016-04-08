@@ -24,7 +24,7 @@
                                         </tr>
                                     </table>
                                     <table>
-                                        <tr><td colspan="7"><button type="button" class="print">Print</button></td></tr>
+                                        <tr><td colspan="7"><button type="button" class="print btn btn-success" style="display:none;">Print</button></td></tr>
                                     </table>
                                 </div>
                             </div>

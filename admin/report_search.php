@@ -1,7 +1,17 @@
 <!-- block -->
 <head>
     <link href="assets/datepicker.css">
+    <!--  // <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> -->
     <script src="assets/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+
+
+
+
+
 </head>
 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
@@ -12,7 +22,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
     </div>
     <div class="block-content collapse in">
         <div class="span12">
-            <form method="post" id="add_class">
+            <form method="post" id="add_class_report">
                <!--  <div class="control-group">
                     <label>Regions</label>
                     <div class="controls">
@@ -29,7 +39,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                 <div class="control-group">
                     <label>Teacher</label>
                     <div class="controls">
-                        <select name="user"  class="teachers_report" required>
+                        <select name="user"  class="teachers_report" id="report_select1">
                             <option></option>
                             <?php
                             $query = mysql_query("select * from users where user_type = 'teacher'");
@@ -43,7 +53,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                 <div class="control-group">
                     <label>Branch</label>
                     <div class="controls">
-                        <select name="branch"  class="branchs_report" required>
+                        <select name="branch"  class="branchs_report" id="report_select2">
                             <option></option>
                              <?php
                                 $query = mysql_query("select * from branch");
@@ -108,8 +118,8 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                  <div class="control-group">
                     <label>Month:</label>
                     <div class="controls">
-                        <select name="report_month[]" required>
-                            <option value="0"></option>
+                        <select name="report_month[]" class="report_select3">
+                            <option></option>
                             <option value="01">January </option>
                             <option value="02">February</option>
                             <option value="03">March </option>
@@ -122,15 +132,13 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                             <option value="10"> October</option>
                             <option value="11">November </option>
                             <option value="12">December </option>
-                       
                         </select>
-
                     </div>
                 </div>
                  <div class="control-group">
                     <label>Year:</label>
                     <div class="controls">
-                        <input type="text" id="datepicker_year" name="report_year" required>
+                        <input type="text" id="datepicker_year" name="report_year" class="report_select4" >
                     </div>
                 </div>
                 <!-- <div class="control-group">
@@ -158,7 +166,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
 
             <script>
                 jQuery(document).ready(function ($) {
-                    $("#add_class").submit(function (e) {
+                    $("#add_class_report").submit(function (e) {
                         e.preventDefault();
                         var _this = $(e.target);
                         var formData = $(this).serialize();
@@ -172,6 +180,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                                    $('.report').nextAll('tr').remove();
                                    $(data).insertAfter('.report');
                                    $('.total_result').text($('.report_heading tr').length-1);
+                                   $('.print').css('display','block');
                                 } else {
                                     $('.total_result').text('0');
                                     $('.report').nextAll('tr').remove();
