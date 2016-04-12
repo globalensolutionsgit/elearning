@@ -11,7 +11,7 @@
                 <div class="span6" id="">
                      <div class="row-fluid">
                         <!-- block -->
-                        <div id="block_bg" class="block">
+                       <!--  <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">Report List</div>
                             </div>
@@ -28,7 +28,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- /block -->
                     </div>
 

@@ -259,3 +259,9 @@ footer{
 	margin-left: 14px;
 	} 
 	
+.report_table th{
+	padding:10px;
+}
+.report_table .padding_column td{
+	padding:10px;
+}

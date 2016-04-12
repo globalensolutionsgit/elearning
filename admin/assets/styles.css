@@ -246,4 +246,12 @@ div.checker input{
 .datepicker-days{
   display: none !important;
 }
+.report_action_print {
+  text-align: center;
+}
+/*.print_align {
+  position: relative;
+  left: 30%;
+}*/
+
 

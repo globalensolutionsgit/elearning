@@ -1,4 +1,110 @@
 $(document).ready(function(){
+
+
+
+
+// added by siva
+//  check the table content is empty or not start
+$('.search_report').click(function() {
+
+var tbody_tuep = $("#tue_permanent");
+var tbody_tuet = $("#tue_temporarly");
+if (tbody_tuep.children().length == 0 && tbody_tuet.children().length == 0) {
+   // alert("tue_false");
+    $('#report_table_tue').css("display","none");
+     $('#tue_cation').css("display","none");
+    $("#report_table_tue").next("br").remove();
+     
+}
+else {
+    // alert("tue_true");
+}
+
+var tbody_wedp = $("#wed_permanent");
+var tbody_wedt = $("#wed_temporarly");
+if (tbody_wedp.children().length == 0 && tbody_wedt.children().length == 0) {
+   // alert("wed_false");
+    $('#report_table_wed').css("display","none");
+     $('#wed_cation').css("display","none");
+    $("#report_table_wed").next("br").remove();
+
+}
+else {
+    // alert("wed_true");
+}
+
+var tbody_thup = $("#thu_permanent");
+var tbody_thut = $("#thu_temporarly");
+if (tbody_thup.children().length == 0 && tbody_thut.children().length == 0) {
+   // alert("thu_false");
+    $('#report_table_thu').css("display","none");
+     $('#thu_cation').css("display","none");
+    $("#report_table_thu").next("br").remove();
+
+}
+else {
+    // alert("thu_true");
+}
+
+var tbody_frip = $("#fri_permanent");
+var tbody_frit = $("#fri_temporarly");
+if (tbody_frip.children().length == 0 && tbody_frit.children().length == 0) {
+   // alert("fri_false");
+   $('#report_table_fri').css("display","none");
+    $('#fri_cation').css("display","none");
+    $("#report_table_fri").next("br").remove();
+}
+else {
+    // alert("fri_true");
+}
+
+var tbody_satp = $("#sat_permanent");
+var tbody_satt = $("#sat_temporarly");
+if (tbody_satp.children().length == 0 && tbody_satt.children().length == 0) {
+   // alert("sat_false");
+    $('#report_table_sat').css("display","none");
+    $('#sat_cation').css("display","none");
+    $("#report_table_sat").next("br").remove();
+   // $("br").remove();
+}
+else {
+     // alert("sat_true");
+    // $('#report_table_sat').addClass("sss");
+    // $(this).parents('.report_table').hide();
+      // alert("sat_welcome");
+}
+
+var tbody_sunp = $("#sun_permanent");
+var tbody_sunt = $("#sun_temporarly");
+if (tbody_sunp.children().length == 0 && tbody_sunt.children().length == 0) {
+   // alert("sun_false");
+    $('#report_table_sun').css("display","none");
+     $('#sun_cation').css("display","none");
+      $("#report_table_sun").next("br").remove();
+     // $("br").remove();
+}
+else {
+    // alert("sun_true");
+}
+
+var tbody_monp = $("#mon_permanent");
+var tbody_mont = $("#mon_temporarly");
+if (tbody_monp.children().length == 0 && tbody_mont.children().length == 0) {
+   // alert("mon_false");
+    $('#report_table_mon').css("display","none");
+     $('#mon_cation').css("display","none");
+      $("#report_table_mon").next("br").remove();
+
+}
+else {
+    // alert("mon_true");
+}
+
+});
+//  check the table content is empty or not end
+
+
+
  //postevent datetimepicker settings
  $( ".dropdown-menu" ).addClass( "new_align" );
     $(function(){

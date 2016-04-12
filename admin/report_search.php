@@ -7,12 +7,9 @@
 <script type="text/javascript" src="assets/jquery.validate.min.js"></script>
 <script type="text/javascript" src="assets/actions.js"></script>
 <link rel="stylesheet" href="assets/style.css">
-
-
-
-
-
 </head>
+
+
 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 ?>
@@ -22,7 +19,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
     </div>
     <div class="block-content collapse in">
         <div class="span12">
-            <form method="post" id="add_class_report">
+            <form method="post" id="add_class_report" action="report_action.php">
                <!--  <div class="control-group">
                     <label>Regions</label>
                     <div class="controls">
@@ -159,12 +156,12 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                 </div> -->
                 <div class="control-group">
                     <div class="controls">
-                        <button name="save" class="btn btn-success">Search</button>
+                        <button name="save" class="btn btn-success search_report">Search</button>
                     </div>
                 </div>
             </form>
 
-            <script>
+           <!--  <script>
                 jQuery(document).ready(function ($) {
                     $("#add_class_report").submit(function (e) {
                         e.preventDefault();
@@ -191,7 +188,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         });
                     });
                 });
-            </script>
+            </script> -->
            
              <script>
 $("#datepicker_year").datepicker( {
@@ -205,3 +202,16 @@ $("#datepicker_year").datepicker( {
     </div>
 </div>
 <!-- /block -->
+
+
+
+
+
+
+
+
+
+
+         
+           
+        

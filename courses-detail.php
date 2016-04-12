@@ -1,3 +1,4 @@
+
 <?php require_once 'header_innerpage.php'; ?>
 <?php include('dbcon.php'); ?>
 <?php $get_id = $_GET['id']; ?>
@@ -16,7 +17,7 @@
                 <!--TUTOR PROFILE START-->
                 <?php
                 $query = mysql_query("select * from student_teacher_allocation
-                						JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
+                                        JOIN class_schedules on class_schedules.class_schedules_id = student_teacher_allocation.schedule_id 
                                         JOIN branch ON branch.branch_id = class_schedules.branch_id
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
