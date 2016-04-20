@@ -24,7 +24,7 @@
                             <i class="fa fa-cogs inner-icon"></i>
                         </div>
                         <div class="text">
-                            <h3><a href="courses.php">Enroll your Tutor</a></h3>
+                            <h3><a>Enroll your Tutor</a></h3>
 
                         </div>
                     </div>

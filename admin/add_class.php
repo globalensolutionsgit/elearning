@@ -39,7 +39,7 @@ alert('Date Already Exist');
 </script>
 <?php
 }else{
-mysql_query("insert into class (class_name) values('$class_name')")or die(mysql_error());
+mysql_query("insert into class (class_name,class_status) values('$class_name','1')")or die(mysql_error());
 ?>
 <script>
 window.location = "class.php";

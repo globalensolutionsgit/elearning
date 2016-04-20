@@ -3,167 +3,169 @@ $(document).ready(function(){
 
 
 
+
 // added by siva
 //  check the table content is empty or not start
-$('.search_report').click(function() {
+// $('.search_report').click(function() {
 
-var tbody_tuep = $("#tue_permanent");
-var tbody_tuet = $("#tue_temporarly");
-if (tbody_tuep.children().length == 0 && tbody_tuet.children().length == 0) {
-   // alert("tue_false");
-    $('#report_table_tue').css("display","none");
-     $('#tue_cation').css("display","none");
-    $("#report_table_tue").next("br").remove();
+// var tbody_tuep = $("#tue_permanent");
+// var tbody_tuet = $("#tue_temporarly");
+// if (tbody_tuep.children().length == 0 && tbody_tuet.children().length == 0) {
+//    // alert("tue_false");
+//     $('#report_table_tue').css("display","none");
+//      $('#tue_cation').css("display","none");
+//     $("#report_table_tue").next("br").remove();
      
-}
-else {
-    // alert("tue_true");
-}
+// }
+// else {
+//     // alert("tue_true");
+// }
 
-var tbody_wedp = $("#wed_permanent");
-var tbody_wedt = $("#wed_temporarly");
-if (tbody_wedp.children().length == 0 && tbody_wedt.children().length == 0) {
-   // alert("wed_false");
-    $('#report_table_wed').css("display","none");
-     $('#wed_cation').css("display","none");
-    $("#report_table_wed").next("br").remove();
+// var tbody_wedp = $("#wed_permanent");
+// var tbody_wedt = $("#wed_temporarly");
+// if (tbody_wedp.children().length == 0 && tbody_wedt.children().length == 0) {
+//    // alert("wed_false");
+//     $('#report_table_wed').css("display","none");
+//      $('#wed_cation').css("display","none");
+//     $("#report_table_wed").next("br").remove();
 
-}
-else {
-    // alert("wed_true");
-}
+// }
+// else {
+//     // alert("wed_true");
+// }
 
-var tbody_thup = $("#thu_permanent");
-var tbody_thut = $("#thu_temporarly");
-if (tbody_thup.children().length == 0 && tbody_thut.children().length == 0) {
-   // alert("thu_false");
-    $('#report_table_thu').css("display","none");
-     $('#thu_cation').css("display","none");
-    $("#report_table_thu").next("br").remove();
+// var tbody_thup = $("#thu_permanent");
+// var tbody_thut = $("#thu_temporarly");
+// if (tbody_thup.children().length == 0 && tbody_thut.children().length == 0) {
+//    // alert("thu_false");
+//     $('#report_table_thu').css("display","none");
+//      $('#thu_cation').css("display","none");
+//     $("#report_table_thu").next("br").remove();
 
-}
-else {
-    // alert("thu_true");
-}
+// }
+// else {
+//     // alert("thu_true");
+// }
 
-var tbody_frip = $("#fri_permanent");
-var tbody_frit = $("#fri_temporarly");
-if (tbody_frip.children().length == 0 && tbody_frit.children().length == 0) {
-   // alert("fri_false");
-   $('#report_table_fri').css("display","none");
-    $('#fri_cation').css("display","none");
-    $("#report_table_fri").next("br").remove();
-}
-else {
-    // alert("fri_true");
-}
+// var tbody_frip = $("#fri_permanent");
+// var tbody_frit = $("#fri_temporarly");
+// if (tbody_frip.children().length == 0 && tbody_frit.children().length == 0) {
+//    // alert("fri_false");
+//    $('#report_table_fri').css("display","none");
+//     $('#fri_cation').css("display","none");
+//     $("#report_table_fri").next("br").remove();
+// }
+// else {
+//     // alert("fri_true");
+// }
 
-var tbody_satp = $("#sat_permanent");
-var tbody_satt = $("#sat_temporarly");
-if (tbody_satp.children().length == 0 && tbody_satt.children().length == 0) {
-   // alert("sat_false");
-    $('#report_table_sat').css("display","none");
-    $('#sat_cation').css("display","none");
-    $("#report_table_sat").next("br").remove();
-   // $("br").remove();
-}
-else {
-     // alert("sat_true");
-    // $('#report_table_sat').addClass("sss");
-    // $(this).parents('.report_table').hide();
-      // alert("sat_welcome");
-}
+// var tbody_satp = $("#sat_permanent");
+// var tbody_satt = $("#sat_temporarly");
+// if (tbody_satp.children().length == 0 && tbody_satt.children().length == 0) {
+//    // alert("sat_false");
+//     $('#report_table_sat').css("display","none");
+//     $('#sat_cation').css("display","none");
+//     $("#report_table_sat").next("br").remove();
+//    // $("br").remove();
+// }
+// else {
+//      // alert("sat_true");
+//     // $('#report_table_sat').addClass("sss");
+//     // $(this).parents('.report_table').hide();
+//       // alert("sat_welcome");
+// }
 
-var tbody_sunp = $("#sun_permanent");
-var tbody_sunt = $("#sun_temporarly");
-if (tbody_sunp.children().length == 0 && tbody_sunt.children().length == 0) {
-   // alert("sun_false");
-    $('#report_table_sun').css("display","none");
-     $('#sun_cation').css("display","none");
-      $("#report_table_sun").next("br").remove();
-     // $("br").remove();
-}
-else {
-    // alert("sun_true");
-}
+// var tbody_sunp = $("#sun_permanent");
+// var tbody_sunt = $("#sun_temporarly");
+// if (tbody_sunp.children().length == 0 && tbody_sunt.children().length == 0) {
+//    // alert("sun_false");
+//     $('#report_table_sun').css("display","none");
+//      $('#sun_cation').css("display","none");
+//       $("#report_table_sun").next("br").remove();
+//      // $("br").remove();
+// }
+// else {
+//     // alert("sun_true");
+// }
 
-var tbody_monp = $("#mon_permanent");
-var tbody_mont = $("#mon_temporarly");
-if (tbody_monp.children().length == 0 && tbody_mont.children().length == 0) {
-   // alert("mon_false");
-    $('#report_table_mon').css("display","none");
-     $('#mon_cation').css("display","none");
-      $("#report_table_mon").next("br").remove();
+// var tbody_monp = $("#mon_permanent");
+// var tbody_mont = $("#mon_temporarly");
+// if (tbody_monp.children().length == 0 && tbody_mont.children().length == 0) {
+//    // alert("mon_false");
+//     $('#report_table_mon').css("display","none");
+//      $('#mon_cation').css("display","none");
+//       $("#report_table_mon").next("br").remove();
 
-}
-else {
-    // alert("mon_true");
-}
+// }
+// else {
+//     // alert("mon_true");
+// }
 
-});
+// });
 //  check the table content is empty or not end
 
 
 
  //postevent datetimepicker settings
- $( ".dropdown-menu" ).addClass( "new_align" );
-    $(function(){
-        $('#startdate,#enddate').datepicker({
-            // format:'Y-m-d H:i',
-            // format: 'dd-mm-yyyy',
-            format: 'yyyy-mm-dd',
-            onShow:function( ct ){
-                this.setOptions({
-                    maxDate:$('#enddate').val()?$('#enddate').val():false
-                })
-            },
-            timepicker:false,
-            validateOnBlur:true,
-            minDate:'+1970/01/02',
-            onClose:function( ct ){
-                $('#datetimepicker1').focus();
-            },
-        });
-        //commented by kalai
-        // $('#enddate').datetimepicker({
-        //     format:'Y-m-d H:i',
-        //     onShow:function( ct ){
-        //         var start_date = ($('#startdate').val());
-        //         var replace_date = start_date.replace(/-/g,'/');
-        //         var spilit_date = replace_date.split(/ +/);
-        //         this.setOptions({
-        //             minDate:$('#startdate').val()?spilit_date[0]:false,
-        //             minTime:$('#startdate').val()?spilit_date[1]:false,
-        //         })
-        //     },
-        //     timepicker:true,
-        //     validateOnBlur:true,
-        // });
 
-        //newly added by kalai
-        $('#starttime,#endtime').datetimepicker({
-            datepicker:false,
-            timepicker:true,
-            validateOnBlur:false,
-        });
-        $('#starttime,#endtime').change(function (e) {
-            $(this).val($(this).val().split(' ')[1]);
-        });
-        $('#startdatetime').datetimepicker({
-            format:'Y-m-d H:i',
-            onShow:function( ct ){
-                this.setOptions({
-                    maxDate:$('#enddate').val()?$('#enddate').val():false
-                })
-            },
-            timepicker:true,
-            validateOnBlur:true,
-            minDate:'+1970/01/02',
-            onClose:function( ct ){
-                $('#datetimepicker1').focus();
-            },
-        });
-    });// end postevent datetimepicker settings
+ // $('.dropdown-menu').eq(1).remove();
+    // $(function(){
+    //     $('#startdate,#enddate').datepicker({
+    //         // format:'Y-m-d H:i',
+    //         // format: 'dd-mm-yyyy',
+    //         format: 'yyyy-mm-dd',
+    //         onShow:function( ct ){
+    //             this.setOptions({
+    //                 maxDate:$('#enddate').val()?$('#enddate').val():false
+    //             })
+    //         },
+    //         timepicker:false,
+    //         validateOnBlur:true,
+    //         minDate:'+1970/01/02',
+    //         onClose:function( ct ){
+    //             $('#datetimepicker1').focus();
+    //         },
+    //     });
+    //     //commented by kalai
+    //     // $('#enddate').datetimepicker({
+    //     //     format:'Y-m-d H:i',
+    //     //     onShow:function( ct ){
+    //     //         var start_date = ($('#startdate').val());
+    //     //         var replace_date = start_date.replace(/-/g,'/');
+    //     //         var spilit_date = replace_date.split(/ +/);
+    //     //         this.setOptions({
+    //     //             minDate:$('#startdate').val()?spilit_date[0]:false,
+    //     //             minTime:$('#startdate').val()?spilit_date[1]:false,
+    //     //         })
+    //     //     },
+    //     //     timepicker:true,
+    //     //     validateOnBlur:true,
+    //     // });
+
+    //     //newly added by kalai
+    //     $('#starttime,#endtime').datetimepicker({
+    //         datepicker:false,
+    //         timepicker:true,
+    //         validateOnBlur:false,
+    //     });
+    //     $('#starttime,#endtime').change(function (e) {
+    //         $(this).val($(this).val().split(' ')[1]);
+    //     });
+    //     $('#startdatetime').datetimepicker({
+    //         format:'Y-m-d H:i',
+    //         onShow:function( ct ){
+    //             this.setOptions({
+    //                 maxDate:$('#enddate').val()?$('#enddate').val():false
+    //             })
+    //         },
+    //         timepicker:true,
+    //         validateOnBlur:true,
+    //         minDate:'+1970/01/02',
+    //         onClose:function( ct ){
+    //             $('#datetimepicker1').focus();
+    //         },
+    //     });
+    // });// end postevent datetimepicker settings
 
     $('.deactivate').click(function(e){
         var selected = [];
@@ -470,60 +472,117 @@ $('#add_class_allocate').submit(function() {
 		}
 	});
 
+// validation for Makeup_slots
 
- 
 
-    $('.btn_submit').click(function(){
-  
-        var box = $('.days:checked').length;
-       
-        if(box>=1 ){
-                 
-                  $('.days').each(function () {
-                    if($(this).is(':checked')){
-                  
-                    element = $(this).parents('.input_schedule').siblings('.clone_content');
-                    element.find('select').each(function(){
-                            if($(this).val() == ""){
-                                 // if($(this).val() == "" || $(this).parents('val() == ""){
-                                    
-                            $(this).addClass('error');
-                             
+$('.btn_submit').click(function(){
+    var box = $('.days:checked').length;
+    // alert(box);
+    if(box>0 ){
+        $('.days').each(function () {
+            if($(this).is(':checked')){
+                
 
-                        }
-                        else{
-                            $(this).removeClass('error');  
-                        
-                        }
-                    });
-                    
-                    }
-                   
+                // if($('.num_seats_validation').val()=="") {
+                // alert("test");
+                // $(this).css("border","1px solid red");
+                // // return false;
+                // }
+                // else {
+                //     alert("test2");
+                //   $('.num_seats_validation').css("border","10px solid black");    
+                // }
 
-              });   
-              if(element.find('select').hasClass('error')){
-                       return false;
-                      
+                
+                element = $(this).parents('.input_schedule').parents('.class_schedule_border').children('.clone_content');
+                element.find('select').each(function(){
+                    if($(this).val() == ""){
+                        // if($(this).val() == "" || $(this).parents('val() == ""){
+                        $(this).addClass('error');
                     }
                     else{
-                        $('#add_class').submit();
-                        
-                    }   
-        }else{
-           
-            element = $(this).parents('.form_submit').siblings('.clone_content');
-            // return false;
-            // if((box==0) && (element.find('select').hasClass('error')){
-            //     alert("yes");
-            //        element.removeClass('error');  
-            //         return false;
-            // }
-            //  else{
-            //     alert("Please select atleast one day");
-            //     return false;
-            //  }
+                        $(this).removeClass('error');
+                    }
+                });
+               
+            }  
+        });   
+        if(element.find('select').hasClass('error')){
+            alert('please select all fields');
+            return false;
+        }
+        else{
+        $('#add_class').submit();
+        // element = $(this).parents('.form_submit').siblings('.clone_content');
         }   
- });
+    }else{
+        alert("please select atleast one day");
+        return false;
+        // return false;
+        // if((box==0) && (element.find('select').hasClass('error')){
+        //     alert("yes");
+        //        element.removeClass('error');  
+        //         return false;
+        // }
+        //  else{
+        //     alert("Please select atleast one day");
+        //     return false;
+        //  }
+    }   
+});
+ 
+
+ //    $('.btn_submit').click(function(){
+  
+ //        var box = $('.days:checked').length;
+       
+ //        if(box>=1 ){
+                 
+ //                  $('.days').each(function () {
+ //                    if($(this).is(':checked')){
+                  
+ //                    element = $(this).parents('.input_schedule').siblings('.clone_content');
+ //                    element.find('select').each(function(){
+ //                            if($(this).val() == ""){
+ //                                 // if($(this).val() == "" || $(this).parents('val() == ""){
+                                    
+ //                            $(this).addClass('error');
+                             
+
+ //                        }
+ //                        else{
+ //                            $(this).removeClass('error');  
+                        
+ //                        }
+ //                    });
+                    
+ //                    }
+                   
+
+ //              });   
+ //              if(element.find('select').hasClass('error')){
+ //                       return false;
+                      
+ //                    }
+ //                    else{
+ //                        $('#add_class').submit();
+                        
+ //                    }   
+ //        }else{
+           
+ //            element = $(this).parents('.form_submit').siblings('.clone_content');
+ //            // return false;
+ //            // if((box==0) && (element.find('select').hasClass('error')){
+ //            //     alert("yes");
+ //            //        element.removeClass('error');  
+ //            //         return false;
+ //            // }
+ //            //  else{
+ //            //     alert("Please select atleast one day");
+ //            //     return false;
+ //            //  }
+ //        }   
+ // });
 
  
 
@@ -643,11 +702,25 @@ $('#add_class_allocate').submit(function() {
         return true;
     });
     
-$('.year').click(function() {
-$('.dropdown-menu').hide();
+// $('.table-condensed').click(function() {
+
+// $(".dropdown-menu:last").addClass( "new_align2" );
+//  // $('.dropdown-menu').hide();
  
+// });
+
+//  // $( ".dropdown-menu" ).addClass( "new_align" );
+
+// ui-datepicker-inline
+// $(".ui-datepicker-inline").addClass( "new_align2" );
+$('.table-condensed tbody').click(function() {
+
+
+ $('.dropdown-menu').hide();
  
 });
+
+
 
 
 });

@@ -23,7 +23,8 @@
 										  <tr>
 											    <th></th>
 												<th>Subject Title</th>
-												<th>Class</th>
+												<th>Classname</th>
+												<th>Edit</th>
                                                 
 												
 										   </tr>

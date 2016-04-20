@@ -8,9 +8,37 @@ $(document).ready(function() {
 
 // added by siva
 
-$('#attened_student').submit(function() {
-        var error = 0;
-        if (!($('.attend_student').is(':checked'))) {
+$('.pop_up_values').click(function(){
+    // alert("test");
+
+    var t= $(this).attr('value');
+
+    // alert(t);
+
+   $(this).parents('.reschedule').find('#pop_up_querystring').attr("href",t);
+//     var qd = {};
+// location.search.substr(1).split("&").forEach(function(item) {(item.split("=")[0] in qd) ? qd[item.split("=")[0]].push(item.split("=")[1]) : qd[item.split("=")[0]] = [item.split("=")[1]]})
+// alert(qd);
+});
+
+// $('#attened_student').submit(function() {
+//         var error = 0;
+//         if (!($(this).parents('.class_details').find('.attend_student').is(':checked'))) {
+//             error = 1
+//             alert("Please select atleast one student");
+//         }
+
+//         if (error) {
+//             return false;
+//         } else {
+//             return true;
+//         }
+
+    // });
+   $('.click_submit').click(function() {
+// $(this).parents('.class_details').find('.view_student_list').hide();
+ var error = 0;
+        if (!($(this).parents('.class_details').find('.attend_student').is(':checked'))) {
             error = 1
             alert("Please select atleast one student");
         }
@@ -20,8 +48,26 @@ $('#attened_student').submit(function() {
         } else {
             return true;
         }
+});
 
+
+
+
+
+    $('.view_student_list').click(function(){
+        // alert('asdfasdfasdf');
+                // $('.menus').show();
+if($(this).parents('.class_details').find('.student_list_front,.menus').is(":visible")) {
+        $(this).parents('.class_details').find('.student_list_front,.menus').hide();
+   }
+        // alert('asdfasdfasdf');
+      else {          // $('.menus').show();
+        $(this).parents('.class_details').find('.student_list_front,.menus').show();
+    }
     });
+
+
+
 	
 // $('#close_schecule').on('click',function()) {
 // 	alert("do u want to delete");
@@ -125,17 +171,6 @@ $('#attened_student').submit(function() {
 
 
 
-    $('.view_student_list').click(function(){
-        // alert('asdfasdfasdf');
-                // $('.menus').show();
-if($(this).parents('.class_details').find('.student_list_front,.menus').is(":visible")) {
-        $(this).parents('.class_details').find('.student_list_front,.menus').hide();
-   }
-        // alert('asdfasdfasdf');
-      else {          // $('.menus').show();
-        $(this).parents('.class_details').find('.student_list_front,.menus').show();
-    }
-    });
 
 
 
@@ -184,9 +219,7 @@ if($(this).parents('.class_details').find('.student_list_front,.menus').is(":vis
         addrow--;
     }
     });
-    $('.click_submit').click(function() {
-$(this).parents('.class_details').find('.view_student_list').hide();
-});
+ 
 
 
 

@@ -1,14 +1,4 @@
-<html>
-<head>
-  
 
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-
-</head>
-<body>
 
 
 <?php
@@ -16,6 +6,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
 $classes = array('PR' => 'Primary', 'SEC' => 'Secondary', 'PSEC' => 'Post Secondary');
 $get_id = $_GET['id'];
 $user_type = $_GET['user_type'];
+// $get_class_id=$_GET['id3'];
 ?>   
 <div class="row-fluid">
 	<?php if($_GET['user_type']=='student'){ ?>
@@ -28,17 +19,28 @@ $user_type = $_GET['user_type'];
     <!-- block -->
 	<div class="block">
 		<div class="navbar navbar-inner block-header">
-			<div class="muted pull-left">Edit User</div>
+			<div class="muted pull-left user_type_label">Edit User-
+				<?php if($_GET['user_type']=='student'){ ?>
+							<label>Student</label>
+							<?php } else if($_GET['user_type']=='teacher'){?>
+							<label>Teacher</label>
+							<?php } else {?>
+							<label>Admin</label>
+							<?php } ?>
+			</div>
 		</div>
 		<div class="block-content collapse in">
 			<div class="span12">
 				<?php
 					$query = mysql_query("select * from users where user_id = '$get_id' and user_type = '$user_type'")or die(mysql_error());
 					$row = mysql_fetch_array($query);
+					if($user_type=='student') {
+					$get_class_id=$row['classes'];
+				}
 				?>
 				<form method="post" id="edit_user_form">
 					<div class="control-group">
-						<div class="controls">
+						<div class="controls user_type_drop">
 							<?php if($_GET['user_type']=='student'){ ?>
 								<select name='user_type'>
 									<option value="student">Student</option>
@@ -56,37 +58,59 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="firstname" type="text" placeholder = "Firstname">
+							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="firstname" type="text" placeholder="Enter firstname">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" type="text" placeholder = "Lastname" >
+							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" type="text" placeholder="Enter lastname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="username" type="text" placeholder = "Username" >
+							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="username" type="text" placeholder="Enter username">
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="password" type="password" placeholder = "password" maxlength="10">
+							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="password" type="password" placeholder="Enter password" maxlength="10">
 					    </div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone" id="phone" type="text" placeholder = "Phone number">
+							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone" maxlength="10" id="phone" type="text" placeholder="Enter phonenumber">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="email" type="text" placeholder = "Email" >
+							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="email" type="text" placeholder="Enter email">
 					    </div>
 					</div>
 					<!-- newly added by siva -->
-					<!-- region -->				
+					<!-- region -->	
+					<?php
+						if ($user_type=="admin") {?>			
 					<div class="control-group">
+						<div class="controls">
+							<select name='region' class="regions_admin" >
+								<?php
+									foreach ($regions as $key => $value) {
+									if($key == $row['region']){
+										echo "<option value=" . $key . " selected>" . $value . "</option>";
+									}else{
+										echo "<option value=" . $key . ">" . $value . "</option>";
+									}
+									
+								} ?>
+							</select>
+						</div>
+					</div>
+					<?php
+						} ?>
+
+					<?php
+						if ($user_type=="student") {?>
+						<div class="control-group">
 						<div class="controls">
 							<select name='region' class="regions" >
 								<?php
@@ -101,8 +125,6 @@ $user_type = $_GET['user_type'];
 							</select>
 						</div>
 					</div>
-					<?php
-						if ($user_type=="student") {?>
 						<!-- branch -->   
 							<div class="control-group">
 								<div class="controls">
@@ -120,28 +142,114 @@ $user_type = $_GET['user_type'];
 							<!-- class -->
 							<div class="control-group">
 								<div class="controls">
-									<select name="classes">
+									<!-- <select name="classes">
 										<?php
-											foreach ($classes as $key => $value) {
-											echo "<option value=" . $key . ">" . $value . "</option>";
-										} ?>
+											// foreach ($classes as $key => $value) {
+											// echo "<option value=" . $key . ">" . $value . "</option>";
+										// } 
+										?>
+									</select> -->
+									<?php
+		                                    $query1 = mysql_query("SELECT * from class")or die(mysql_error());
+	                                    	$count1 = mysql_num_rows($query1);
+	                                    	$query_class_name = mysql_query("SELECT * from class where class_id='$get_class_id'")or die(mysql_error());
+	                                    	$row_class_name = mysql_fetch_array($query_class_name);
+	                                    	$class_id2=$row_class_name['class_id'];
+	                                    	if ($count1 != '0') {
+	                                    	?>
+
+
+									<select name="classes" value="select" id="sel3">
+									<!--     <option>Select Class</option> -->
+									     <?php while ($row1 = mysql_fetch_array($query1)) { 
+									     $class_id1=$row1['class_id']; 
+
+
+if($class_id1==$class_id2)  { ?>
+	<option value="<?php echo $row1['class_id']; ?>" selected><?php echo $row1['class_name']; ?></option>
+<?php }
+else { ?>
+	<option value="<?php echo $row1['class_id']; ?>"><?php echo $row1['class_name']; ?></option>
+
+									     	
+			                             <?php } }?>
 									</select>
+									<?php } ?>
+
+
+
 								</div>
 							</div>
 					<?php } ?>
 					<?php
                                 if ($user_type=="teacher") {?>
+                                <div class="control-group">
+						<div class="controls">
+							<select name='region' class="regions" >
+								<?php
+									foreach ($regions as $key => $value) {
+									if($key == $row['region']){
+										echo "<option value=" . $key . " selected>" . $value . "</option>";
+									}else{
+										echo "<option value=" . $key . ">" . $value . "</option>";
+									}
+									
+								} ?>
+							</select>
+						</div>
+					</div>
 									<div class="control-group">
-										<div class="controls">
-											<select class="branchs" name="branch" id="sel4">
-												<option>Select branch</option>
-											</select>
-										</div>
-									</div>
-                              		<div class="control-group">
+								<div class="controls">
+									<select class="branchs" name="branch" id="sel2">
+										<?php
+											$branch_selected=$row['city'];
+											$res=mysql_query("SELECT b.branch_name,b.branch_id,u.city FROM branch AS b INNER JOIN users AS u ON b.branch_id=$branch_selected");
+											$row1=mysql_fetch_array($res);
+										?>										
+										<option value="<?php echo $row1['branch_id']; ?>"><?php echo $row1['branch_name']; ?></option>
+									</select>
+							
+								</div>
+							</div>
+                              		<!-- <div class="control-group">
                                 		<div class="controls">                                   
 		                                    <?php
-		                                    $query = mysql_query("SELECT
+		                                    // $query = mysql_query("SELECT
+		                                    //                         cl.class_id,
+		                                    //                         su.class_id,
+		                                    //                         cl.class_name,
+		                                    //                         su.subject_title,
+		                                    //                         su.subject_id
+		                                    //                         FROM
+		                                    //                         class AS cl
+		                                    //                         INNER JOIN `subject` AS su
+		                                    //                         WHERE
+		                                    //                         cl.class_id = su.class_id")or die(mysql_error());
+	                                    	// $count = mysql_num_rows($query);
+	                                    	// if ($count != '0')
+	                                    	 // {
+	                                    	?>
+		                                    <select class="" name="preference_classsubject[]" id="teacher_class" multiple data-validation="required">
+			                                    <option>Select class</option>
+			                                    <?php 
+			                                    // while ($row = mysql_fetch_array($query)) { ?>
+			                                	<option value="<?php 
+			                                	// echo $row['class_id'] . '-' . $row['subject_id']; ?>">
+			        								<?php 
+			        								// echo $row['class_name'] . '-' . $row['subject_title']; ?>
+			                                    </option>
+			    								<?php 
+			    								// } ?>
+		                                    </select>
+											<?php 
+											// } ?>
+                                		</div>
+                          			</div>
+-->
+<div class="control-group">
+                                		<div class="controls" id="select5">                                   
+		                                    <?php
+		                                    $query_class = mysql_query("SELECT
 		                                                            cl.class_id,
 		                                                            su.class_id,
 		                                                            cl.class_name,
@@ -152,14 +260,14 @@ $user_type = $_GET['user_type'];
 		                                                            INNER JOIN `subject` AS su
 		                                                            WHERE
 		                                                            cl.class_id = su.class_id")or die(mysql_error());
-	                                    	$count = mysql_num_rows($query);
-	                                    	if ($count != '0') {
+	                                    	$count_class = mysql_num_rows($query_class);
+	                                    	if ($count_class != '0') {
 	                                    	?>
-		                                    <select class="" name="preference_classsubject[]" id="teacher_class" multiple data-validation="required">
-			                                    <option>Select class</option>
-			                                    <?php while ($row = mysql_fetch_array($query)) { ?>
-			                                	<option value="<?php echo $row['class_id'] . '-' . $row['subject_id']; ?>">
-			        								<?php echo $row['class_name'] . '-' . $row['subject_title']; ?>
+		                                    <select class="sel5" name="preference_classsubject[]" value="select" id="teacher_class" multiple data-validation="required">
+			                                    <option selected>Select class</option>
+			                                    <?php while ($row_class = mysql_fetch_array($query_class)) { ?>
+			                                	<option value="<?php echo $row_class['class_id'] . '-' . $row_class['subject_id']; ?>">
+			        								<?php echo $row_class['class_name'] . '-' . $row_class['subject_title']; ?>
 			                                    </option>
 			    								<?php } ?>
 		                                    </select>
@@ -167,8 +275,8 @@ $user_type = $_GET['user_type'];
                                 		</div>
                           			</div>
                               <?php
-                                }
-                              ?>
+                                 }
+                              ?> 
 					<div class="control-group">
 						<div class="controls">
 							<textarea name="description"><?php echo $row['description']; ?></textarea>
@@ -220,11 +328,10 @@ $user_type = $_GET['user_type'];
 		}else if($user_type == 'student'){
 			mysql_query("update users set username='$username',city='$city', firstname = '$firstname' , classes='$classes',lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
 		}
-		echo "<script>alert('Data Updated Successfully!');window.location = 'edit_user.php?user_type=".$user_type."&id=".$get_id."';</script>";
+		echo "<script>alert('Data Updated Successfully!');
+		window.location = 'admin_user.php?user_type=".$user_type."';</script>";
 	
 	}
 ?>
 
 
-</body>
-</html>

@@ -1,14 +1,4 @@
-<html>
-<head>
-  
 
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-
-</head>
-<body>
 	 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 //$classes = array('PR' => 'Primary', 'SEC' => 'Secondary', 'PSEC' => 'Post Secondary');
@@ -19,13 +9,21 @@ $user_type = $_GET['user_type'];
     <!-- block -->
     <div class="block">
 		<div class="navbar navbar-inner block-header">
-			<div class="muted pull-left">Add User</div>
+			<div class="muted pull-left user_type_label">Add User -
+							<?php if($_GET['user_type']=='student'){ ?>
+							<label>Student</label>
+							<?php } else if($_GET['user_type']=='teacher'){?>
+							<label>Teacher</label>
+							<?php } else {?>
+							<label>Admin</label>
+							<?php } ?>
+			</div>
 		</div>
 		<div class="block-content collapse in">
 			<div class="span12">
 				<form method="post" enctype="multipart/form-data" name="consult_form" class="consult_form" id="consult_form">
 					<div class="control-group">
-					    <div class="controls">
+					    <div class="controls user_type_drop">
 							<?php if($_GET['user_type']=='student'){ ?>
 								<select name='user_type'>
 									<option value="student">Student</option>
@@ -43,40 +41,64 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input_field" name="firstname" id="firstname" type="text" value="First Name"  placeholder="enter firstname">
+							<input class="input_field" name="firstname" id="firstname" type="text" value=""  placeholder="Enter firstname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							                	
                             	
-                            <input class="input focused input_field" name="lastname" id="lastname" type="text" value="Last Name"  placeholder="enter lastname">
+                            <input class="input focused input_field" name="lastname" id="lastname" type="text" value=""  placeholder="Enter lastname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused input_field" name="username" id="username" type="text" value="User Name"  placeholder="enter username">
+							<input class="input focused input_field" name="username" id="username" type="text" value=""  placeholder="Enter username">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused input_field password" name="password" id="password" type="password" value=""  placeholder="password" maxlength="10" >
+							<input class="input focused input_field" name="password" id="password" type="password" value=""  placeholder="Enter password" maxlength="10" >
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
 					    	
-							<input class="input focused input_field" name="phone" id="phone" type="text" value="Phone Number" maxlength="10"  placeholder="enter phonenumber">
+							<input class="input focused input_field" name="phone" id="phone" type="text" value="" maxlength="10"  placeholder="Enter phonenumber">
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							
-							<input class="input focused input_field" name="email" id="email" type="text" value="Email Address"  placeholder="enter email">
+							<input class="input focused input_field" name="email" id="email" type="text" value=""  placeholder="Enter email">
 						</div>
 					</div>
 					<!-- newly added by kalai -->
+					<?php
+						if ($user_type=="admin") {?>
 					<div class="control-group">
+						<div class="controls" id="select1">
+							<select name='region' class="regions_admin" id="sel1" value="Select Region" >
+								<option>Select Region</option>
+								<option value="NS">North Singapore</option>
+								<option value="NES">North East Singapore</option>
+								<option value="ES">East Singapore</option>
+								<option value="CS">Central Singapore</option>
+								<option value="WS">West Singapore</option>
+
+								<?php
+									// foreach ($regions as $key => $value) {
+									// 	echo "<option value=" . $key . ">" . $value . "</option>";
+									// 	} ?>
+							</select>
+						</div>
+					</div>
+					<?php
+						}  ?>
+					<!-- student -->    
+					<?php
+						if ($user_type=="student") {?>
+						<div class="control-group">
 						<div class="controls" id="select1">
 							<select name='region' class="regions" id="sel1" value="Select Region" >
 								<option>Select Region</option>
@@ -93,9 +115,6 @@ $user_type = $_GET['user_type'];
 							</select>
 						</div>
 					</div>
-					<!-- student -->    
-					<?php
-						if ($user_type=="student") {?>
 						    <div class="control-group">
 								<div class="controls" id="select2">
 									<select class="branchs" name="branch" id="sel2" value="Select Branch">
@@ -122,6 +141,23 @@ $user_type = $_GET['user_type'];
 						    <?php } ?>
 							<?php
                                 if ($user_type=="teacher") {?>
+                                <div class="control-group">
+						<div class="controls" id="select1">
+							<select name='region' class="regions" id="sel1" value="Select Region" >
+								<option>Select Region</option>
+								<option value="NS">North Singapore</option>
+								<option value="NES">North East Singapore</option>
+								<option value="ES">East Singapore</option>
+								<option value="CS">Central Singapore</option>
+								<option value="WS">West Singapore</option>
+
+								<?php
+									// foreach ($regions as $key => $value) {
+									// 	echo "<option value=" . $key . ">" . $value . "</option>";
+									// 	} ?>
+							</select>
+						</div>
+					</div>
 									<div class="control-group">
 										<div class="controls" id="select4">
 											<select class="branchs" name="branch" value="select" id="sel4">
@@ -147,7 +183,7 @@ $user_type = $_GET['user_type'];
 	                                    	if ($count != '0') {
 	                                    	?>
 		                                    <select class="sel5" name="preference_classsubject[]" value="select" id="teacher_class" multiple data-validation="required">
-			                                    <option selected>Select class</option>
+			                                    <label>Sdgfg</label>
 			                                    <?php while ($row = mysql_fetch_array($query)) { ?>
 			                                	<option value="<?php echo $row['class_id'] . '-' . $row['subject_id']; ?>">
 			        								<?php echo $row['class_name'] . '-' . $row['subject_title']; ?>
@@ -173,8 +209,8 @@ $user_type = $_GET['user_type'];
                             </div>
 							<div class="control-group">
                           		<div class="controls">
-                                	<input type="radio" value='1' name="gender" class="gender" required>Male
-									<input type="radio" value='2'  name="gender" class="gender" required>Female
+                                	<input type="radio" value='1' name="gender" class="gender" checked>Male
+									<input type="radio" value='2'  name="gender" class="gender" >Female
                               	</div>
                             </div>
                             <!-- commented by kalai -->
@@ -236,12 +272,13 @@ $user_type = $_GET['user_type'];
     // move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
 
 
-$query = mysql_query("select * from users where username = '$username' and password = '$password' and firstname = '$firstname' and password = '$password' ")or die(mysql_error());
+$query = mysql_query("select * from users where username = '$username' or email='$email'")or die(mysql_error());
 $count = mysql_num_rows($query);
 
 if ($count > 0){ ?>
 <script>
-alert('Data Already Exist');
+alert('Username or Mailid Already Exist');
+
 </script>
 <?php
 }else{
@@ -258,7 +295,7 @@ alert('Data Already Exist');
 // mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,photo,gender,city,description,region,classes) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$location','$gender','$description','$region',$classes)")or die(mysql_error());
 if ($user_type=="teacher") {
 $city = $_POST['branch'];
-mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region,city) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region','$city')")or die(mysql_error());
+mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region,city,status) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region','$city','1')")or die(mysql_error());
 	
 	$lastuserId = mysql_insert_id();
 foreach ($_POST['preference_classsubject'] as $key => $value) {
@@ -270,10 +307,10 @@ foreach ($_POST['preference_classsubject'] as $key => $value) {
 else if($user_type=="student"){
 $classes = $_POST['classes'];
 $city = $_POST['branch'];
-mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region,classes,city) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region','$classes','$city')")or die(mysql_error());
+mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region,classes,city,status) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region','$classes','$city','1')")or die(mysql_error());
 }
 else if($user_type=="admin"){
-mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region')")or die(mysql_error());
+mysql_query("insert into users (user_type,username,password,firstname,lastname,phone_number,email,gender,description,region,status) values('$user_type','$username','$password','$firstname','$lastname','$phone_number','$email','$gender','$description','$region','1')")or die(mysql_error());
 }
 ?>
 <script>
@@ -284,5 +321,3 @@ alert('Data Inserted Successfully!');
 }
 }
 ?>
-</body>
-</html>

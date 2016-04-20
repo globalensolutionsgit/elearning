@@ -38,10 +38,11 @@
 												while($row = mysql_fetch_array($subject_query)){
                                                     $classid = $row['class_id'];
 												    $branch_id=$row['branch_id'];
+                                                    $id=$row['class_schedules_id'];
                                                 ?>
                                                 <tr>
                                                     <td width="30">
-                                                        <input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
+                                                        <input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id;?>">
                                                     </td>
                                                     <td><?php echo $row['branch_name'];  ?></td>
                                                     <td><?php echo $row['firstname'];  ?></td>

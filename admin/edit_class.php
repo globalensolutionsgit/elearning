@@ -5,7 +5,9 @@
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('class_sidebar.php'); ?>
+				<?php 
+				// include('class_sidebar.php'); ?>
+				<?php include('sidebar_dashboard.php'); ?>
 				<div class="span3" id="adduser">
 				<?php include('edit_class_form.php'); ?>		   			
 				</div>
@@ -25,7 +27,7 @@
 									<thead>
 										  <tr>
 													<th></th>
-													<th>Course Year And Section</th>
+													<th>Classname</th>
 													<th></th>
 										   </tr>
 										</thead>

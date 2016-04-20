@@ -1,16 +1,11 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); ?> 
+<body>
 <?php include('session.php'); 
 $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'East Singapore', 'CS'=>'Central Singapore', 'WS'=>'West Singapore');
 ?>
 <?php $get_id = $_GET['id']; ?>
-<html>
-<head>
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-    <body>
+
+   
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
@@ -78,7 +73,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Phone No.</label>
 											<div class="controls">
-												<input type="text" value="<?php echo $row['branch_phone_number']; ?>" name="phone_number" id="phone" placeholder="Branch Phone">
+												<input type="text" value="<?php echo $row['branch_phone_number']; ?>" name="phone_number" id="phone" maxlength="10" placeholder="Branch Phone">
 											</div>
 										</div>
 										<div class="control-group">
@@ -104,10 +99,10 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 											<div class="controls">
                                                                                             <?php if($row['status']=='1'){ ?>
                                                                                             <input type="checkbox" name="status" value="1" checked required>
-                                                                                            <input type="hidden" name="status" value="0" checked >
+                                                                                            <!-- <input type="hidden" name="status" value="0" > -->
                                                                                             <?php } else{ ?>
                                                                                             <input type="checkbox" name="status" value="0" >
-                                                                                            <input type="hidden" name="status" value="1" checked>
+                                                                                            <!-- <input type="hidden" name="status" value="1" checked> -->
                                                                                             <?php } ?>
 										
                                                    <!-- <input type="checkbox" name="status"  <?php 
@@ -143,11 +138,26 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										$status = $_POST['status'];
 
 										// echo $status;
+
 										
-									
+										$query_branch = mysql_query("select * from branch where branch_id !='$get_id' and region='$region'")or die(mysql_error());
+										// $count = mysql_num_rows($query);
+									while($row_branch=mysql_fetch_array($query_branch)) {
+										
+										if ($branch_name==$row_branch['branch_name'])  {  
+											?>
+										<script>
+										alert('Data Already Exist');
+										</script>
+										<?php
+										}
+										else{
 										mysql_query("UPDATE branch SET region='$region',branch_name='$branch_name',branch_address='$branch_address',branch_phone_number='$phone_number',branch_email='$email',longitude='$langitude',latitude='$latitude',branch_owner='$owner',branch_description='$branch_description',status='$status' where branch_id = '$get_id' ")or die(mysql_error());
-																		
-										//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Edit Branch $branch_name')")or die(mysql_error());
+																	
+										
+										//mysql_query("insert into activity_log (date,username,action) values(NOW(),'$user_username','Add Branch $branch_name')")or die(mysql_error());
+									}
+										
 										
 										?>
 										<script>
@@ -155,8 +165,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										</script>
 										<?php
 										}
-										
-										
+										}
 										?>
 									
 								

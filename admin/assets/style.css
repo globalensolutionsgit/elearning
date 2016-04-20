@@ -95,3 +95,16 @@ text-align:center;
 /*.dropdown-menu{
 	display: none !important;
 }*/
+.report_form_align {
+    margin: 17px 0 27px;
+}
+.new_align2 {
+    display: none !important;
+}
+/*.report_select4 {
+	height: 30px !important;
+}*/
+.error_multiselect {
+  border: solid 1px #c82f2f !important;
+    border-radius: 6px;
+}

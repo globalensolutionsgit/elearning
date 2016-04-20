@@ -15,6 +15,9 @@ body {
     height: 150px;
     overflow: auto;
 }
+.ui-datepicker-inline {
+  display: none !important;
+}
 
 #login .form-signin {
     max-width: 300px;
@@ -93,7 +96,7 @@ body {
 	background: url("../images/pixel-60fff.png") repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
 	border: 1px solid #ccc;
 	background: white;
-	margin: 1em 0em;
+	margin: 2em 0em;
 	border-top: none;
 	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 6, 0.75);
 	-moz-box-shadow:    2px 2px 5px rgba(0, 0, 6, 0.75);
@@ -253,5 +256,31 @@ div.checker input{
   position: relative;
   left: 30%;
 }*/
-
-
+/*Multi select dropbox css*/
+.ui-multiselect-checkboxes {
+ background-color: #fff;
+    height: 175px;
+    list-style: outside none none;
+    padding: 0 7px;
+    width: 200px;
+  }
+  .ui-widget-header {
+    display: none;
+  }
+  .ui-multiselect {
+    width: 221px !important;
+  }
+  .user_type_drop select{
+    display: none;
+  }
+  
+  .user_type_label label {
+    display: inline;
+  }
+  /*Css for removing forward and backward symbol in number input field*/
+  .num_of_seats {
+    -moz-appearance: textfield;
+  }
+  .error_number_field {
+    border:1px solid red;
+  }

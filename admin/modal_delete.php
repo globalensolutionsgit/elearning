@@ -123,10 +123,10 @@
 
 <!-- delete view schedules -->
 
-<div id="view_delete" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="view_delete" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-					<h3 id="myModalLabel">Delete Subject?</h3>
+					<h3 id="myModalLabel">Delete Schedule?</h3>
 					</div>
 					<div class="modal-body">
 					<div class="alert alert-danger">

@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
 	// $("#password").val('');
 		for (i=0;i<required.length;i++) {
 			var input = jQuery('#'+required[i]);
-			if ((input.val() == "First Name") || (input.val() == "Last Name") || (input.val() == "Phone Number") || (input.val() == "Zipcode") || (input.val() == "Email Address") || (input.val() == "User Name") || (input.val() == "") || (input.val() == emptyerror)) {
+			if ((input.val() == "") || (input.val() == "") || (input.val() == "") || (input.val() == "") || (input.val() == "") || (input.val() == "") || (input.val() == "") || (input.val() == emptyerror)) {
 				input.addClass("error_input_field");
 				// $('#information_bar').addClass('error_h');
 			} 
@@ -181,8 +181,15 @@ if ($('#sel1').val() == "Select Region") {
 			return false;
 		} else {
 			errornotice.hide();
+			var options = $('#teacher_class > option:selected');
+         if(options.length == 0){
+             alert('please select all fields');
+             return false;
+		} else {
 			return true;
 		}
+		}
+
 	});
 	
 	
@@ -626,6 +633,7 @@ for (i=0;i<required.length;i++) {
 			return true;
 		}
 	});  // validation for edit_subject_form end
+
 
 
 

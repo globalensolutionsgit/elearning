@@ -32,7 +32,7 @@ require_once 'dbcon.php';    //include of db config file
     </div>
 </div>
 <!--BANNER END-->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
 <!--CONTANT START-->
 <div class="contant">
     <div class="container">
@@ -92,6 +92,9 @@ require_once 'dbcon.php';    //include of db config file
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
                                         JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day1'");
+        
+
+
         ?>
         <div class="row">
             <div class="span9">
@@ -109,14 +112,19 @@ require_once 'dbcon.php';    //include of db config file
                                     </div>
                                     <div class="text">
                                         <div class="header">
-                                            <h4><?php echo $row['class_name']; ?></h4>
-                                            <span class="close_class_button">
-                            <a href="delete_schedule_student.php<?php echo '?id='.$row['student_id'].'&id2='.$row['schedule_id']; ?>"><i class="fa fa-times-circle" title="delete schedule permanently"></i></a>
-                                            </span>
+                             <?php               $class_id=$row['class_id'];
+ $query_class_name=mysql_query("select * from class where class_id='$class_id'"); 
+$rows_class_name=mysql_fetch_array($query_class_name);
+
+ ?>
+                                            <h4><?php echo $rows_class_name['class_name']; ?></h4>
+                                            <!-- <span class="close_class_button" id="close_schedule">
+                            <a ><i class="fa fa-times-circle" title="delete schedule permanently"></i></a>
+                                            </span> -->
                                             </div>
 
 <!-- popup for delete -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:50%;">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:50%;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -134,7 +142,7 @@ require_once 'dbcon.php';    //include of db config file
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 
 
@@ -277,7 +285,13 @@ require_once 'dbcon.php';    //include of db config file
             </div>
             <div class="text">
                 <div class="header">
-                    <h4><?php echo $row2['class_name']; ?></h4> 
+                                         <?php               
+                                         $class_id=$row2['class_id'];
+ $query_class_name=mysql_query("select * from class where class_id='$class_id'"); 
+$rows_class_name=mysql_fetch_array($query_class_name);
+
+ ?>
+                    <h4><?php echo $rows_class_name['class_name']; ?></h4> 
                     <div class="rating">
                         <?php echo $row2['subject_title']; ?>
                     </div>
@@ -349,7 +363,7 @@ require_once 'dbcon.php';    //include of db config file
 
 
 
-<!-- 
+
 
 <script>
 $(document).ready(function () {
@@ -359,7 +373,7 @@ $(document).ready(function () {
     });
 });
 </script>
- -->
+
 
 
 

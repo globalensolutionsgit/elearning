@@ -1,5 +1,7 @@
-<?php include('session.php'); ?>
+
 <?php require_once 'header_innerpage.php'; ?>
+<?php 
+// include('session.php'); ?>
 <?php
 // print_r($_POST['student']);
 if(isset($_POST['submit'])){
@@ -19,9 +21,27 @@ if(isset($_POST['submit'])){
 
     if(!empty($_POST['student'])) {
         foreach($_POST['student'] as $stu_id) {
+
+// addedd by siva
+                mysql_query("delete from class_attend_students where branch_id='$branch_id' and class_id='$class_id' and subject_id='$subject_id' and student_id='$stu_id' and teacher_id='$teacher_id' and class_date='$start_date' and class_starttime='$start_time' and class_endtime='$end_time'");
+
                 //commented by kalai
                 // mysql_query("insert into class_attend_students (region,branch_id,class_id,subject_id,student_id,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date') ")or die(mysql_error());
                 mysql_query("insert into class_attend_students (branch_id,class_id,subject_id,student_id,teacher_id,class_date,class_starttime,class_endtime) values ('$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date','$start_time','$end_time') ")or die(mysql_error());
+                // mysql_query("update student_teacher_allocation set status = '1' where student_id='$stu_id' and start_date='$start_date' ")or die(mysql_error());                
+
+        }
+    }
+
+      if(!empty($_POST['req_student'])) {
+        foreach($_POST['req_student'] as $req_stu_id) {
+
+// addedd by siva
+                mysql_query("delete from class_attend_students where branch_id='$branch_id' and class_id='$class_id' and subject_id='$subject_id' and student_id='$req_stu_id' and teacher_id='$teacher_id' and class_date='$start_date' and class_starttime='$start_time' and class_endtime='$end_time' and student_request='requested_student'");
+
+                //commented by kalai
+                // mysql_query("insert into class_attend_students (region,branch_id,class_id,subject_id,student_id,teacher_id,class_date) values ('$region','$branch_id','$class_id','$subject_id','$stu_id','$teacher_id','$start_date') ")or die(mysql_error());
+                mysql_query("insert into class_attend_students (branch_id,class_id,subject_id,student_id,teacher_id,class_date,class_starttime,class_endtime,student_request) values ('$branch_id','$class_id','$subject_id','$req_stu_id','$teacher_id','$start_date','$start_time','$end_time','requested_student') ")or die(mysql_error());
                 // mysql_query("update student_teacher_allocation set status = '1' where student_id='$stu_id' and start_date='$start_date' ")or die(mysql_error());                
 
         }
@@ -54,7 +74,7 @@ if(isset($_POST['submit'])){
     <!--HEADER END-->
     <!--BANNER START-->
 <div class="page-heading">
-   	<div class="container">
+    <div class="container">
         <h2> Today Class </h2>
         <p></p>
     </div>
@@ -64,6 +84,12 @@ if(isset($_POST['submit'])){
 <div class="contant">
     <div class="container" style="height: 39%;">
         <div class="event-page">
+             <?php
+                                    $current_date_attenence=date('Y-m-d');
+                                    // echo $current_date_attenence;
+                                    $date_attenence=date('Y-m-d', strtotime('+6 day', strtotime($current_date_attenence)));
+                                    // echo $date_attenence;
+                                    ?>
         <!--EVENT START-->
            <div class="row events">
                 <?php
@@ -95,6 +121,7 @@ if(isset($_POST['submit'])){
                                     <!-- newly added by kalai -->
                                     <input type="hidden" name="start_time" value="<?php echo $row['start_time']; ?>"/>
                                     <input type="hidden" name="end_time" value="<?php echo $row['end_time']; ?>"/>
+                                   
                                     <table>
                                         <tr>
                                             <td><p class="color">Class</p></td>
@@ -134,26 +161,95 @@ if(isset($_POST['submit'])){
                                         </tr>
                                         <?php
                                         $sche_id = $row['class_schedules_id'];
-                                        $query_list = mysql_query("select * from student_teacher_allocation JOIN users ON users.user_id = student_teacher_allocation.student_id where schedule_id = '$sche_id'")or die(mysql_error());
+
+                                        $query_list = mysql_query("select * from student_teacher_allocation JOIN users ON users.user_id = student_teacher_allocation.student_id where schedule_id = '$sche_id' and student_teacher_allocation.allocation_status='1'")or die(mysql_error());
                                         $count1 = mysql_num_rows($query_list);
                                         $counter = 0;
-                                        if ($count1 > 0) {
+                                        if ($count1 >= 0) {
                                         while ($row_1 = mysql_fetch_array($query_list)) {
                                                 $id = $row_1 ['student_teacher_allocation_id'];
-                                        ?>
-                                        <tr>
-                                            <td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td>
+                                                // echo $row_1 ['cancel_class_date'];
+                                                // echo $row_1 ['student_teacher_allocation_id'];
+                
+                                            if($date_attenence>=$row_1 ['cancel_class_date'] && $current_date_attenence<=$row_1 ['cancel_class_date']) {
+                                                // echo $row_1 ['student_teacher_allocation_id'];
+                                              // mysql_query("update student_teacher_allocation set cancellation_status='0' where student_teacher_allocation_id='$id'") or die(mysql_error());   
+                                                ?>
+                                            <!-- <tr><td><?php 
+                                            // echo ++$counter; ?><input type='hidden' id="student_count" value="<?php
+                                             // echo $counter; ?>"></td>
+                                            <td><?php
+                                             // echo $row_1 ['firstname'];  ?></td>
+                                            <td><input type="checkbox" class="attend_student" name="student[]" value="<?php 
+                                            // echo $row_1 ['student_id'];  ?>" /></td>
+                                           </tr> -->
+                                            <?php } 
+                                            else if($current_date_attenence>=$row_1 ['cancel_class_date']) { ?>
+                                              <tr><td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td>
                                             <td><?php echo $row_1 ['firstname'];  ?></td>
                                             <td><input type="checkbox" class="attend_student" name="student[]" value="<?php echo $row_1 ['student_id'];  ?>" /></td>
-                                        </tr>
+                                           </tr>  
+                                           <?php } ?>
+                                            
+                                            <!-- <td><?php 
+                                            // echo ++$counter; ?><input type='hidden' id="student_count" value="<?php 
+                                            // echo $counter; ?>"></td> -->
+                                            <!-- <td><?php 
+                                            // echo $row_1 ['firstname'];  ?></td> -->
+                                            <!-- <td><input type="checkbox" class="attend_student" name="student[]" value="<?php 
+                                            // echo $row_1 ['student_id'];  ?>" /></td> -->
+                                            
+
+
+
+
+
                                         <tr class="add_temp">
                                         <td>
                                         </td>
                                         </tr>
                                         <?php
                                             }
-                                            }
-                                        ?>
+                                        } 
+                                       ?>
+  <!-- request student list start -->
+<?php $query_request = mysql_query("select * from request_student_teacher_allocation
+                                           INNER JOIN users ON  users.user_id = request_student_teacher_allocation.request_student_id
+                                           LEFT JOIN class_schedules ON class_schedules.class_schedules_id=request_student_teacher_allocation.request_schedule_id
+                                           where request_student_teacher_allocation.request_day='$today' and request_student_teacher_allocation.request_teacher_id='$user_id'
+                                           ")or die(mysql_error());
+
+     
+        
+
+     while ($row_request = mysql_fetch_array($query_request)) {
+
+if($row['class_schedules_id']==$row_request['request_schedule_id']) {
+
+
+
+                           if($date_attenence>=$row_request ['request_class_date'] && $current_date_attenence<=$row_request ['request_class_date']) {
+                                                // echo $row_1 ['student_teacher_allocation_id'];
+                                              // mysql_query("update student_teacher_allocation set cancellation_status='0' where student_teacher_allocation_id='$id'") or die(mysql_error());   
+                                                ?>
+                                        <tr>
+   <td colspan="3"> Requested new student </td></tr>
+                                        <tr><td><?php echo ++$counter; ?><input type='hidden' id="student_count" value="<?php echo $counter; ?>"></td>
+                                            <td><?php echo $row_request['firstname'];  ?></td>
+                                            <td><input type="checkbox" class="attend_student" name="req_student[]" value="<?php echo $row_request ['request_student_id'];  ?>" /></td>
+                                            <!-- <td><input type="checkbox" class="attend_student" name="student[]" value="<?php 
+                                            // echo $row_1 ['student_id'];  ?>" /></td> -->
+                                           
+
+                                           </tr>
+                                           <?php } }
+                                       }
+                                       ?>
+
+                                       <!-- request student list end -->
+
+
+
                                     </table>
                                     <div class="menus" style="display:none">
                         <span class="add_student green_button">Add student</span><span class="student_remove green_button">remove</span>
@@ -166,9 +262,9 @@ if(isset($_POST['submit'])){
                     </div>   
                     <div class="clearfix"></div>
                      <div class="tempstudent_field">
-                        <select name="previousbranch[]"  class="previousbranch" required>
-                            <option value="0">Select Branch</option>
-                            <option value="0">None</option>
+                        <select name="previousbranch[]"  class="previousbranch">
+                            <option value="0">Select branch</option>
+                            <!-- <option value="0">None</option> -->
                              <?php
                             $query_branch = mysql_query("select * from branch");
                             while ($row_branch = mysql_fetch_array($query_branch)) {
@@ -214,11 +310,11 @@ if(isset($_POST['submit'])){
 
                 <!--FOLLOW US SECTION START-->
         <section class="follow-us">
-        	<div class="container">
-            	<div class="row">
-                	<div class="span4">
-                    	<div class="follow">
-                        	<a href="#">
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <div class="follow">
+                            <a href="#">
                                 <i class="fa fa-facebook"></i>
                                 <div class="text">
                                     <h4>Follow us on Facebook</h4>
@@ -228,8 +324,8 @@ if(isset($_POST['submit'])){
                         </div>
                     </div>
                     <div class="span4">
-                    	<div class="follow">
-                        	<a href="#">
+                        <div class="follow">
+                            <a href="#">
                                 <i class="fa fa-google"></i>
                                 <div class="text">
                                     <h4>Follow us on Google Plus</h4>
@@ -239,8 +335,8 @@ if(isset($_POST['submit'])){
                         </div>
                     </div>
                     <div class="span4">
-                    	<div class="follow">
-                        	<a href="#">
+                        <div class="follow">
+                            <a href="#">
                                 <i class="fa fa-linkedin"></i>
                                 <div class="text">
                                     <h4>Follow us on Linkedin</h4>
@@ -255,3 +351,5 @@ if(isset($_POST['submit'])){
         <!--FOLLOW US SECTION END-->
     </div>
   <?php require_once 'footer.php'; ?>
+</boy>
+</html>

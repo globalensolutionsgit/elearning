@@ -35,12 +35,19 @@
                             <div class="leave-reply">
                         	<h2>Leave Us a Reply</h2>
                                 <form method="post" action="" id="contact_form" role="form">
+                                <div class="span8">
                                 <div class="row-fluid">
-                                    <div class="span6 required-symbol">
+                                    <div class="span5 required-symbol">
                                         <input type="text" placeholder="Name" class="input-block-level" name="name" data-validation="required">
                                     </div>
-                                    <div class="span6 required-symbol">
+                                    <div class="span1 star_align">
+                                    <span style="color:#FF0000;"><i style="font-size:7px;" class="fa fa-asterisk text-danger"></i></span>
+                                    </div>
+                                    <div class="span5 required-symbol">
                                         <input type="text" placeholder="E-mail" class="input-block-level" name="email" data-validation="email">
+                                    </div>
+                                    <div class="span1 star_align">
+                                    <sup style="color:#FF0000; left:2px;"><i style="font-size: 7px;" class="fa fa-asterisk text-danger"></i></sup>
                                     </div>
                                     <div class="text-area">
                                         <textarea placeholder="Comments" class="input-block-level" name="comments" id="my-textarea"></textarea>
@@ -48,6 +55,7 @@
                                         <button class="btn-style" type="submit" name="submit">Submit</button>
                                     </div>
                                 </div>
+                            </div>
                             </form>
                         </div>
                         <?php }  ?>                           

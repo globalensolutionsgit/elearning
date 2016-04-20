@@ -249,7 +249,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="control-group span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="sun_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>
@@ -291,7 +291,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "monday_classs[]" class="classs"  disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -433,7 +433,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="mon_num_of_seats[]" class="num_of_seats num_seats_validation" id="num_of_seats" disabled>
   								</div>
 							</div>
 
@@ -479,7 +479,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "tuesday_classs[]" class="classs" disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -621,7 +621,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="tue_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>
@@ -661,7 +661,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "wednesday_classs[]" class="classs" disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -804,7 +804,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="wed_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>
@@ -844,7 +844,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "thursday_classs[]" class="classs" disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -986,7 +986,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="thu_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>
@@ -1024,7 +1024,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "friday_classs[]" class="classs" disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -1166,7 +1166,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="fri_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>
@@ -1206,7 +1206,7 @@ if(isset($_GET['insert'])){
 			                        <label>Class :</label>
 			                        <div class="controls">
 			                            <select name = "saturday_classs[]" class="classs" disabled >
-			                                <option value="">Select Branch</option>
+			                                <option value="">Select Class</option>
 			                                <?php
 			                                	$query = mysql_query("select * from class");
 			                                	while ($row = mysql_fetch_array($query)) {
@@ -1348,7 +1348,7 @@ if(isset($_GET['insert'])){
                 				<div class="control-group span1"> </div>
                 				<div class="span11"> 
 								    <label name="seats">number of seats:</label>
-								    <input type="number" name="num_of_seats[]" class="num_of_seats" disabled>
+								    <input type="number" name="sat_num_of_seats[]" class="num_of_seats num_seats_validation" disabled>
   								</div>
 							</div>
 						</div>

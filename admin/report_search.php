@@ -1,18 +1,9 @@
 <!-- block -->
-<head>
-    <link href="assets/datepicker.css">
-    <!--  // <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> -->
-    <script src="assets/bootstrap-datepicker.js"></script>
-
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-
 
 <?php
 $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES' => 'East Singapore', 'CS' => 'Central Singapore', 'WS' => 'West Singapore');
 ?>
+
 <div class="block">
     <div class="navbar navbar-inner block-header">
         <div id="" class="muted pull-left"><h4>Report</h4></div>
@@ -33,9 +24,11 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div> -->
-                <div class="control-group">
-                    <label>Teacher</label>
-                    <div class="controls">
+                <div class="span12">
+                    <div class="row-fluid report_form_align">
+                <div class="control-group span6">
+                    <span class="span2"><label>Teacher</label></span>
+                    <div class="controls span10">
                         <select name="user"  class="teachers_report" id="report_select1">
                             <option></option>
                             <?php
@@ -47,9 +40,9 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label>Branch</label>
-                    <div class="controls">
+                <div class="control-group span6">
+                    <span class="span2"> <label>Branch</label> </span>
+                    <div class="controls span10">
                         <select name="branch"  class="branchs_report" id="report_select2">
                             <option></option>
                              <?php
@@ -61,6 +54,8 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div>
+            </div>
+        
                 <!-- commented by kalai -->
                 
                 <!-- <div class="control-group">
@@ -112,9 +107,10 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div> -->
-                 <div class="control-group">
-                    <label>Month:</label>
-                    <div class="controls">
+                <div class="row-fluid">
+                 <div class="control-group span6">
+                    <span class="span2"><label>Month</label> </span>
+                    <div class="controls span10">
                         <select name="report_month[]" class="report_select3">
                             <option></option>
                             <option value="01">January </option>
@@ -132,11 +128,14 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                         </select>
                     </div>
                 </div>
-                 <div class="control-group">
-                    <label>Year:</label>
-                    <div class="controls">
-                        <input type="text" id="datepicker_year" name="report_year" class="report_select4" >
+                 <div class="control-group span6">
+                    <span class="span2"><label>Year</label></span>
+                    <div class="controls span10">
+                        <input type="text" id="datepicker_year" placeholder="Ex: 2016" name="report_year" class="report_select4" >
                     </div>
+                </div>
+
+                </div>
                 </div>
                 <!-- <div class="control-group">
                     <label>Start date and Time :</label>
@@ -189,8 +188,7 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                     });
                 });
             </script> -->
-           
-             <script>
+                                <script>
 $("#datepicker_year").datepicker( {
     format: " yyyy",
     viewMode: "years", 
@@ -198,6 +196,8 @@ $("#datepicker_year").datepicker( {
 });
 
             </script>
+
+  
         </div>
     </div>
 </div>

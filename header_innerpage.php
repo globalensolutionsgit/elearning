@@ -55,7 +55,7 @@
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="account">
                                                 <!--li><a href="#">Profile</a></li-->
                                                 <?php if (($_SESSION['user_type']) == 'student') { ?> 
-												<!-- no need to request as student <li><a href="my_request_class.php">My Request</a></li> -->
+												<li><a href="reschedule_week.php">My Request</a></li> 
 												<li><a href="courses.php">My Schedule</a></li> 
 												<?php } else if(($_SESSION['user_type']) == 'teacher'){?>
 					<!--commented by siva	<li><a href="teacher_scheduled_class.php">My Schedules</a></li> -->

@@ -1,12 +1,5 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
-<html>
-<head>
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-</head>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -65,7 +58,7 @@
 										<div class="control-group">
 											<label class="control-label" for="inputPassword">Status</label>
 											<div class="controls">
-											<input type="checkbox" value="1" name="status" required>
+											<input type="checkbox" value="1" name="status" required checked>
 											</div>
 										</div>
 

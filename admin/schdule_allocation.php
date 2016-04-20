@@ -6,43 +6,43 @@ print_r($_POST);
 echo '</pre>';
 if(isset($_POST['sunday'])){
 	for($i=0;$i<sizeof($_POST['sunday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','sun','".$_POST['sunday_branch'][$i]."','".$_POST['sunday_classs'][$i]."','".$_POST['sunday_subject'][$i]."','".$_POST['sunday_starttime'][$i]."','".$_POST['sunday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','sun','".$_POST['sunday_branch'][$i]."','".$_POST['sunday_classs'][$i]."','".$_POST['sunday_subject'][$i]."','".$_POST['sunday_starttime'][$i]."','".$_POST['sunday_endtime'][$i]."','".$_POST['sun_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['monday'])){
 	for($i=0;$i<sizeof($_POST['monday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','mon','".$_POST['monday_branch'][$i]."','".$_POST['monday_classs'][$i]."','".$_POST['monday_subject'][$i]."','".$_POST['monday_starttime'][$i]."','".$_POST['monday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','mon','".$_POST['monday_branch'][$i]."','".$_POST['monday_classs'][$i]."','".$_POST['monday_subject'][$i]."','".$_POST['monday_starttime'][$i]."','".$_POST['monday_endtime'][$i]."','".$_POST['mon_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['tuesday'])){
 	for($i=0;$i<sizeof($_POST['tuesday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','tue','".$_POST['tuesday_branch'][$i]."','".$_POST['tuesday_classs'][$i]."','".$_POST['tuesday_subject'][$i]."','".$_POST['tuesday_starttime'][$i]."','".$_POST['tuesday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','tue','".$_POST['tuesday_branch'][$i]."','".$_POST['tuesday_classs'][$i]."','".$_POST['tuesday_subject'][$i]."','".$_POST['tuesday_starttime'][$i]."','".$_POST['tuesday_endtime'][$i]."','".$_POST['tue_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['wednesday'])){
 	for($i=0;$i<sizeof($_POST['wednesday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','wed','".$_POST['wednesday_branch'][$i]."','".$_POST['wednesday_classs'][$i]."','".$_POST['wednesday_subject'][$i]."','".$_POST['wednesday_starttime'][$i]."','".$_POST['wednesday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','wed','".$_POST['wednesday_branch'][$i]."','".$_POST['wednesday_classs'][$i]."','".$_POST['wednesday_subject'][$i]."','".$_POST['wednesday_starttime'][$i]."','".$_POST['wednesday_endtime'][$i]."','".$_POST['wed_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['thursday'])){
 	for($i=0;$i<sizeof($_POST['thursday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','thu','".$_POST['thursday_branch'][$i]."','".$_POST['thursday_classs'][$i]."','".$_POST['thursday_subject'][$i]."','".$_POST['thurday_starttime'][$i]."','".$_POST['thursday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','thu','".$_POST['thursday_branch'][$i]."','".$_POST['thursday_classs'][$i]."','".$_POST['thursday_subject'][$i]."','".$_POST['thurday_starttime'][$i]."','".$_POST['thursday_endtime'][$i]."','".$_POST['thu_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['friday'])){
 	for($i=0;$i<sizeof($_POST['friday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','fri','".$_POST['friday_branch'][$i]."','".$_POST['friday_classs'][$i]."','".$_POST['friday_subject'][$i]."','".$_POST['friday_starttime'][$i]."','".$_POST['friday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','fri','".$_POST['friday_branch'][$i]."','".$_POST['friday_classs'][$i]."','".$_POST['friday_subject'][$i]."','".$_POST['friday_starttime'][$i]."','".$_POST['friday_endtime'][$i]."','".$_POST['fri_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }
 if(isset($_POST['saturday'])){
 	for($i=0;$i<sizeof($_POST['saturday_branch']);$i++){
-		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','sat','".$_POST['saturday_branch'][$i]."','".$_POST['saturday_classs'][$i]."','".$_POST['saturday_subject'][$i]."','".$_POST['saturday_starttime'][$i]."','".$_POST['saturday_endtime'][$i]."','".$_POST['num_of_seats'][$i]."','1')";
+		$sql = "insert into class_schedules (teacher_id,day,branch_id,class_id,subject_id,start_time,end_time,num_of_seats,status) values ('".$_POST['user']."','sat','".$_POST['saturday_branch'][$i]."','".$_POST['saturday_classs'][$i]."','".$_POST['saturday_subject'][$i]."','".$_POST['saturday_starttime'][$i]."','".$_POST['saturday_endtime'][$i]."','".$_POST['sat_num_of_seats'][$i]."','1')";
 		mysql_query($sql);
 	}
 }

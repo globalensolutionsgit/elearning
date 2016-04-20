@@ -32,7 +32,21 @@
     <!-- /block -->
 </div><?php
 if (isset($_POST['update'])) {
+    
+
+
+
     $class_name = $_POST['class_name'];
+
+    $query = mysql_query("select * from class where class_name  =  '$class_name' ")or die(mysql_error());
+$count = mysql_num_rows($query);
+
+if ($count > 0){ ?>
+<script>
+alert('Date Already Exist');
+</script>
+<?php
+}else{
 
     mysql_query("update class set class_name = '$class_name' where class_id = '$get_id' ")or die(mysql_error());
     ?>
@@ -41,5 +55,6 @@ if (isset($_POST['update'])) {
         window.location = "class.php";
     </script>
     <?php
+}
 }
 ?>

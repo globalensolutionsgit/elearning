@@ -1,3 +1,4 @@
+<?php include('dbcon.php'); ?>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -15,19 +16,28 @@
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-		<!-- calendar css -->
-		<link href="vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
-		<script src="vendors/jquery-1.9.1.min.js" type="text/javascript"></script>
-                <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<!-- data table -->
-		<link href="assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-		<!-- notification  -->
-		<link href="vendors/jGrowl/jquery.jgrowl.css" rel="stylesheet" media="screen">
-		<!-- wysiwug  -->
-		<link rel="stylesheet" type="text/css" href="vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css"></link>
-	
-		<script src="vendors/jGrowl/jquery.jgrowl.js"></script>
-		<script src="vendors/datetimepicker.js" type="text/javascript"></script>
-		<script src="vendors/custom.js" type="text/javascript"></script>
+        <!-- calendar css -->
+            <link href="bootstrap/js/multiselect/jquery.multiselect.css" rel="stylesheet" media="screen">
+            <link href="vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
+<script src="vendors/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+           <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- data table -->
+        <link href="assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+        <!-- notification  -->
+        <link href="vendors/jGrowl/jquery.jgrowl.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css"></link>
+
+           <script src="vendors/jGrowl/jquery.jgrowl.js"></script>
+        <script src="vendors/datetimepicker.js" type="text/javascript"></script>
+        <script src="vendors/custom.js" type="text/javascript"></script>
+        <link href="assets/datepicker.css">
+    <!--   <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> -->
+    <script src="assets/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+
     </head>
-<?php include('dbcon.php'); ?>

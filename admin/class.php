@@ -24,8 +24,8 @@
 									<thead>
 										  <tr>
 													<th></th>
-													<th>Course Year And Section</th>
-													<th></th>
+													<th>Classname</th>
+													<th> Edit</th>
 										   </tr>
 										</thead>
 										<tbody>

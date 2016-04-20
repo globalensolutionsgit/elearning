@@ -5189,10 +5189,12 @@ section.cp-our-services p, .contant section.cp-our-services h2{
     width: 96%
 }
 
-.required-symbol::after {
+/*.required-symbol::after {
 	content: "*";
 	color: #ff0000;
 }
+*/
+
 .view_disabled {
 
 }
@@ -5210,4 +5212,21 @@ section.cp-our-services p, .contant section.cp-our-services h2{
 }
 .time_branch {
 	padding : 0px 10px;
+}
+.star_align {
+	margin: 0px !important;
+}
+.reschedule_holder {
+	display:inline;
+	list-style: none;
+	background-color: #fcf6f6;
+}
+.reschedule_detail {
+	width: 50%;
+	float: left;
+	border-right: 1px solid #000;
+}
+.reschedule_cancel {
+	width: 50%;
+	float: right;
 }

@@ -1,14 +1,12 @@
+
+
+
+
 <?php include('header.php'); 
+include('session.php');
 $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'East Singapore', 'CS'=>'Central Singapore', 'WS'=>'West Singapore');
 ?>
-<?php include('session.php'); ?>
-<html>
-<head>
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/actions.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-</head>
+
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
@@ -65,7 +63,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 										<div class="control-group">
 											<label class="control-label" for="inputEmail">Branch Phone No.</label>
 											<div class="controls">
-												<input type="text" name="phone_number" id="phone" placeholder="Branch Phone" >
+												<input type="text" name="phone_number" id="phone" maxlength="10" placeholder="Branch Phone" >
 											</div>
 										</div>
 										<div class="control-group">
@@ -90,7 +88,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 											<label class="control-label" for="inputEmail" >Status</label>
 											<div class="controls">
 												<!-- <input type="hidden" name="status" value="0" > -->
-												<input type="checkbox" name="status" value="1" required>
+												<input type="checkbox" name="status" value="1" required checked>
 											</div>
 										</div>
 										<div class="control-group">

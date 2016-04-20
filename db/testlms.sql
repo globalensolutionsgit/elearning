@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 12, 2016 at 10:05 PM
+-- Generation Time: Apr 20, 2016 at 12:25 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -40,22 +40,19 @@ CREATE TABLE IF NOT EXISTS `branch` (
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`branch_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `branch`
 --
 
 INSERT INTO `branch` (`branch_id`, `region`, `branch_name`, `branch_address`, `branch_phone_number`, `branch_email`, `longitude`, `latitude`, `branch_owner`, `branch_description`, `status`, `created_date`) VALUES
-(5, 'NS', 'Marsiling', '																										Blk 326 Woodlands St 32 #01-121 (Level 2), Singapore,  730326																										', 6368, 'kipmcgrathmarsiling@gmail.com', 11.23220000, 12.67678600, 'Goh Wei Lan', '<p>test fthrftyrtfytrf</p>\r\n', 1, '2016-01-02 21:29:07'),
-(6, 'NS', 'Sembawang', 'BLK791,WoodlandsAvenue6#01-603,Singapore,730791', 6363, 'kipmcgrathsembawang@gmail.com', 11.23232000, 12.23232000, 'Sangeetha Chandra', '', 0, '2016-04-25 00:21:26'),
-(7, 'NES', 'Hougang-Green-Mall', '21 Hougang Street 51 #02-19, Singapore,  938719', 6385, 'kmwechg@gmail.com', 11.23220000, 12.23232000, 'Liew Kok Wai', '<p style="text-align:start">Our centre is Kip McGrath &ndash; Hougang Green Mall. Mr. Liew Kok Wai&nbsp;is the Owner of the centre. Feel free to call us at 6385 7996 if we can be of service to you.</p>\r\n\r\n<p style="text-align:start">Kip McGrath tuition is', 1, '2016-01-02 21:32:52'),
-(8, 'NES', 'Kovan', 'Block 203 Hougang Street 21 #03-71, Singapore,  530203', 6280, 'alicia.km.kovan@gmail.com', 11.23220000, 12.23232000, 'Alicia Seah', '<p style="text-align:start">We offer tuition for Primary and Secondary school children for the following:</p>\r\n\r\n<p style="text-align:start">Pri 1 &ndash; 6: English and Math</p>\r\n\r\n<p style="text-align:start"><span style="color:rgb(5, 17, 38); font-famil', 1, '2016-01-02 21:34:08'),
-(9, 'NS', 'Sengkang', 'We offer tuition for Primary and Secondary school children for the following:\r\n\r\nPri 1 – 6: English and Math\r\n\r\n Pri 3 – 6: Science\r\n\r\nSec 1 – 4: English, E. Math (and A. Math)\r\nFeel free to contact u', 6886, 'kipmcgrathsk@singnet.com.sg', 11.23220000, 12.23232000, 'Gloria Tan', '<p style="text-align:start">Our centre is Kip McGrath &ndash; Sengkang. Ms. Gloria Tan is the Owner of the centre. Feel free to call us at 6886 0880 if we can be of service to you.</p>\r\n\r\n<p style="text-align:start">Kip McGrath tuition is very unique and ', 1, '2016-01-02 21:35:32'),
-(10, 'ES', 'dsgsdf', 'sdfgsdf', 2147483647, 'gsdfg@gmaill.com', 0.00000000, 0.00000000, 'sdfgsdf', '<p>sdfgsdf sdfgdsfgsdf</p>\r\n', 1, '2016-02-02 11:42:27'),
-(11, 'NS', 'vdbcvbf', 'sdfdsfgvc', 2147483647, 'sdfgdsfg@gm.com', 0.00000000, 0.00000000, 'sdfgdsfgvc', '<p>sdfgdsfg dfsgdsfg dsfgdsfgsdfg dfgsdfg</p>\r\n', 1, '2016-02-02 11:43:16'),
-(12, 'CS', 'Jurong East ( Yuhua )', '													bnmbnm													', 784578745, 'bnmbn@gmail.com', 0.00000000, 0.00000000, 'bnmbnm', '<p>sdfgsdf dsfgdsf ds sdfgsd</p>\r\n', 1, '2016-02-04 13:35:25'),
-(15, 'CS', '465345', 'sdgsdfsdfasdfasd', 897935646, '5sddasdfasdfsf@dgd.com', 999.99999999, 999.99999999, '3456546', '<p>dsfgsdfgsdf</p>\r\n', 1, '2016-03-14 11:18:51');
+(1, 'NS', 'branch1', '3/841,weststreet', 4234234234, 'sweetkankanenan05@gmail.com', 0.00000000, 0.00000000, 'siva1', '<p>This is branch1</p>\r\n', 1, '2016-04-10 23:21:00'),
+(2, 'NS', 'branch2', 'northstreet', 5452342343, 'sweetkasddsnnan05@gmail.com', 999.99999999, 999.99999999, 'siva2', '<p>This is branch2</p>\r\n', 1, '2016-04-10 23:22:45'),
+(3, 'NES', 'branch3', 'northstreet', 4354323234, 'sweetkandsdcnan05@gmail.com', 999.99999999, 999.99999999, 'siva3', '<p>This is branch3</p>\r\n', 1, '2016-04-10 23:24:14'),
+(4, 'ES', 'branch4', 'weststreet', 6435234234, 'sweetkannfsddsan05@gmail.com', 999.99999999, 999.99999999, 'siva4', '<p>This is branch4</p>\r\n', 1, '2016-04-10 23:25:38'),
+(5, 'CS', 'branch5', 'southstreet', 6345452423, 'sweetkannfsdfsan05@gmail.com', 999.99999999, 999.99999999, 'siva5', '<p>This is branch5<br />\r\n&nbsp;</p>\r\n', 1, '2016-04-20 09:02:31'),
+(6, 'CS', 'branch6', 'weststreet', 6356345435, 'sweetkannafsdfn05@gmail.com', 999.99999999, 999.99999999, 'siva6', '<p>This is branch6</p>\r\n', 1, '2016-04-20 09:09:54');
 
 -- --------------------------------------------------------
 
@@ -76,12 +73,13 @@ CREATE TABLE IF NOT EXISTS `class` (
 --
 
 INSERT INTO `class` (`class_id`, `class_name`, `created_date`, `class_status`) VALUES
-(6, 'Primary', '2016-04-08 02:14:44', ''),
-(7, 'Primary1', '2016-04-08 02:16:16', ''),
-(8, 'Primary2', '2016-04-08 02:16:58', ''),
-(9, 'Secondary1', '2016-04-08 02:17:15', ''),
-(10, 'Secondary2', '2016-04-08 02:17:31', ''),
-(11, 'Post-Secondary', '2016-04-08 02:16:45', '');
+(1, 'primary1', '2016-04-11 00:30:19', '1'),
+(2, 'primary2', '2016-04-11 00:30:28', '1'),
+(3, 'primary3', '2016-04-11 00:30:24', '1'),
+(4, 'secondary1', '2016-04-11 00:30:32', '1'),
+(5, 'secondary2', '2016-04-11 00:30:36', '1'),
+(6, 'secondary3', '2016-04-11 00:30:40', '1'),
+(7, 'class34', '2016-04-20 05:44:43', '1');
 
 -- --------------------------------------------------------
 
@@ -102,26 +100,30 @@ CREATE TABLE IF NOT EXISTS `class_attend_students` (
   `class_starttime` time NOT NULL,
   `class_endtime` time NOT NULL,
   `present_status` tinyint(2) NOT NULL,
+  `student_request` varchar(20) NOT NULL,
   PRIMARY KEY (`class_attend_students_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `class_attend_students`
 --
 
-INSERT INTO `class_attend_students` (`class_attend_students_id`, `region`, `branch_id`, `class_id`, `subject_id`, `student_id`, `teacher_id`, `class_date`, `created_date`, `class_starttime`, `class_endtime`, `present_status`) VALUES
-(31, '', 5, 6, 4, 120, 56, '2016-03-29', '2016-03-29 07:29:53', '03:00:00', '07:30:00', 0),
-(32, '', 5, 6, 4, 135, 56, '2016-03-29', '2016-03-29 07:29:53', '03:00:00', '07:30:00', 0),
-(36, '', 5, 6, 4, 120, 56, '2016-04-19', '2016-04-19 09:14:33', '03:00:00', '07:30:00', 0),
-(37, '', 5, 6, 4, 135, 56, '2016-04-19', '2016-04-19 09:14:33', '03:00:00', '07:30:00', 0),
-(38, '', 8, 6, 4, 131, 56, '2016-03-27', '2016-03-27 10:05:02', '07:00:00', '08:00:00', 0),
-(39, '', 8, 6, 4, 139, 56, '2016-03-27', '2016-03-27 10:05:02', '07:00:00', '08:00:00', 0),
-(40, '', 8, 6, 4, 131, 56, '2016-05-22', '2016-05-22 10:05:37', '07:00:00', '08:00:00', 0),
-(41, '', 8, 6, 4, 139, 56, '2016-05-22', '2016-05-22 10:05:37', '07:00:00', '08:00:00', 0),
-(44, '', 5, 6, 4, 120, 56, '2016-03-28', '2016-03-28 10:17:48', '02:30:00', '02:30:00', 0),
-(45, '', 5, 6, 4, 135, 56, '2016-03-28', '2016-03-28 10:17:48', '02:30:00', '02:30:00', 0),
-(46, '', 5, 6, 4, 120, 56, '2016-03-30', '2016-03-30 10:18:24', '01:30:00', '03:00:00', 0),
-(47, '', 5, 6, 4, 135, 56, '2016-03-30', '2016-03-30 10:18:24', '01:30:00', '03:00:00', 0);
+INSERT INTO `class_attend_students` (`class_attend_students_id`, `region`, `branch_id`, `class_id`, `subject_id`, `student_id`, `teacher_id`, `class_date`, `created_date`, `class_starttime`, `class_endtime`, `present_status`, `student_request`) VALUES
+(2, '', 1, 1, 13, 26, 38, '2016-04-10', '2016-04-10 15:15:30', '05:30:00', '07:30:00', 0, ''),
+(3, '', 1, 1, 13, 25, 38, '2016-04-10', '2016-04-10 15:15:30', '05:30:00', '07:30:00', 0, ''),
+(4, '', 1, 1, 13, 26, 38, '2016-04-10', '2016-04-10 03:36:40', '04:30:00', '05:30:00', 0, ''),
+(8, '', 1, 1, 13, 26, 38, '2016-04-18', '2016-04-18 04:31:24', '05:30:00', '07:30:00', 0, ''),
+(9, '', 1, 1, 13, 25, 38, '2016-04-18', '2016-04-18 04:31:24', '05:30:00', '07:30:00', 0, ''),
+(29, '', 1, 1, 13, 25, 38, '2016-04-17', '2016-04-17 05:54:45', '04:30:00', '05:30:00', 0, ''),
+(30, '', 1, 1, 13, 26, 38, '2016-04-17', '2016-04-17 05:55:26', '05:30:00', '07:30:00', 0, ''),
+(31, '', 1, 1, 13, 25, 38, '2016-04-17', '2016-04-17 05:55:26', '05:30:00', '07:30:00', 0, ''),
+(33, '', 1, 1, 13, 25, 38, '2016-04-20', '2016-04-20 03:03:45', '03:00:00', '05:00:00', 0, ''),
+(36, '', 1, 1, 13, 26, 38, '2016-04-20', '2016-04-20 03:05:20', '01:30:00', '02:30:00', 0, ''),
+(45, '', 1, 1, 13, 25, 38, '2016-04-20', '2016-04-20 14:13:01', '01:00:00', '04:00:00', 0, ''),
+(46, '', 1, 1, 13, 26, 38, '2016-04-20', '2016-04-20 14:13:01', '01:00:00', '04:00:00', 0, ''),
+(53, '', 1, 1, 13, 26, 38, '2016-04-20', '2016-04-20 15:11:34', '03:00:00', '05:00:00', 0, ''),
+(54, '', 1, 1, 13, 27, 38, '2016-04-20', '2016-04-20 15:11:34', '03:00:00', '05:00:00', 0, ''),
+(55, '', 1, 1, 13, 27, 38, '2016-04-20', '2016-04-20 15:17:22', '03:00:00', '05:00:00', 0, 'requested_student');
 
 -- --------------------------------------------------------
 
@@ -142,35 +144,74 @@ CREATE TABLE IF NOT EXISTS `class_schedules` (
   `status` tinyint(1) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`class_schedules_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='class_schedule php' AUTO_INCREMENT=107 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='class_schedule php' AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table `class_schedules`
 --
 
 INSERT INTO `class_schedules` (`class_schedules_id`, `teacher_id`, `day`, `branch_id`, `class_id`, `subject_id`, `start_time`, `end_time`, `num_of_seats`, `status`, `created_date`) VALUES
-(62, '56', 'sun', 8, 6, 4, '07:00', '08:00', 1, 1, '2016-03-29 07:22:44'),
-(63, '56', 'sun', 6, 7, 7, '08:00', '09:00', 1, 1, '2016-03-29 07:22:45'),
-(64, '56', 'tue', 5, 6, 4, '03:00', '07:30', 1, 1, '2016-03-29 07:22:45'),
-(65, '56', 'mon', 5, 6, 4, '02:30', '02:30', 1, 1, '2016-03-29 10:16:49'),
-(66, '56', 'wed', 5, 6, 4, '01:30', '03:00', 1, 1, '2016-03-29 10:16:49'),
-(67, '56', 'sun', 12, 8, 8, '01:30', '04:30', 1, 1, '2016-04-27 15:02:36'),
-(68, '114', 'fri', 5, 6, 4, '08:00', '09:00', 1, 1, '2016-04-08 18:03:16'),
-(69, '114', 'fri', 5, 6, 5, '04:30', '06:30', 1, 1, '2016-04-08 18:03:16'),
-(93, '121', 'fri', 5, 6, 4, '07:30', '09:00', 1, 1, '2016-04-08 08:37:22'),
-(94, '121', 'fri', 6, 7, 7, '07:30', '06:30', 68, 1, '2016-04-08 08:37:22'),
-(95, '133', 'sun', 5, 6, 4, '05:00', '06:30', 20, 1, '2016-04-08 19:45:25'),
-(96, '133', 'sun', 5, 6, 5, '03:00', '05:00', 40, 1, '2016-04-08 19:45:25'),
-(97, '133', 'mon', 5, 6, 5, '01:30', '02:30', 20, 1, '2016-04-08 19:45:25'),
-(98, '133', 'tue', 5, 6, 4, '01:00', '03:30', 20, 1, '2016-04-08 19:45:25'),
-(99, '133', 'wed', 5, 6, 5, '02:00', '04:30', 20, 1, '2016-04-08 19:45:25'),
-(100, '133', 'wed', 5, 6, 4, '01:30', '04:30', 40, 1, '2016-04-08 19:45:25'),
-(101, '133', 'wed', 5, 6, 5, '01:00', '02:00', 12, 1, '2016-04-08 19:45:25'),
-(102, '133', 'thu', 5, 6, 5, '00:30', '04:00', 20, 1, '2016-04-08 19:45:25'),
-(103, '133', 'fri', 5, 6, 5, '01:00', '02:30', 20, 1, '2016-04-08 19:45:25'),
-(104, '133', 'sat', 5, 6, 5, '01:00', '01:30', 20, 1, '2016-04-08 19:45:25'),
-(105, '133', 'sat', 5, 6, 5, '01:00', '03:00', 40, 1, '2016-04-08 19:45:25'),
-(106, '56', 'sat', 6, 7, 6, '04:00', '03:30', 20, 1, '2016-04-12 18:47:53');
+(1, '38', 'sun', 1, 1, 13, '04:30', '05:30', 1, 1, '2016-04-11 02:09:35'),
+(2, '38', 'sun', 1, 2, 13, '05:30', '07:30', 12, 1, '2016-04-11 02:09:35'),
+(3, '38', 'sun', 2, 1, 13, '08:00', '06:30', 23, 1, '2016-04-11 02:09:35'),
+(4, '38', 'wed', 1, 1, 13, '01:00', '04:00', 20, 1, '2016-04-17 10:51:56'),
+(5, '38', 'wed', 1, 1, 13, '03:00', '05:00', 30, 1, '2016-04-17 10:51:56'),
+(6, '38', 'wed', 1, 1, 12, '03:30', '05:30', 40, 1, '2016-04-17 10:51:56'),
+(7, '38', 'wed', 1, 1, 13, '01:30', '02:30', 50, 1, '2016-04-17 10:51:56'),
+(8, '39', 'mon', 1, 1, 13, '02:00', '04:30', 20, 1, '2016-04-17 10:53:37'),
+(9, '39', 'mon', 1, 1, 12, '01:30', '03:00', 30, 1, '2016-04-17 10:53:37'),
+(10, '39', 'mon', 1, 1, 12, '02:30', '04:00', 40, 1, '2016-04-17 10:53:37'),
+(11, '39', 'mon', 1, 2, 12, '01:30', '04:00', 50, 1, '2016-04-17 10:53:37'),
+(12, '38', 'fri', 1, 1, 13, '01:30', '07:00', 20, 1, '2016-04-17 10:55:01'),
+(13, '38', 'fri', 2, 1, 12, '02:30', '05:00', 30, 1, '2016-04-17 10:55:01'),
+(14, '38', 'fri', 1, 1, 12, '00:30', '02:00', 40, 1, '2016-04-17 10:55:01'),
+(15, '38', 'fri', 1, 1, 12, '02:00', '04:00', 50, 1, '2016-04-17 10:55:01'),
+(16, '49', 'sun', 1, 2, 14, '05:30', '08:00', 12, 1, '2016-04-17 11:05:37'),
+(17, '51', 'tue', 2, 3, 16, '00:30', '02:00', 23, 1, '2016-04-17 11:09:07'),
+(41, '39', 'thu', 2, 3, 15, '01:30', '02:00', 40, 1, '2016-04-20 13:28:15'),
+(42, '39', 'thu', 1, 4, 17, '07:00', '08:30', 50, 1, '2016-04-20 13:28:15'),
+(43, '39', 'sat', 2, 4, 17, '02:30', '03:30', 60, 1, '2016-04-20 13:28:15'),
+(44, '38', 'sun', 2, 1, 13, '05:30', '07:00', 10, 1, '2016-04-20 13:42:37'),
+(45, '38', 'sun', 2, 3, 15, '03:00', '04:00', 20, 1, '2016-04-20 13:42:37'),
+(46, '38', 'mon', 2, 3, 16, '01:30', '04:00', 30, 1, '2016-04-20 13:42:37'),
+(47, '38', 'mon', 3, 4, 17, '04:00', '08:30', 40, 1, '2016-04-20 13:42:37'),
+(48, '38', 'tue', 3, 4, 18, '02:00', '04:00', 50, 1, '2016-04-20 13:42:37'),
+(49, '38', 'tue', 2, 3, 16, '04:30', '02:30', 60, 1, '2016-04-20 13:42:37'),
+(50, '38', 'wed', 3, 5, 20, '02:30', '03:30', 70, 1, '2016-04-20 13:42:37'),
+(51, '38', 'wed', 1, 5, 19, '01:30', '03:30', 80, 1, '2016-04-20 13:42:37'),
+(52, '38', 'thu', 2, 5, 20, '02:30', '04:00', 90, 1, '2016-04-20 13:42:37'),
+(54, '38', 'thu', 2, 3, 15, '06:30', '08:30', 110, 1, '2016-04-20 13:42:37'),
+(55, '38', 'fri', 2, 4, 18, '02:00', '06:00', 120, 1, '2016-04-20 13:42:37'),
+(57, '38', 'sat', 2, 4, 17, '02:00', '02:30', 140, 1, '2016-04-20 13:42:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_student_teacher_allocation`
+--
+
+CREATE TABLE IF NOT EXISTS `request_student_teacher_allocation` (
+  `request_id` int(11) NOT NULL AUTO_INCREMENT,
+  `request_schedule_id` int(11) NOT NULL,
+  `request_student_id` int(11) NOT NULL,
+  `request_created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `request_cancellation_status` tinyint(1) NOT NULL,
+  `request_class_date` date NOT NULL,
+  `request_day` varchar(11) NOT NULL,
+  `request_teacher_id` int(11) NOT NULL,
+  `request_starttime` varchar(11) NOT NULL,
+  `request_endtime` varchar(11) NOT NULL,
+  PRIMARY KEY (`request_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+
+--
+-- Dumping data for table `request_student_teacher_allocation`
+--
+
+INSERT INTO `request_student_teacher_allocation` (`request_id`, `request_schedule_id`, `request_student_id`, `request_created_date`, `request_cancellation_status`, `request_class_date`, `request_day`, `request_teacher_id`, `request_starttime`, `request_endtime`) VALUES
+(32, 5, 27, '2016-04-20 05:39:06', 1, '2016-04-20', 'wed', 38, '03:00', '05:00'),
+(34, 7, 25, '2016-04-22 05:34:58', 1, '2016-04-27', 'wed', 38, '01:30', '02:30'),
+(35, 7, 25, '2016-04-20 05:49:13', 1, '2016-04-20', 'wed', 38, '01:30', '02:30');
 
 -- --------------------------------------------------------
 
@@ -199,53 +240,7 @@ CREATE TABLE IF NOT EXISTS `student_requests` (
   `subject_id` int(10) NOT NULL,
   `student_id` int(10) NOT NULL,
   PRIMARY KEY (`student_request_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
-
---
--- Dumping data for table `student_requests`
---
-
-INSERT INTO `student_requests` (`student_request_id`, `branch_id`, `class_id`, `subject_id`, `student_id`) VALUES
-(5, 6, 7, 6, 39),
-(6, 7, 6, 5, 40),
-(7, 7, 6, 5, 41),
-(8, 7, 6, 5, 42),
-(9, 5, 6, 4, 51),
-(10, 5, 6, 5, 51),
-(11, 6, 6, 4, 51),
-(12, 5, 6, 4, 44),
-(13, 5, 6, 5, 44),
-(14, 6, 6, 4, 44),
-(15, 9, 6, 4, 44),
-(16, 9, 6, 5, 44),
-(17, 6, 6, 5, 44),
-(18, 11, 6, 4, 44),
-(19, 11, 6, 5, 44),
-(20, 9, 6, 4, 51),
-(21, 9, 6, 5, 51),
-(22, 11, 6, 4, 51),
-(23, 11, 6, 5, 51),
-(24, 5, 7, 6, 45),
-(25, 5, 7, 7, 45),
-(26, 6, 7, 6, 45),
-(27, 6, 7, 7, 45),
-(28, 9, 7, 6, 45),
-(29, 9, 7, 7, 45),
-(30, 11, 7, 6, 45),
-(31, 11, 7, 7, 45),
-(32, 5, 6, 4, 52),
-(33, 5, 6, 5, 52),
-(34, 6, 6, 4, 52),
-(35, 6, 6, 5, 52),
-(36, 9, 6, 4, 52),
-(37, 9, 6, 5, 52),
-(38, 11, 6, 4, 52),
-(39, 11, 6, 5, 52),
-(40, 12, 7, 7, 43),
-(41, 12, 7, 6, 43),
-(42, 12, 6, 5, 60),
-(43, 12, 6, 5, 65),
-(44, 9, 7, 7, 68);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -258,39 +253,34 @@ CREATE TABLE IF NOT EXISTS `student_teacher_allocation` (
   `student_id` int(11) NOT NULL,
   `schedule_id` int(10) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `allocation_status` tinyint(1) NOT NULL DEFAULT '0',
+  `cancellation_status` tinyint(1) NOT NULL DEFAULT '0',
+  `cancel_class_date` date NOT NULL,
   PRIMARY KEY (`student_teacher_allocation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=231 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `student_teacher_allocation`
 --
 
-INSERT INTO `student_teacher_allocation` (`student_teacher_allocation_id`, `student_id`, `schedule_id`, `created_date`, `status`) VALUES
-(128, 142, 63, '2016-04-01 04:20:00', 1),
-(136, 120, 65, '2016-04-24 22:41:08', 1),
-(139, 135, 65, '2016-04-24 22:41:08', 1),
-(156, 120, 66, '2016-04-25 02:42:14', 1),
-(157, 135, 66, '2016-04-25 02:42:14', 1),
-(161, 169, 67, '2016-04-27 15:04:32', 1),
-(162, 135, 64, '2016-04-08 17:16:43', 1),
-(184, 120, 93, '2016-04-08 19:06:25', 1),
-(185, 135, 93, '2016-04-08 19:06:25', 1),
-(186, 135, 95, '2016-04-08 19:47:03', 1),
-(187, 135, 98, '2016-04-08 19:47:16', 1),
-(188, 135, 100, '2016-04-08 19:47:35', 1),
-(189, 135, 96, '2016-04-08 19:57:31', 1),
-(190, 135, 97, '2016-04-08 19:57:45', 1),
-(191, 135, 99, '2016-04-08 19:58:00', 1),
-(192, 135, 101, '2016-04-08 19:58:14', 1),
-(193, 135, 102, '2016-04-08 19:59:00', 1),
-(194, 135, 103, '2016-04-08 19:59:17', 1),
-(195, 135, 104, '2016-04-08 19:59:31', 1),
-(196, 135, 105, '2016-04-08 19:59:44', 1),
-(198, 120, 69, '2016-04-07 23:28:59', 1),
-(199, 135, 69, '2016-04-07 23:28:59', 1),
-(229, 135, 68, '2016-04-13 18:08:15', 1),
-(230, 131, 62, '2016-04-12 18:49:00', 1);
+INSERT INTO `student_teacher_allocation` (`student_teacher_allocation_id`, `student_id`, `schedule_id`, `created_date`, `allocation_status`, `cancellation_status`, `cancel_class_date`) VALUES
+(3, 26, 2, '2016-04-17 08:48:47', 1, 0, '0000-00-00'),
+(4, 25, 2, '2016-04-17 13:32:39', 1, 1, '2016-04-17'),
+(7, 25, 1, '2016-04-17 13:46:43', 1, 1, '2016-04-10'),
+(10, 25, 4, '2016-04-20 05:20:37', 1, 1, '2016-04-13'),
+(11, 26, 4, '2016-04-17 10:56:09', 1, 0, '0000-00-00'),
+(13, 26, 5, '2016-04-17 10:56:38', 1, 0, '0000-00-00'),
+(14, 25, 8, '2016-04-17 06:31:35', 1, 1, '2016-04-18'),
+(15, 26, 8, '2016-04-17 10:57:02', 1, 0, '0000-00-00'),
+(16, 25, 9, '2016-04-17 10:57:35', 1, 0, '0000-00-00'),
+(17, 26, 9, '2016-04-17 10:57:35', 1, 0, '0000-00-00'),
+(18, 25, 12, '2016-04-20 05:20:59', 1, 1, '2016-04-22'),
+(19, 26, 12, '2016-04-17 10:57:52', 1, 0, '0000-00-00'),
+(20, 27, 13, '2016-04-17 11:58:37', 1, 0, '0000-00-00'),
+(21, 26, 13, '2016-04-17 06:35:33', 1, 0, '2016-04-17'),
+(23, 26, 11, '2016-04-17 12:02:14', 1, 0, '0000-00-00'),
+(24, 25, 11, '2016-04-17 12:02:14', 1, 0, '0000-00-00'),
+(25, 26, 7, '2016-04-20 04:46:17', 1, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -311,18 +301,22 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`subject_id`),
   KEY `fk_class_id` (`class_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `subject`
 --
 
 INSERT INTO `subject` (`subject_id`, `class_id`, `subject_title`, `short_description`, `long_description`, `subject_code`, `acedemic_year`, `allowed_student`, `status`, `created_date`) VALUES
-(4, 6, 'Maths', '', '<p><span style="background-color:rgb(255, 255, 255); color:rgb(0, 84, 159); font-family:arial,helvetica,sans-serif; font-size:16px">The maths tuition program is designed for students who are having difficulty with maths, in any grade. A free initial consu', 'Maths-PRI', '2015', 20, 0, '2016-04-08 07:48:00'),
-(5, 6, 'English', '', '<p><span style="background-color:rgb(255, 255, 255); color:rgb(0, 84, 159); font-family:arial,helvetica,sans-serif; font-size:16px">The English tutoring program is designed for students who need help with reading, comprehension, grammar, writing and spell', 'ENGLISH-PRI', '2015', 20, 1, '2016-01-02 21:39:40'),
-(6, 7, 'Maths', '', '<p>test</p>\r\n', 'Maths-SEC', '2015', 20, 1, '2016-01-12 12:40:58'),
-(7, 7, 'English', '', '<p>test</p>\r\n', 'English-SEC', '2015', 20, 1, '2016-01-12 12:41:50'),
-(8, 8, '123123', '<p>1231231</p>\r\n', '<p>123123</p>\r\n', '123123', '', 0, 0, '2016-03-18 05:21:43');
+(17, 4, 'sec_sub2', '<p>This is secondary1 subject</p>\r\n', '<p>This is secondary1 subject...long</p>\r\n', 'Secondary-pri_sub1', '', 0, 1, '2016-04-20 06:33:02'),
+(18, 4, 'sec_sub1', '<p>This is secondary2 subject</p>\r\n', '<p>This is secondary2 subject...long</p>\r\n', 'Secondary-pri_sub1', '', 0, 1, '2016-04-20 06:33:07'),
+(14, 2, 'pri_sub2', '<p>This is primary2 subject</p>\r\n', '<p>This is primary2 subject..long</p>\r\n', 'Primary-pri_sub2', '', 0, 1, '2016-04-10 23:55:55'),
+(15, 3, 'pri_sub4', '<p>This is primary3 subject</p>\r\n', '<p>This is primary2 subject..long</p>\r\n', 'Primary-pri_sub4', '', 0, 1, '2016-04-10 23:56:46'),
+(16, 3, 'pri_sub5', '<p>This is primary5 subject</p>\r\n', '<p>This is primary5 subject....long</p>\r\n', 'Primary-pri_sub5', '', 0, 1, '2016-04-10 23:58:20'),
+(13, 1, 'pri_sub3', '<p>This is primary1 subject</p>', '<p>This is primary1 subject....long</p>', 'Primary-pri_sub3', '', 0, 1, '2016-04-10 03:34:28'),
+(12, 1, 'pri_sub1', '<p>This is primary1 subject</p>\r\n', '<p>This is primary1 subject..long description</p>\r\n', 'Primary-pri_sub1', '', 0, 1, '2016-04-10 23:45:20'),
+(19, 5, 'gfdgfvdgvdfxgdfgdd', '<p>fgvdsfgdfgdfgdbknjbkvndfkvmdkvmckxvncnvx</p>\r\n', '<p>bdsgfjbnxckvbckvmnmcvbmc v</p>\r\n', 'gfdgfdgds', '', 0, 1, '2016-04-20 06:43:22'),
+(20, 5, 'sec_sub2', '<p>bgdfxcvxc</p>\r\n', '<p>bdgvxcxc</p>\r\n', 'dfvc', '', 0, 1, '2016-04-20 05:49:37');
 
 -- --------------------------------------------------------
 
@@ -345,13 +339,6 @@ CREATE TABLE IF NOT EXISTS `teacher_class_subject_branch` (
   PRIMARY KEY (`teacher_class_subject_branch_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
---
--- Dumping data for table `teacher_class_subject_branch`
---
-
-INSERT INTO `teacher_class_subject_branch` (`teacher_class_subject_branch_id`, `branch_id`, `user_id`, `class_id`, `subject_id`, `start_date`, `end_date`, `short_desc`, `allowed_student`, `current_student_count`, `created_date`) VALUES
-(10, 0, 38, 0, 4, '2016-01-23 21:00:00', '2016-01-13 21:00:00', '', 0, 0, '2016-01-13 11:46:50');
-
 -- --------------------------------------------------------
 
 --
@@ -371,24 +358,32 @@ CREATE TABLE IF NOT EXISTS `temp_stu_attend_class` (
   `class_starttime` time NOT NULL,
   `class_endtime` time NOT NULL,
   PRIMARY KEY (`temp_stu_attend_class_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `temp_stu_attend_class`
 --
 
 INSERT INTO `temp_stu_attend_class` (`temp_stu_attend_class_id`, `previous_branch_id`, `branch_id`, `class_id`, `subject_id`, `temp_stu_name`, `teacher_id`, `class_date`, `created_date`, `class_starttime`, `class_endtime`) VALUES
-(1, 8, 8, 7, 6, 'kannans', 111, '2016-03-27', '0000-00-00 00:00:00', '06:00:00', '07:00:00'),
-(2, 8, 8, 7, 6, 'siva', 111, '2016-03-27', '0000-00-00 00:00:00', '06:00:00', '07:00:00'),
-(3, 8, 8, 7, 6, 'ss', 111, '2016-03-27', '0000-00-00 00:00:00', '06:00:00', '07:00:00'),
-(4, 0, 8, 7, 6, 'swe', 111, '2016-03-27', '0000-00-00 00:00:00', '06:00:00', '07:00:00'),
-(5, 8, 8, 7, 6, 'kk', 111, '2016-03-27', '2016-03-26 18:30:00', '06:00:00', '07:00:00'),
-(6, 8, 8, 7, 6, 'rere', 111, '2016-03-27', '0000-00-00 00:00:00', '06:00:00', '07:00:00'),
-(7, 8, 8, 6, 6, 'll', 111, '2016-03-27', '0000-00-00 00:00:00', '01:00:00', '02:00:00'),
-(41, 7, 6, 6, 4, 're', 111, '2016-03-27', '2016-03-27 07:49:43', '08:00:00', '09:00:00'),
-(42, 6, 6, 6, 4, 'ree', 111, '2016-03-27', '2016-03-27 07:49:43', '08:00:00', '09:00:00'),
-(43, 8, 5, 6, 4, 'siva', 56, '2016-03-29', '2016-03-29 07:29:53', '03:00:00', '07:30:00'),
-(44, 8, 5, 6, 4, 'siva', 56, '2016-03-24', '2016-03-29 07:29:53', '03:00:00', '07:30:00');
+(1, 4, 1, 1, 13, 'temp1', 38, '2016-04-10', '2016-04-10 15:15:30', '05:30:00', '07:30:00'),
+(2, 2, 1, 1, 13, 'temp2', 38, '2016-04-10', '2016-04-10 15:15:30', '05:30:00', '07:30:00'),
+(3, 2, 1, 1, 13, 'temp10', 38, '2016-04-10', '2016-04-10 03:36:40', '04:30:00', '05:30:00'),
+(4, 4, 1, 1, 13, 'temp11', 38, '2016-04-10', '2016-04-10 03:36:40', '04:30:00', '05:30:00'),
+(5, 1, 1, 1, 13, 'kannan', 38, '2016-04-17', '2016-04-17 12:23:43', '05:30:00', '07:30:00'),
+(6, 1, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 12:23:43', '05:30:00', '07:30:00'),
+(7, 1, 1, 1, 13, 'kannan', 38, '2016-04-18', '2016-04-18 04:31:24', '05:30:00', '07:30:00'),
+(8, 1, 1, 1, 13, 'siva', 38, '2016-04-18', '2016-04-18 04:31:24', '05:30:00', '07:30:00'),
+(9, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:05:13', '04:30:00', '05:30:00'),
+(10, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:05:44', '04:30:00', '05:30:00'),
+(11, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:06:35', '04:30:00', '05:30:00'),
+(12, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:07:08', '04:30:00', '05:30:00'),
+(13, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:29:32', '04:30:00', '05:30:00'),
+(14, 0, 1, 1, 13, 'siva', 38, '2016-04-17', '2016-04-17 05:30:30', '04:30:00', '05:30:00'),
+(15, 1, 1, 1, 13, 'test21', 38, '2016-04-17', '2016-04-17 05:46:54', '04:30:00', '05:30:00'),
+(16, 1, 1, 1, 13, 'test21', 38, '2016-04-17', '2016-04-17 05:54:45', '04:30:00', '05:30:00'),
+(17, 1, 1, 1, 13, 'test200', 38, '2016-04-17', '2016-04-17 05:55:26', '05:30:00', '07:30:00'),
+(18, 1, 1, 1, 13, 'test201', 38, '2016-04-17', '2016-04-17 05:55:26', '05:30:00', '07:30:00'),
+(19, 2, 1, 1, 13, 'test202', 38, '2016-04-17', '2016-04-17 05:55:26', '05:30:00', '07:30:00');
 
 -- --------------------------------------------------------
 
@@ -416,45 +411,34 @@ CREATE TABLE IF NOT EXISTS `users` (
   `classes` int(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=170 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_type`, `username`, `password`, `firstname`, `lastname`, `phone_number`, `email`, `photo`, `description`, `gender`, `region`, `city`, `activation`, `created_date`, `status`, `classes`) VALUES
-(21, 'admin', 'admin', 'admin', 'sastha', 'mano', 9786243201, 'vgfdbfvsdvd@gmail.com', '', '', 1, 'WS', '10', '0', '2016-04-25 00:14:38', 0, NULL),
-(56, 'teacher', 'florence', 'Kip123', 'MS FLORENCE', 'LIM', 82321840, 'florence@kipmcgrath.com.sg', '', '', 0, 'CS', '11', '', '2016-02-25 06:20:49', 0, NULL),
-(73, 'student', 'ram.s', '', 'ram', 's', 8975754764, 'ram05@gmail.com', 'uploads/', '', 1, 'WS', '8', '', '2016-03-22 15:33:57', 0, 7),
-(91, 'student', 'verify2', '45', 'verify23', 'fsdfdsf', 87856757, 'gdfgdfg@gmail.com', '', '', 2, 'ES', '8', '', '2016-04-13 18:19:40', 0, 7),
-(95, 'teacher', 'verify7', 'gtrgtrg', 'verify7', 'gegtrg', 976856756, 'htghfg@gmail.com', '', '', 0, 'NS', '9', '', '2016-02-25 18:19:51', 0, 0),
-(111, 'teacher', 'teacher102', 'Kannan@5795', 'teacher102', 'dfsvd', 9578565567, 'sweetkannan05@gmail.com', 'uploads/IMG-20160219-WA0001.jpg', '', 2, 'NS', '6', '54de92f3a654cde9ecf701c480c54bc0', '2016-04-01 04:24:40', 0, 0),
-(112, 'student', 'okolkkl', 'lll;lll;', 'k,l;', 'lo,l,', 9768765756, 'ghdfhfgh@gmail.com', '', '', 2, 'NS', '7', '', '2016-04-01 02:20:48', 0, 0),
-(114, 'teacher', 'teacher105', 'ggdfdfgdffg', 'teacher105', 'gdfgdfgdf', 86775856, 'hgbdgdf@gmail.com', '', '', 0, 'NES', '7', '', '2016-02-25 18:21:30', 0, 0),
-(120, 'student', 'student203', 'ss', 'student2033', 'fgdffdg', 895675674, 'gfdvgdg@gmail.com', '', 'tyjjhhhj', 0, 'NS', '5', '', '2016-03-18 08:07:00', 0, 6),
-(121, 'teacher', 'test', 'Test@123', 'sample', 'sample', 7845784578, 'sample@sample.com', 'uploads/andy.jpg', '', 2, 'NES', '8', 'a7e343ce27a750a671f4f1597d305566', '2016-02-25 18:22:25', 0, 0),
-(122, 'teacher', 'test100', 'sss', 'test100', 'dfsdf', 978567654, 'gdfgffg@gmail.com', '', '', 0, 'NS', '6', '', '2016-03-19 07:03:45', 0, 0),
-(124, 'teacher', 'test101', 'gdgdkv', 'test101', 'dufdsk', 958469456, 'gkgkvgjdkgk@gmail.com', '', '', 0, 'NES', '7', '', '2016-02-25 18:22:50', 0, 0),
-(131, 'student', 'sample100', '65tyu8', 'sample100', 'fdgddgds', 9458694649, 'gdfgddf@gmail.com', '', '', 0, 'NES', '8', '', '2016-03-19 06:19:17', 0, 6),
-(133, 'teacher', 'test30', 'siva@5795', 'test300', 'test', 8759435, 'hfhdfdfjh@gmail.com', '', 'gidfhgjkdfnd', 0, 'NS', '5', '', '2016-02-25 18:24:08', 0, 0),
-(134, 'student', 'sam1', 'dfgdfg', 'sam1', 'bfgbhgvbh', 8575677, 'hfhvnbg@gmail.com', '', 'ewredfsf', 0, 'NS', '6', '', '2016-03-17 11:43:57', 0, 6),
-(135, 'student', 'sivaramakannan', 'sivaramakannan', 'sivaramakannan', 'dfgdfg', 86967876, 'hhfghfghf@gmail.com', '', 'i am siva', 0, 'NS', '5', '', '2016-03-17 11:44:02', 0, 6),
-(136, 'student', 'ashok1495', 'ashok1495', 'ashok', 'raj', 952269822, 'ashokraj1495@gmail.com', '', 'i am ashok...', 0, 'CS', '12', '', '2016-03-17 11:44:07', 0, 6),
-(138, 'student', 'siva_ashok', 'vsvsdvcds34r', 'siva', 'ashok', 8775644654, 'ghghfghgf@gmail.com', 'uploads/client_1.png', '', 0, '', '7', '', '2016-03-17 11:44:14', 0, 6),
-(139, 'student', 'ashok_user', 'bdgdfg867y6', 'ashok', 'siva', 9689468549, 'jhfjek@gmail.com', 'uploads/', 'juytjhnh', 1, 'NS', '8', '', '2016-03-17 11:44:26', 0, 6),
-(140, 'student', 'siva1000', 'siva1000', 'siva1000', 'siva1000', 9678678568, 'gbgff@gmail.com', 'uploads/banner_bg.png', ' ikhkjhkmhjkm', 0, 'ES', '10', '', '2016-03-17 11:44:29', 0, 6),
-(141, 'student', 'gfdgfg', 'ghgfh', 'hgfhgfh', 'hgfhgf', 87567567, 'hgffgfnf@gmail.com', 'uploads/client_6.png', 'kjh', 0, 'NES', '7', '', '2016-03-17 11:45:02', 0, 7),
-(142, 'student', 'hgfgf', 'jhgfjghfbj', 'tyuuytuhjg', 'hjgf', 78578757, 'gjghjghbvn@gmail.com', 'uploads/gslogo.png', 'jghmnbn female', 0, 'NS', '6', '', '2016-03-17 11:44:57', 0, 7),
-(143, 'student', '', 'jhghjgjghfjgh', 'kgjk', '', 96786787857, 'jmhmghj@gmail.com', 'uploads/about_us_icon.png', '', 1, 'ES', '', '', '2016-03-17 11:44:55', 0, 7),
-(144, 'student', '', 'kjhgmjhn6y7uyt', 'female', '', 7686875686, 'jghnghjgh@gmail.com', 'uploads/gslogo.png', '', 2, 'ES', '', '', '2016-03-17 11:44:52', 0, 7),
-(147, 'student', 'teststudent1', 'teststudent1', 'teststudent1', 'teststudent1', 98765432101, 'spmuthu211@gmail.com', '', 'adsfas', 1, 'NES', '7', '', '2016-03-17 11:44:47', 0, 7),
-(150, 'student', 'self', 'self', 'self', 'self', 789465, 'self@self.com', '', 'fdasdfa', 1, 'NS', '5', '', '2016-03-17 10:18:02', 0, 0),
-(151, 'student', '', '', '', '', 0, '', '', '', 2, 'Select Region', 'Select branch', '', '2016-03-31 03:47:50', 0, 0),
-(162, 'student', '', '', 'First Name', '', 0, 'ygj@gmail', '', '', 1, 'Select Region', 'Select branch', '', '2016-03-31 04:12:18', 0, 0),
-(166, 'student', 'User Name', 'PassWord', 'First Name', 'Last Name', 0, 'Email Address', '', '', 2, 'Select Region', 'Select branch', '', '2016-03-31 22:17:49', 0, 0),
-(167, 'student', 'kmsdfsd', 'fgdsdsfsdf', 'jdkfsmdf', 'nfmksldmfcls', 87878998, 'fsdfsdfsf@gmai.com', '', '', 2, 'NS', '5', '', '2016-04-01 00:20:51', 0, 7),
-(168, 'student', 'kkk', '56576gn', 'kkkk', 'kkkkk', 7687878787, 'sweetkannan@jkmdlada.com', '', '', 1, 'NES', '8', '', '2016-04-01 03:31:48', 0, 6),
-(169, 'student', 'pandiarajan', 'jaga', 'pandi', 'kannan', 8754119337, 'kl@gmail.com', '', '', 1, 'CS', '12', '', '2016-04-27 14:58:33', 0, 8);
+(21, 'admin', 'admin', 'admin', 'sastha', 'mano', 9786243201, 'vgfdbfvsdvd@gmail.com', '', '', 1, 'WS', '10', '0', '2016-04-10 22:52:00', 1, NULL),
+(22, 'admin', 'siva', 'siva', 'siva', 'kannan', 8754063617, 'sweetkannan05@gmail.com', '', 'welcome', 1, 'NES', '', '', '2016-04-10 22:51:56', 1, NULL),
+(25, 'student', 'student1', 'student1', 'student1', 'student1', 5454523452, 'student1@gmail.com', '', 'student1', 1, 'NS', '1', '', '2016-04-11 00:20:22', 1, 1),
+(26, 'student', 'student2', 'student2', 'student2', 'student2', 4578458458, 'student2@gmail.com', '', 'sudent2', 1, 'NS', '1', '', '2016-04-10 06:17:10', 1, 1),
+(27, 'student', 'student3', 'student3', 'student3', 'student3', 6834858345, 'student3@gmail.com', '', 'sudent3', 2, 'NS', '1', '', '2016-04-10 06:17:52', 1, 2),
+(28, 'student', 'student4', 'student4', 'student4', 'student4', 9874857432, 'student4@gmail.com', '', 'sudent4', 1, 'NS', '1', '', '2016-04-10 06:18:25', 1, 2),
+(29, 'student', 'student5', 'student5', 'student5', 'student5', 5843758432, 'student5@gmail.com', '', 'sudent5', 2, 'NS', '1', '', '2016-04-10 06:19:05', 1, 3),
+(31, 'student', 'student6', 'student6', 'student6', 'student6', 7456653356, 'student6@gmail.com', '', 'student6', 2, 'NS', '1', '', '2016-04-11 01:19:31', 1, 3),
+(32, 'student', 'student7', 'student7', 'student7', 'student7', 8467653465, 'student7@gmail.com', '', 'student7', 1, 'NS', '2', '', '2016-04-11 01:21:43', 1, 6),
+(33, 'student', 'student8', 'student8', 'student8', 'student8', 5437858934, 'student8@gmail.com', '', 'student8', 2, 'NS', '2', '', '2016-04-11 01:22:17', 1, 6),
+(34, 'student', 'student9', 'student9', 'student9', 'student9', 8678667756, 'student9@gmail.com', '', 'student9', 1, 'NES', '3', '', '2016-04-11 01:23:38', 1, 5),
+(35, 'student', 'student10', 'student10', 'student10', 'student10', 5824358943, 'student10@gmail.com', '', 'student10', 1, 'NES', '3', '', '2016-04-11 01:24:32', 1, 5),
+(36, 'student', 'student11', 'student11', 'student11', 'student11', 5487582437, 'student11@gmail.com', '', 'student11', 2, 'NES', '3', '', '2016-04-11 01:25:23', 1, 4),
+(37, 'student', 'student12', 'student12', 'student12', 'student12', 4857823645, 'student12@gmail.com', '', 'student12', 2, 'NES', '3', '', '2016-04-11 01:26:06', 1, 4),
+(38, 'teacher', 'teacher1', 'teacher1', 'teacher1', 'teacher1', 6747467467, 'teacher1@gmail.com', '', 'teacher1', 2, 'NS', '1', '', '2016-04-11 01:44:21', 1, NULL),
+(39, 'teacher', 'teacher2', 'teacher2', 'teacher2', 'teacher2', 8564743673, 'teacher2@gmail.com', '', 'teacher2', 2, 'ES', '4', '', '2016-04-11 02:03:11', 1, NULL),
+(40, 'teacher', 'teacher3', 'teacher3', 'teacher3', 'teacher3', 7857675676, 'teacher3@gmail.com', '', 'teacher3', 1, 'NES', '3', '', '2016-04-11 02:03:56', 1, NULL),
+(41, 'student', 'student13', 'student13', 'student13', 'student13', 8656365655, 'student13@gmail.com', '', 'student13', 1, 'NS', '2', '', '2016-04-10 15:35:33', 1, 1),
+(42, 'student', 'sivaram', 'sivaram', 'siva', 'kannan', 8765445354, 'sweetkanfdsfdfdsan05@gmail.com', '', '', 1, 'NS', '1', '', '2016-04-17 12:27:35', 1, 2),
+(43, 'teacher', 'test select', '5345342', 'test select', 'test select', 6345233245, 'sweetkatestsnnan05@gmail.com', '', 'welcome', 2, 'NS', '1', '', '2016-04-17 07:15:04', 1, NULL),
+(48, 'teacher', '', '', '', '', 0, '', '', '', 1, 'Select Region', 'Select branch', '', '2016-04-17 08:55:50', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -468,39 +452,26 @@ CREATE TABLE IF NOT EXISTS `user_preference` (
   `user_classId` int(55) NOT NULL,
   `user_subjectId` int(55) NOT NULL,
   PRIMARY KEY (`user_preferenceId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='User Preference Table for teacher class and subject' AUTO_INCREMENT=77 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='User Preference Table for teacher class and subject' AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `user_preference`
 --
 
 INSERT INTO `user_preference` (`user_preferenceId`, `usersId`, `user_classId`, `user_subjectId`) VALUES
-(22, 38, 6, 4),
-(52, 106, 7, 7),
-(53, 107, 6, 4),
-(54, 110, 6, 4),
-(55, 111, 6, 4),
-(56, 111, 6, 5),
-(57, 113, 6, 5),
-(58, 113, 7, 6),
-(59, 114, 6, 5),
-(60, 121, 6, 4),
-(61, 121, 6, 5),
-(62, 121, 7, 6),
-(63, 121, 7, 7),
-(64, 0, 6, 4),
-(65, 0, 6, 4),
-(66, 129, 6, 4),
-(67, 129, 6, 5),
-(68, 130, 6, 4),
-(69, 130, 6, 5),
-(70, 130, 7, 6),
-(71, 133, 6, 4),
-(72, 133, 6, 5),
-(73, 148, 6, 4),
-(74, 148, 6, 5),
-(75, 149, 6, 4),
-(76, 149, 6, 5);
+(3, 38, 1, 13),
+(4, 38, 1, 12),
+(5, 39, 3, 15),
+(6, 39, 3, 16),
+(7, 39, 4, 17),
+(8, 40, 4, 17),
+(9, 43, 1, 13),
+(10, 43, 1, 12),
+(11, 43, 2, 14),
+(12, 48, 1, 12),
+(13, 48, 2, 14),
+(20, 50, 2, 14),
+(21, 50, 3, 15);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

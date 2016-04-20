@@ -76,4 +76,6 @@ if(isset($_GET['id'])&&isset($_GET['user_type'])){
 		<?php include('footer.php'); ?>
         </div>
 		<?php include('script.php'); ?>
+	</body>
+	</html>
    

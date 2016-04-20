@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+
 
 <?php
 if(isset($_GET['classid']) && isset($_GET['branch_id']) && isset($_GET['sche_id'])){
@@ -12,6 +12,7 @@ if(isset($_GET['classid']) && isset($_GET['branch_id']) && isset($_GET['sche_id'
 // print_r(mysql_fetch_array($query2));
 // echo "</pre>";
 ?>
+
 <div class="container-fluid"> 
 <div class="row-fluid"> 
 <?php include('sidebar_dashboard.php'); ?>

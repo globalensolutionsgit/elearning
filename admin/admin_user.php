@@ -1,6 +1,8 @@
 <?php include('header.php'); ?>
-<?php include('session.php'); ?>
+
 <body>
+<?php include('session.php'); ?>
+    
     <?php include('navbar.php'); ?>
     <div class="container-fluid">
         <div class="row-fluid">
@@ -24,11 +26,11 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>Name</th>
+                                                <th>Username</th>
 
                                                 <?php
                                                 if($user_type == 'teacher'){
-                                                    echo '<th>Username</th><th>Branch</th>';
+                                                    echo '<th>Branch</th>';
                                                 }
 
                                                 ?>
@@ -54,8 +56,14 @@
                                                     <td width="30">
                                                         <input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
                                                     </td>
-                                                    <td><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></td>
-                                                    <?php if($user_type == 'teacher'){  echo '<td>'.$row['username'].'</td></td><td>'.$row['branch_name'].'</td>';  }?>
+                                                    <td><?php 
+                                                    // echo $row['firstname']; 
+                                                    // echo $row['lastname'];
+                                                    echo $row['username'];
+                                                    ?>
+                                                    <?php if($user_type == 'teacher'){  
+                                                        echo '<td>'.$row['branch_name'].'</td>';  }?>
+                                                        </td>
                                                     <td width="40">
                                                         <a href="edit_user.php<?php echo '?id=' . $id.'&user_type='.$user_type; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
                                                     </td>
@@ -78,6 +86,14 @@
         <?php include('footer.php'); ?>
     </div>
     <?php include('script.php'); ?>
+    
+    <script>
+    $("#teacher_class").multiselect({
+           header: "Choose an Option!",
+           selectedList: 2
+       });
+    </script>
+
 </body>
 
 </html>
