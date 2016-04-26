@@ -189,13 +189,22 @@ $regions = array('NS' => 'North Singapore', 'NES' => 'North East Singapore', 'ES
                 });
             </script> -->
                                 <script>
+// $(document).ready(function() {
+//      var year_cur = (new Date).getFullYear();
+//      alert(year_cur);
+// });
 $("#datepicker_year").datepicker( {
     format: " yyyy",
     viewMode: "years", 
-    minViewMode: "years"
+    minViewMode: "years",
+    yearRange: '1950:2013',
+    startDate : new Date('2012-08-08'),
+    endDate : new Date('2014-08-08'),
 });
 
-            </script>
+
+      // $('#datepicker_year').datepicker({ dateFormat: 'yyyy', changeYear: false, yearRange: "-0:+0", stepYears: 0  });    
+        </script>
 
   
         </div>

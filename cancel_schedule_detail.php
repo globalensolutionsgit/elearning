@@ -91,7 +91,8 @@ $student_teacher_allocation_date_update=$_GET['id2'];
             // echo $result_student_branch_id;
             // print_r($result_student_branch_name);
             // print_r($result_student_branch_id);
-             $date=date('Y-m-d', strtotime('-1 day', strtotime($date)));
+           
+             $date=date('Y-m-d', strtotime('-1 day', strtotime($student_teacher_allocation_date_update)));
               // echo $date;
             for($i=1;$i<=7;$i++) {
 

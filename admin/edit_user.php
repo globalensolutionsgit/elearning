@@ -1,5 +1,6 @@
 <?php include('header.php'); ?>
-<?php include('session.php'); ?>
+<?php 
+include('session.php'); ?>
 <?php
 if(isset($_GET['id'])&&isset($_GET['user_type'])){
     $get_id = $_GET['id'];
@@ -27,7 +28,7 @@ if(isset($_GET['id'])&&isset($_GET['user_type'])){
                                 <div class="span12">
 								<form action="delete_users.php" method="post">
   									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
-									<a data-toggle="modal" href="#user_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i></a>
+									<a data-toggle="modal" href="#user_delete" id="delete"  class="btn btn-danger" name="" title="Delete"><i class="icon-trash icon-large"></i></a>
 									<?php include('modal_delete.php'); ?>
 										<thead>
 										  <tr>
@@ -54,7 +55,7 @@ if(isset($_GET['id'])&&isset($_GET['user_type'])){
 												<td><?php echo $row['username']; ?></td>
 
 												<td width="40">
-												<a href="edit_user.php<?php echo '?id='.$id.'&user_type='.$user_type; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
+												<a href="edit_user.php<?php echo '?id='.$id.'&user_type='.$user_type; ?>"  data-toggle="modal" class="btn btn-success" title="Edit"><i class="icon-pencil icon-large"></i></a>
 												</td>
 
 
@@ -76,6 +77,12 @@ if(isset($_GET['id'])&&isset($_GET['user_type'])){
 		<?php include('footer.php'); ?>
         </div>
 		<?php include('script.php'); ?>
+		 <script>
+    $("#teacher_class_edit").multiselect({
+           header: "Choose an Option!",
+           selectedList: 2
+       });
+    </script>
 	</body>
 	</html>
    

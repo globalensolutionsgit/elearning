@@ -181,13 +181,13 @@ if ($('#sel1').val() == "Select Region") {
 			return false;
 		} else {
 			errornotice.hide();
-			var options = $('#teacher_class > option:selected');
-         if(options.length == 0){
-             alert('please select all fields');
-             return false;
-		} else {
+			// var options = $('#teacher_class > option:selected');
+   //       if(options.length == 0){
+             // alert('please select all fields');
+             
+		 
 			return true;
-		}
+		
 		}
 
 	});

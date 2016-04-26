@@ -58,32 +58,32 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="firstname" type="text" placeholder="Enter firstname">
+							<input class="input focused" value="<?php echo $row['firstname']; ?>" name="firstname" id="firstname" type="text" placeholder="Firstname">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" type="text" placeholder="Enter lastname">
+							<input class="input focused" value="<?php echo $row['lastname']; ?>"  name="lastname" id="lastname" type="text" placeholder="Lastname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="username" type="text" placeholder="Enter username">
+							<input class="input focused" value="<?php echo $row['username']; ?>"  name="username" id="username" type="text" placeholder="Username">
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="password" type="password" placeholder="Enter password" maxlength="10">
+							<input class="input focused" value="<?php echo $row['password']; ?>"  name="password" id="password" type="password" placeholder="Password" maxlength="10">
 					    </div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone" maxlength="10" id="phone" type="text" placeholder="Enter phonenumber">
+							<input class="input focused" value="<?php echo $row['phone_number']; ?>" name="phone" maxlength="10" id="phone" type="text" placeholder="Phonenumber">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="email" type="text" placeholder="Enter email">
+							<input class="input focused" value="<?php echo $row['email']; ?>" name="email" id="email" type="text" placeholder="Email">
 					    </div>
 					</div>
 					<!-- newly added by siva -->
@@ -247,8 +247,8 @@ else { ?>
                           			</div>
 -->
 <div class="control-group">
-                                		<div class="controls" id="select5">                                   
-		                                    <?php
+        <div class="controls" id="select5">                                   
+		                                <?php
 		                                    $query_class = mysql_query("SELECT
 		                                                            cl.class_id,
 		                                                            su.class_id,
@@ -263,29 +263,43 @@ else { ?>
 	                                    	$count_class = mysql_num_rows($query_class);
 	                                    	if ($count_class != '0') {
 	                                    	?>
-		                                    <select class="sel5" name="preference_classsubject[]" value="select" id="teacher_class" multiple data-validation="required">
-			                                    <option selected>Select class</option>
-			                                    <?php while ($row_class = mysql_fetch_array($query_class)) { ?>
+		                                    <select class="sel5" name="preference_classsubject_edit[]" value="select" id="teacher_class_edit" multiple data-validation="required">
+			                                    <?php while ($row_class = mysql_fetch_array($query_class)) { 
+			                                    $query_user_class=mysql_query("select * from user_preference where usersId='$get_id'") or die(mysql_error());
+			                                    $row_user_class=mysql_fetch_array($query_user_class);
+			                                    	if($row_user_class['user_classId']==$row_class['class_id']) { ?>
+
+			                                    	<option value="<?php echo $row_class['class_id'] . '-' . $row_class['subject_id']; ?>" selected>
+			        								<?php echo $row_class['class_name'] . '-' . $row_class['subject_title']; ?>
+			                                    	</option>
+
+			                                    <?php	}
+			                                    
+
+												else { ?>
 			                                	<option value="<?php echo $row_class['class_id'] . '-' . $row_class['subject_id']; ?>">
 			        								<?php echo $row_class['class_name'] . '-' . $row_class['subject_title']; ?>
 			                                    </option>
-			    								<?php } ?>
+			    								<?php } } ?>
 		                                    </select>
 											<?php } ?>
                                 		</div>
+
+
                           			</div>
                               <?php
                                  }
                               ?> 
 					<div class="control-group">
 						<div class="controls">
-							<textarea name="description"><?php echo $row['description']; ?></textarea>
+							<textarea name="description" placeholder="comments"><?php echo $row['description']; ?></textarea>
 						</div>
 					</div>
 							<div class="control-group">
-								<div class="controls">
-									<input type="radio" value="1" name="gender" <?php if($row['gender']==1) echo 'checked'; ?> required>Male
-									<input type="radio" value="2"  name="gender" <?php if($row['gender']==2) echo 'checked'; ?> required>Female
+								<div class="controls gender_holder">
+                          			<label>Gender:- </label>
+									<input type="radio" value="1" name="gender" <?php if($row['gender']==1) echo 'checked'; ?> >Male
+									<input type="radio" value="2"  name="gender" <?php if($row['gender']==2) echo 'checked'; ?> >Female
 								</div>
 							</div>
 									
@@ -296,7 +310,7 @@ else { ?>
 							</div>  -->
 							<div class="control-group">
 								<div class="controls">
-									<button name="update" type="submit" class="btn btn-success"><i class="icon-save icon-large"></i></button>
+									<button name="update" type="submit" class="btn btn-success" title="Update"><i class="icon-save icon-large"></i></button>
 								</div>
 							</div>
 				</form>
@@ -321,17 +335,43 @@ else { ?>
 		if(isset($_POST['classes'])){
 			$classes=$_POST['classes'];
 		}
-		if($user_type == 'admin'){
-			mysql_query("update users set username='$username', firstname = '$firstname' , lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
-		}else if($user_type == 'teacher'){
-			mysql_query("update users set username='$username',city='$city', firstname = '$firstname' , classes='$classes',lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
-		}else if($user_type == 'student'){
-			mysql_query("update users set username='$username',city='$city', firstname = '$firstname' , classes='$classes',lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
-		}
-		echo "<script>alert('Data Updated Successfully!');
+
+		
+		$query_admin = mysql_query("select * from users where user_id != '$get_id'")or die(mysql_error());
+
+				while($row_admin=mysql_fetch_array($query_admin)) {
+				if ($username == $row_admin['username']){ ?>
+					<script>
+						alert('Username or Mail id Already Exist');
+						// return false;
+					</script>
+				<?php
+				 die(); } else { 
+
+
+
+?>
+		<!-- // if($user_type == 'admin'){ -->
+		<script>
+						alert('Username or Mail id Already 123Exist');
+					</script> <?php
+
+			mysql_query("update users set username='$username', firstname = '$firstname' , lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' and user_type='$user_type'")or die(mysql_error());
+		// }else if($user_type == 'teacher'){
+		// 	mysql_query("update users set username='$username',city='$city', firstname = '$firstname' , classes='$classes',lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
+		// }else if($user_type == 'student'){
+		// 	mysql_query("update users set username='$username',city='$city', firstname = '$firstname' , classes='$classes',lastname = '$lastname', password='$password',phone_number='$phone_number',email='$email',gender='$gender',description='$description',region='$region' where user_id = '$get_id' ")or die(mysql_error());
+		// }
+	} ?>
+	<?php
+		echo "<script>alert('Data Updated Successfully...k!');
 		window.location = 'admin_user.php?user_type=".$user_type."';</script>";
+	}
 	
 	}
+
+
+
 ?>
 
 

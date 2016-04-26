@@ -483,31 +483,41 @@ $('.btn_submit').click(function(){
             if($(this).is(':checked')){
                 
 
-                // if($('.num_seats_validation').val()=="") {
-                // alert("test");
-                // $(this).css("border","1px solid red");
-                // // return false;
-                // }
-                // else {
-                //     alert("test2");
-                //   $('.num_seats_validation').css("border","10px solid black");    
-                // }
-
+               //  if($('.num_seats_validation').val()=="") {
+               // //  alert("test");
+               // // alert( $(this).html());
+               //  $('.num_seats_validation').addClass('error_input');
+               //  // return false;
+               //  }
+               //  else {
+               //      // alert("test2");
+               //    $('.num_seats_validation').removeClass('error_input');    
+               //  }
+ // element3 = $(this).parents('.input_schedule').parents('.class_schedule_border').children('.clone_content');
+ //                element3.find('.num_seats_validation').each(function(){
+ //                    if($(this).val() == ""){
+ //                        // if($(this).val() == "" || $(this).parents('val() == ""){
+ //                        $(this).addClass('error_input');
+ //                    }
+ //                    else{
+ //                        $(this).removeClass('error_input');
+ //                    }
+ //                });
                 
                 element = $(this).parents('.input_schedule').parents('.class_schedule_border').children('.clone_content');
-                element.find('select').each(function(){
+                element.find('select,input').each(function(){
                     if($(this).val() == ""){
                         // if($(this).val() == "" || $(this).parents('val() == ""){
-                        $(this).addClass('error');
+                        $(this).addClass('error_input');
                     }
                     else{
-                        $(this).removeClass('error');
+                        $(this).removeClass('error_input');
                     }
                 });
                
             }  
         });   
-        if(element.find('select').hasClass('error')){
+        if(element.find('select,input').hasClass('error_input')){
             alert('please select all fields');
             return false;
         }
@@ -715,10 +725,18 @@ $('.btn_submit').click(function(){
 // $(".ui-datepicker-inline").addClass( "new_align2" );
 $('.table-condensed tbody').click(function() {
 
-
  $('.dropdown-menu').hide();
+
  
 });
+// $('#datepicker_year').blur(function() {
+
+// alert($('#datepicker_year').val());
+
+// });
+
+
+
 
 
 

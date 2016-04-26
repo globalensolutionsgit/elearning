@@ -20,7 +20,7 @@ $regions = array('NS'=>'North Singapore', 'NES'=>'North East Singapore', 'ES'=>'
 		                                <div class="muted pull-left">Edit Branch</div>
 		                            </div>
 		                            <div class="block-content collapse in">
-									<a href="Branch.php"><i class="icon-arrow-left"></i> Back</a>
+									<!-- <a href="Branch.php"><i class="icon-arrow-left"></i> Back</a> --><br>
 									
 									<?php
 									$query = mysql_query("select * from branch where branch_id = '$get_id'")or die(mysql_error());

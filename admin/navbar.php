@@ -9,7 +9,8 @@
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
                     <?php
-                    $query = mysql_query("select * from users where user_id = '$session_id'")or die(mysql_error());
+                    $query = mysql_query("select * from users where user_id = '$session_id' and user_type='admin'")or die(mysql_error());
+
                     $row = mysql_fetch_array($query);
                     ?>
                     <li class="dropdown">

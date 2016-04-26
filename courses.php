@@ -52,6 +52,7 @@ require_once 'dbcon.php';    //include of db config file
             $course_day1 =  date("l");
             $array1 = array('sun'=> 'Sunday', 'mon' => 'Monday', 'tue' => 'Tuesday', 'wed' => 'Wednesday','thu' => 'Thursday', 'fri' => 'Friday', 'sat' => 'Saturday');
             $key_day1 = array_search($course_day1, $array1);
+
             // echo $key_day1;
         // echo $course_day;
 
@@ -83,7 +84,7 @@ require_once 'dbcon.php';    //include of db config file
 
 
 
-
+$date_cancel_todayclass=date('Y-m-d');
 
                 $user_id = $_SESSION['user_id'];
                 $result = mysql_query("select * from student_teacher_allocation
@@ -91,7 +92,7 @@ require_once 'dbcon.php';    //include of db config file
                                         JOIN branch ON branch.branch_id = class_schedules.branch_id
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
-                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day1'");
+                                        JOIN users ON users.user_id = class_schedules.teacher_id where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day1' and student_teacher_allocation.cancel_class_date<'$date_cancel_todayclass'");
         
 
 
@@ -250,7 +251,7 @@ $rows_class_name=mysql_fetch_array($query_class_name);
                                         JOIN class ON class.class_id = class_schedules.class_id
                                         JOIN subject ON subject.subject_id = class_schedules.subject_id
                                         JOIN users ON users.user_id = class_schedules.teacher_id 
-                                        where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day'");
+                                        where student_teacher_allocation.student_id ='$user_id' and class_schedules.day='$key_day' and student_teacher_allocation.cancel_class_date<'$date_cancel_todayclass'");
             // INNER JOIN student_teacher_allocation ON student_teacher_allocation.schedule_id=class_schedules.class_schedules_id
 
             

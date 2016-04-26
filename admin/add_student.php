@@ -15,7 +15,14 @@ if(isset($_GET['classid']) && isset($_GET['branch_id'])){
 ?>
 <body>
 	<?php include('navbar.php'); ?>
-    <div class="block-content">
+
+
+<div class="container-fluid"> 
+        <div class="row-fluid">
+            <?php include('sidebar_dashboard.php'); ?>
+            <!-- <div class="span3" id="adduser"> -->
+
+    <div class="block-content span8" id="add_student_align">
         <div class="navbar navbar-inner block-header">
             <div id="" class="muted pull-left"><h4><i class="icon-plus-sign"></i> Add Student</h4></div>
         </div>
@@ -57,6 +64,8 @@ echo $num_of_seats ?>
     		</div> <!-- span -->
 		</div>  <!-- /block-content -->
 	</div> <!-- /block -->
+</div>
+</div>
    
 
 
@@ -87,3 +96,4 @@ echo $num_of_seats ?>
 
 
 </body>
+</html>

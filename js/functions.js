@@ -14,11 +14,9 @@ $('.pop_up_values').click(function(){
     var t= $(this).attr('value');
 
     // alert(t);
+    var url_value = 'cancel_schedule_detail.php'+t;
 
-   $(this).parents('.reschedule').find('#pop_up_querystring').attr("href",t);
-//     var qd = {};
-// location.search.substr(1).split("&").forEach(function(item) {(item.split("=")[0] in qd) ? qd[item.split("=")[0]].push(item.split("=")[1]) : qd[item.split("=")[0]] = [item.split("=")[1]]})
-// alert(qd);
+   $(this).parents('.reschedule').find('#pop_up_querystring').attr("href",url_value);
 });
 
 // $('#attened_student').submit(function() {

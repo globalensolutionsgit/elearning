@@ -9,22 +9,40 @@
                 <div class="form-box">
                     <div class="message"><?php
                                     include('dbcon.php');
-                                    if(isset($_POST['submit'])){
-                                        $email = $_POST['email'];
-                          
-                                        $sql = mysql_query("select * from users where email = '$email'")or die(mysql_error());
-                                        $count = mysql_num_rows($sql);
-                                        if($count!=0){
-                                            $row = mysql_fetch_array($sql);
-                                            $msg = "Hi ".$row['firstname']."\n";
-                                            $msg .= "Your password is ".$row['password'].".";
-                                            mail($email,"Forgot password",$msg);
-                                            echo "Password sent to your registered mail id";
-                                        }
-                                        else{
-                                            echo "Invalid mail id";
-                                        }
-                                    }
+          if(isset($_POST['submit'])){
+                $email = $_POST['email'];
+  
+                $sql = mysql_query("select * from users where email = '$email'")or die(mysql_error());
+                $count = mysql_num_rows($sql);
+                if($count!=0){
+                    $row = mysql_fetch_array($sql);
+                    // $msg = "Hi ".$row['firstname']."\n";
+                    // $msg .= "Your password is ".$row['password'].".";
+                    // mail($email,"Forgot password",$msg);
+                    $first_name=$row['firstname'];
+                    $user_name=$row['username'];
+                    $password=$row['password'];
+    $email_from = 'sweetkannan05@gmail.com';
+ 
+    $email_subject = "Your Account information:";
+ 
+    $email_body = "Hi  $first_name \n".
+                  "Your username is:  $user_name \n".
+                  "Your password is:$password". 
+ 
+  $to = $row['email'];
+ 
+  $headers = "From: $email_from \r\n";
+ 
+  // $headers .= "Reply-To: $Email \r\n";
+ 
+  mail($to,$email_subject,$email_body,$headers);
+                    echo "Password sent to your registered mail id";
+                }
+                else{
+                    echo "Invalid mail id";
+                }
+            }
                                
                             ?></div>
                     <form action="" method="post">

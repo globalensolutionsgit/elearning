@@ -246,6 +246,9 @@ div.checker input{
 .error {
     border: 2px solid red;
 }
+.error_input {
+    border: 2px solid red !important;
+}
 .datepicker-days{
   display: none !important;
 }
@@ -283,4 +286,18 @@ div.checker input{
   }
   .error_number_field {
     border:1px solid red;
+  }
+  .gender_holder {
+    line-height: 30px;
+  }
+  .gender_holder input {
+     margin: 0 6px 2px 20px;
+  }
+  #add_student_align {
+    border: 1px solid;
+    margin: 2em;
+  }
+  .input_edit_seats {
+    float: right;
+    width: 127px;
   }

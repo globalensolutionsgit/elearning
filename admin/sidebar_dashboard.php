@@ -1,5 +1,5 @@
 <div class="span3" id="sidebar">
-    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse active_dashboard">
         <li> <a href="dashboard.php"><i class="icon-chevron-right"></i><i class="icon-home"></i>&nbsp;Dashboard</a> </li>
         <li>
             <a href="admin_user.php?user_type=admin"><i class="icon-chevron-right"></i><i class="icon-user"></i>Admin user</a>
@@ -26,7 +26,7 @@
             <a href="teacher_request.php"><i class="icon-chevron-right"></i><i class="icon-user"></i>Teachers Preferences</a>
         </li> -->
 
-        <li>
+        <li class="ss">
             <a href="class_schedules.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Makeup slots</a>
         </li>
         <li>
@@ -37,3 +37,10 @@
         </li>
     </ul>
 </div>
+ <script>
+// $('.ss').click(function() {
+//     alert("test");
+//     $(this).parents('.active_dashboard').css("color","red");
+//     $(this).css("color","black");
+// }
+// </script>

@@ -182,7 +182,7 @@ $edit_schedules_day=$row_day['day'];
 				<div>
                     <div class="control-group span6">
                        <div class="controls">
-
+                    <!-- <input id="endtime" class="span6" type="text" class="" name="endtime[]" value="<?php echo $row['end_time'] ?>" placeholder="End Time" disabled> -->
 						<!-- <button name="get" class="btn btn-success" type="submit">submit</button> -->
 							
                         </div>
@@ -221,9 +221,16 @@ $edit_schedules_day=$row_day['day'];
                   
             </form>
 
-             <div class="control-group span9">
+             <div class="control-group span11">
                <form method="post" id="edit_class_allocate" action="insert_student.php">
                    <input type="hidden" name="class_schedule_id" value="<?php echo $_GET['sche_id']; ?>" />
+<!--  <div class="control-group span6">
+                      
+                    </div> -->
+
+
+
+
                    <div id="student_list control-group span12">
 
                <div class="available_seats" >
@@ -235,7 +242,16 @@ $edit_schedules_day=$row_day['day'];
 ?>
 NUMBER OF SEATS : <?php 
 echo $edit_num_of_seats ?>
- <input type="hidden" id="edit_num_of_seats" name="seats" value="<?php echo $edit_num_of_seats; ?>" />
+ <!-- <div class="controls"> -->
+        
+
+        <span class="input_edit_seats">
+        Seats :   <input id="edit_seats" class="span6" type="text" class="" name="edit_seats" value="<?php echo $row['num_of_seats'] ?>" placeholder="Seats" required>
+          </span> 
+
+
+                        <!-- </div> -->
+ <input type="hidden" id="edit_num_of_seats" name="seats" value="<?php echo $edit_num_of_seats; ?>" required/>
 </div>  
                         <table class="schdule_student_list">
                             <tr><th><input type='checkbox' value='checkall' class="checkall" name='check_all'>all</th><th>Student Name</th><th>Phone number</th><th>Email</th></tr>

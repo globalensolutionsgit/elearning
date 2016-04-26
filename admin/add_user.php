@@ -41,36 +41,36 @@ $user_type = $_GET['user_type'];
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input_field" name="firstname" id="firstname" type="text" value=""  placeholder="Enter firstname">
+							<input class="input_field" name="firstname" id="firstname" type="text" value=""  placeholder="Firstname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							                	
                             	
-                            <input class="input focused input_field" name="lastname" id="lastname" type="text" value=""  placeholder="Enter lastname">
+                            <input class="input focused input_field" name="lastname" id="lastname" type="text" value=""  placeholder="Lastname">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<input class="input focused input_field" name="username" id="username" type="text" value=""  placeholder="Enter username">
+							<input class="input focused input_field" name="username" id="username" type="text" value=""  placeholder="Username">
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
-							<input class="input focused input_field" name="password" id="password" type="password" value=""  placeholder="Enter password" maxlength="10" >
+							<input class="input focused input_field" name="password" id="password" type="password" value=""  placeholder="Password" maxlength="10" >
 						</div>
 					</div>
 					<div class="control-group">
 					    <div class="controls">
 					    	
-							<input class="input focused input_field" name="phone" id="phone" type="text" value="" maxlength="10"  placeholder="Enter phonenumber">
+							<input class="input focused input_field" name="phone" id="phone" type="text" value="" maxlength="10"  placeholder="Phonenumber">
 					    </div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							
-							<input class="input focused input_field" name="email" id="email" type="text" value=""  placeholder="Enter email">
+							<input class="input focused input_field" name="email" id="email" type="text" value=""  placeholder="Email">
 						</div>
 					</div>
 					<!-- newly added by kalai -->
@@ -183,7 +183,6 @@ $user_type = $_GET['user_type'];
 	                                    	if ($count != '0') {
 	                                    	?>
 		                                    <select class="sel5" name="preference_classsubject[]" value="select" id="teacher_class" multiple data-validation="required">
-			                                    <label>Sdgfg</label>
 			                                    <?php while ($row = mysql_fetch_array($query)) { ?>
 			                                	<option value="<?php echo $row['class_id'] . '-' . $row['subject_id']; ?>">
 			        								<?php echo $row['class_name'] . '-' . $row['subject_title']; ?>
@@ -204,11 +203,12 @@ $user_type = $_GET['user_type'];
                                         </div> -->
 							<div class="control-group">
                               	<div class="controls">
-                                	<textarea name="description"></textarea>
+                                	<textarea name="description" placeholder="comments"></textarea>
                               	</div>
                             </div>
 							<div class="control-group">
-                          		<div class="controls">
+                          		<div class="controls gender_holder">
+                          			<label>Gender:- </label>
                                 	<input type="radio" value='1' name="gender" class="gender" checked>Male
 									<input type="radio" value='2'  name="gender" class="gender" >Female
                               	</div>
@@ -222,7 +222,7 @@ $user_type = $_GET['user_type'];
 										
 							<div class="control-group">
 								<div class="controls">
-									<button type="submit" name="save" class="btn btn-info"><i class="icon-plus-sign icon-large"></i></button>
+									<button type="submit" name="save" class="btn btn-info" title="Add"><i class="icon-plus-sign icon-large"></i></button>
 								</div>
                             </div>
                                 </form>
@@ -277,7 +277,7 @@ $count = mysql_num_rows($query);
 
 if ($count > 0){ ?>
 <script>
-alert('Username or Mailid Already Exist');
+alert('Username or Mail id Already Exist');
 
 </script>
 <?php
